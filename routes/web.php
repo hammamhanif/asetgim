@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use GuzzleHttp\Middleware;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +23,23 @@ Route::get('login', function () {
     return view('auth.login');
 });
 
-Route::get('register', function () {
-    return view('auth.register');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('login', 'login')->name('login');
+    Route::post('login', 'loginPost')->name('login.post');
+    Route::post('logout', 'logout')->name('logout');
+    Route::get('register', 'register')->name('register');
+    Route::post('register', 'registerPost')->name('register.post');
+    Route::get('sign-in-google', 'google')->name('user.login.google');
+    Route::get('auth/google/callback', 'handleProviderCallback')->name('user.google.callback');
 });
+
+Route::get('dashboard', function () {
+    return view('Tamplate.dashboard.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('forgot', function () {
     return view('auth.forgot');
-});
+})->name('forgot');
 
 Route::get('reset', function () {
     return view('auth.reset-password');
