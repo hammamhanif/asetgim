@@ -21,6 +21,10 @@
                                                 now</a>
                                             <a href="add-NFT.html" class="tf-button style-3">Create</a>
                                         </div>
+                                        <div class="search-bar">
+                                                    <input type="text" class="form-bottom" id="search" placeholder="Cari...">
+                                                        <button type="submit" class="tf-button style-2">Cari</button>
+                                        </div>
                                     </div>
                                     <div class="image">
                                         <div class="img-slider-main ani5"><img src="assets/images/slider/slider-1.jpg"
@@ -67,14 +71,7 @@
                                 </div>
                             </div><!-- item-->
                         </div>
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="tf-product-category">
-                                    <img src="assets/images/product-category/product-category-2.jpg" alt="Image">
-                                    <div class="category"><a href="#">Music Asset</a></div>
-                                </div>
-                            </div><!-- item-->
-                        </div>
+                        
                     </div>
 
                 </div>
