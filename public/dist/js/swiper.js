@@ -14,11 +14,11 @@ var swiper =  new Swiper(".product-category", {
             spaceBetween: 30,
         },
         992: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 30,
         },
         1200: {
-            slidesPerView: 4,
+            slidesPerView: 2,
             spaceBetween: 30,
         },
     },

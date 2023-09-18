@@ -6,7 +6,7 @@
                     <div id="site-logo" class="clearfix">
                         <div id="site-logo-inner">
                             <a href="index.html" rel="home" class="main-logo">
-                                <img id="logo_header" src="assets/images/logo/logo_dark.png" alt="Image">
+                                <img id="logo_header" src="assets/images/logo/logobrin.png" alt="Image">
                             </a>
                         </div>
                     </div>
@@ -21,22 +21,10 @@
                                 <li class="menu-item menu-item-has-children">
                                     <a href="#">Category</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="explore-grid.html">Explore</a></li>
-                                        <li class="menu-item"><a href="explore-banner.html">Explore 2</a>
+                                        <li class="menu-item"><a href="explore-grid.html">2D</a></li>
+                                        <li class="menu-item"><a href="explore-banner.html">3D</a>
                                         </li>
-                                        <li class="menu-item"><a href="explore-sidebar-3-item.html">Explore
-                                                3 Item</a></li>
-                                        <li class="menu-item"><a href="explore-sidebar-4-item.html">Explore
-                                                4 Item</a></li>
-                                        <li class="menu-item"><a href="collection.html">Collection</a></li>
-                                        <li class="menu-item"><a href="live-auction.html">Live Auction</a>
-                                        </li>
-                                        <li class="menu-item"><a href="live-auction-2.html">Live Auction
-                                                2</a></li>
-                                        <li class="menu-item"><a href="item-details.html">Item Details</a>
-                                        </li>
-                                        <li class="menu-item"><a href="item-details-2.html">Item Details
-                                                2</a></li>
+                                        
                                     </ul>
                                 </li>
 
