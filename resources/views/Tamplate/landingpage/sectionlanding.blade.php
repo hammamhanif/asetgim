@@ -21,9 +21,9 @@
                                                 now</a>
                                             <a href="add-NFT.html" class="tf-button style-3">Create</a>
                                         </div>
-                                        <div class="search-bar">
-                                                    <input type="text" class="form-bottom" id="search" placeholder="Cari...">
-                                                        <button type="submit" class="tf-button style-2">Cari</button>
+                                        <div class="row g-0 text-center mb-3 mt-5">
+                                                        <input type="text" class=" col-sm-6 col-md-6  tf-button" id="inputGroupFile02">
+                                                        <label class="col-sm-6 col-md-2 tf-button" for="inputGroupFile02">search</label>
                                         </div>
                                     </div>
                                     <div class="image">
