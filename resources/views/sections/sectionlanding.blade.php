@@ -16,14 +16,15 @@
                                         <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur
                                             adipiscing elit. Integer nec odio. Praesent libero. Sed cursus
                                             ante dapibus diam.</p>
-                                        <div class="btn-slider ">
+                                        <div class="btn-slider mb-5 ">
                                             <a href="explore-banner.html" class="tf-button style-2">Explore
                                                 now</a>
                                             <a href="add-NFT.html" class="tf-button style-3">Create</a>
                                         </div>
                                         <div class="search-bar">
-                                                    <input type="text" class="form-bottom" id="search" placeholder="Cari...">
-                                                        <button type="submit" class="tf-button style-2">Cari</button>
+                                            <input type="search" class="form-bottom" id="search"
+                                                placeholder="Cari...">
+                                            <button type="submit" class="tf-button style-2 mt-4">Cari</button>
                                         </div>
                                     </div>
                                     <div class="image">
@@ -71,7 +72,7 @@
                                 </div>
                             </div><!-- item-->
                         </div>
-                        
+
                     </div>
 
                 </div>
