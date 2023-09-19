@@ -5,7 +5,7 @@
                 <div id="site-header-inner">
                     <div id="site-logo" class="clearfix">
                         <div id="site-logo-inner">
-                            <a href="index.html" rel="home" class="main-logo">
+                            <a href="{{ route('home') }}" rel="home" class="main-logo">
                                 <img id="logo_header" src="assets/images/logo/logobrin.png" alt="Image">
                             </a>
                         </div>
