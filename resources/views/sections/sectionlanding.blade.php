@@ -16,14 +16,21 @@
                                         <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur
                                             adipiscing elit. Integer nec odio. Praesent libero. Sed cursus
                                             ante dapibus diam.</p>
-                                        <div class="btn-slider ">
+                                        <div class="btn-slider mb-5 ">
                                             <a href="explore-banner.html" class="tf-button style-2">Explore
                                                 now</a>
                                             <a href="add-NFT.html" class="tf-button style-3">Create</a>
                                         </div>
+<<<<<<< HEAD:resources/views/Tamplate/landingpage/sectionlanding.blade.php
                                         <div class="row g-0 text-center mb-3 mt-5">
                                                         <input type="text" class=" col-sm-6 col-md-6  tf-button" id="inputGroupFile02">
                                                         <label class="col-sm-6 col-md-2 tf-button" for="inputGroupFile02">search</label>
+=======
+                                        <div class="search-bar">
+                                            <input type="search" class="form-bottom" id="search"
+                                                placeholder="Cari...">
+                                            <button type="submit" class="tf-button style-2 mt-4">Cari</button>
+>>>>>>> a3820f730d775cc691cc65bd5f019a59058bc130:resources/views/sections/sectionlanding.blade.php
                                         </div>
                                     </div>
                                     <div class="image">
@@ -71,7 +78,7 @@
                                 </div>
                             </div><!-- item-->
                         </div>
-                        
+
                     </div>
 
                 </div>
