@@ -8,7 +8,7 @@
             @include('Tamplate.landingpage.navbar')
             {{-- End Navbar --}}
 
-            @include('sections.sectionlanding')
+            @include('Tamplate.landingpage.sectionlanding')
 
 
             <!-- Footer -->
