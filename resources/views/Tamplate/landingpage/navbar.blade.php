@@ -5,7 +5,7 @@
                 <div id="site-header-inner">
                     <div id="site-logo" class="clearfix">
                         <div id="site-logo-inner">
-                            <a href="index.html" rel="home" class="main-logo">
+                            <a href="{{ route('home') }}" rel="home" class="main-logo">
                                 <img id="logo_header" src="assets/images/logo/logobrin.png" alt="Image">
                             </a>
                         </div>
@@ -45,11 +45,12 @@
                                     <a href="contact.html">Contact</a>
                                 </li>
                                 </li>
-                                @auth
+                                @if (auth()->check() && auth()->user()->verified)
                                     <li class="menu-item menu-item-has-children ">
                                         <a href="#">{{ auth()->user()->name }}</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item "><a href="{{ route('dashboard') }}">My Dashboard</a></li>
+                                            <li class="menu-item "><a href="{{ route('dashboard') }}">My Dashboard</a>
+                                            </li>
                                             <li class="menu-item ">
                                                 <form action="{{ route('logout') }}" method="post">
                                                     @csrf
@@ -61,7 +62,7 @@
 
                                         </ul>
                                     </li>
-                                @endauth
+                                @endif
                             </ul>
                         </nav><!-- /#main-nav -->
                     </div>

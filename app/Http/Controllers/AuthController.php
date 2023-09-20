@@ -125,10 +125,12 @@ class AuthController extends Controller
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'email_verified_at' => date('Y-m-d H:i:s', time())
+            // 'email_verified_at' => date('Y-m-d H:i:s', time())
         ]);
+        event(new Registered($user));
         Auth::login($user, $request->get('remember'));
 
-        return redirect()->route('login')->withSuccess('Akun berhasil dibuat. Silahkan cek email pada pesan masuk.');
+
+        return redirect('/email/verify');
     }
 }
