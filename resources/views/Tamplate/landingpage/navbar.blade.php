@@ -45,7 +45,7 @@
                                     <a href="contact.html">Contact</a>
                                 </li>
                                 </li>
-                                @if (auth()->check() && auth()->user()->verified)
+                                @if (auth()->check())
                                     <li class="menu-item menu-item-has-children ">
                                         <a href="#">{{ auth()->user()->name }}</a>
                                         <ul class="sub-menu">
