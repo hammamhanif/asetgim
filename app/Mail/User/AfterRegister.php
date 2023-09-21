@@ -12,12 +12,15 @@ use Illuminate\Queue\SerializesModels;
 class AfterRegister extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
+    public $name;
+    public $token;
     /**
      * Create a new message instance.
      */
-    public function __construct($user)
+    public function __construct($token, $name)
     {
+        $this->token = $token;
+        $this->name = $name;
     }
 
     /**

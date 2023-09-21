@@ -19,9 +19,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::get('/', function () {
     return view('Tamplate.landingpage.index');
 })->name('home');
-Route::get('login', function () {
-    return view('auth.login');
-});
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('login', 'login')->middleware('guest')->name('login');
@@ -31,6 +29,16 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'registerPost')->name('register.post');
     Route::get('sign-in-google', 'google')->middleware('guest')->name('user.login.google');
     Route::get('auth/google/callback', 'handleProviderCallback')->name('user.google.callback');
+
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+
+        return redirect('/dashboard');
+    })->middleware(['auth', 'signed'])->name('verification.verify');
 });
 
 Route::get('dashboard', function () {
@@ -48,3 +56,6 @@ Route::get('forgot', function () {
 Route::get('reset', function () {
     return view('auth.reset-password');
 });
+Route::get('contact', function () {
+    return view('sections.contact');
+})->name('contact');
