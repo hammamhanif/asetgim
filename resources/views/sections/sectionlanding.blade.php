@@ -19,12 +19,12 @@
                                         <div class="btn-slider mb-5 ">
                                             <a href="explore-banner.html" class="tf-button style-2">Explore
                                                 now</a>
-                                            <a href="add-NFT.html" class="tf-button style-3">Create</a>
+                                            <a href="add-NFT.html" class="tf-button style-3 mb-5">Create</a>
+                                            <div class="search-form mb-5 mt-3">
+                                            <input type="text" class=" col-sm-6 col-md-6  tf-button " id="inputGroupFile02">
+                                                        <label class="col-sm-6 col-md-2 tf-button text-center" for="inputGroupFile02">search</label>
                                         </div>
-                                        <div class="row g-0 text-center mb-3 mt-5">
-                                                        <input type="text" class=" col-sm-6 col-md-6  tf-button" id="inputGroupFile02">
-                                                        <label class="col-sm-6 col-md-2 tf-button" for="inputGroupFile02">search</label>
-                                    </div>
+                                        </div>
                                     </div>
                                     <div class="image">
                                         <div class="img-slider-main ani5"><img src="assets/images/slider/slider-1.jpg"
