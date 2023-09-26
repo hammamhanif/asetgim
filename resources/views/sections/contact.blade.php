@@ -31,7 +31,21 @@
                         <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati
                             dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit. </p>
                     </div>
-                    <form action="contact/contact-process.php" method="post" id="commentform" class="comment-form">
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            <strong class="font-bold">Success!</strong>
+                            <span class="block sm:inline">{{ session('success') }}</span>
+                        </div>
+                    @elseif(session('unsuccess'))
+                        <div class="alert alert-danger" role="alert">
+                            <strong class="font-bold">Unsuccess!</strong>
+                            <span class="block sm:inline">{{ session('unsuccess') }}</span>
+                        </div>
+                    @endif
+                    <form action="{{ route('kontaks') }}" method="post" id="commentform" class="comment-form"
+                        enctype="multipart/form-data">
+                        @method('POST')
+                        @csrf
                         <fieldset class="name">
                             <input type="text" id="name" placeholder="Your Full Name" class="tb-my-input"
                                 name="name" tabindex="2" aria-required="true" required="">
@@ -40,24 +54,17 @@
                             <input type="email" id="email" placeholder="Your Email Address" class="tb-my-input"
                                 name="email" tabindex="2" aria-required="true" required="">
                         </fieldset>
-                        <div class="form-select" id="subject">
-                            <select>
-                                <option value="1">Select subject</option>
-                                <option value="2">Select subject</option>
-                                <option value="3">Select subject</option>
-                            </select>
-                            <i class="icon-fl-down"></i>
-                        </div>
+                        <fieldset class="email">
+                            <input type="text" id="subject" placeholder="Subject Message" class="tb-my-input"
+                                name="subject" tabindex="2" aria-required="true" required="">
+                        </fieldset>
+
                         <fieldset class="message">
                             <textarea id="message" name="message" rows="4" placeholder="Message" tabindex="4" aria-required="true"
                                 required=""></textarea>
                         </fieldset>
                         <div class="btn-submit"><button class="tf-button" type="submit">Send message</button></div>
                     </form>
-
-
-
-
                 </div>
             </div>
         </div>

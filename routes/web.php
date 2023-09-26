@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -49,6 +50,10 @@ Route::get('exploreAsset', function () {
     return view('sections.sectionexplore');
 })->name('exploreAsset');
 
+Route::get('assetdetail', function () {
+    return view('sections.detail-asset');
+})->name('detailasset');
+
 Route::get('forgot', function () {
     return view('auth.forgot');
 })->name('forgot');
@@ -56,6 +61,9 @@ Route::get('forgot', function () {
 Route::get('reset', function () {
     return view('auth.reset-password');
 });
-Route::get('contact', function () {
-    return view('sections.contact');
-})->name('contact');
+
+
+Route::controller(ContactController::class)->group(function () {
+    Route::get('/contact', 'index')->name('index_contact');
+    Route::post('/contact', 'store')->name('kontaks');
+});

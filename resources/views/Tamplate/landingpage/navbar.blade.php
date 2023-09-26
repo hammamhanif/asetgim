@@ -42,7 +42,7 @@
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="contact.html">Contact</a>
+                                    <a href="{{ route('index_contact') }}">Contact</a>
                                 </li>
                                 </li>
                                 @if (auth()->check())

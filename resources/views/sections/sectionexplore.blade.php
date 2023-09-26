@@ -15,9 +15,16 @@
 
                     <h4 class="page-title-heading">Explore Grid</h4>
 
+                    <form>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label"></label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="Search..">
+                        </div>
+                        <button type="submit" class=" justify-content-center btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
-        </div>
     </section>
 
     <section class="tf-live-auction explore tf-filter">
@@ -48,6 +55,7 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="row tf-filter-container">
