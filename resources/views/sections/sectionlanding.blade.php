@@ -17,13 +17,15 @@
                                             adipiscing elit. Integer nec odio. Praesent libero. Sed cursus
                                             ante dapibus diam.</p>
                                         <div class="btn-slider mb-5 ">
-                                            <a href="explore-banner.html" class="tf-button style-2">Explore
+                                            <a href="{{ route('exploreAsset') }}" class="tf-button style-2">Explore
                                                 now</a>
-                                            <a href="add-NFT.html" class="tf-button style-3 mb-5">Create</a>
+                                            <a href="{{ route('dashboard') }}" class="tf-button style-3 mb-5">Create</a>
                                             <div class="search-form mb-5 mt-3">
-                                            <input type="text" class=" col-sm-6 col-md-6  tf-button " id="inputGroupFile02">
-                                                        <label class="col-sm-6 col-md-2 tf-button text-center" for="inputGroupFile02">search</label>
-                                        </div>
+                                                <input type="text" class=" col-sm-6 col-md-6  tf-button "
+                                                    id="inputGroupFile02">
+                                                <label class="col-sm-6 col-md-2 tf-button text-center"
+                                                    for="inputGroupFile02">search</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="image">

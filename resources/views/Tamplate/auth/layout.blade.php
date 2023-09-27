@@ -23,7 +23,7 @@
                                 <nav id="main-nav" class="main-nav">
                                     <ul id="menu-primary-menu" class="menu">
                                         <li class="menu-item">
-                                            <a href="#">Home</a>
+                                            <a href="{{ route('home') }}">Home</a>
 
                                         </li>
                                         <li class="menu-item menu-item-has-children">
@@ -50,7 +50,7 @@
                                         </li>
 
                                         <li class="menu-item">
-                                            <a href="contact.html">Contact</a>
+                                            <a href="{{ route('index_contact') }}">Contact</a>
                                         </li>
                                         </li>
                                         @auth
