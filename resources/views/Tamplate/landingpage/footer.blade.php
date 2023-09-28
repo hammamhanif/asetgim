@@ -1,13 +1,12 @@
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="tf-container">
-            <div class="row justify-content-center"> <!-- Menggunakan justify-content-center untuk mengatur widget info di tengah -->
-            <div class="col-xl-4 col-lg-4 col-md-4 align-self-center">
-            <div class="widget widget-infor"> <!-- Menambahkan kelas "text-center" untuk mengatur teks dan elemen di tengah -->
-      <div class="logo">
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div> <!-- Col kosong -->
+            <div class="col-md-4">
+                 <div class="logo mb-3S">
         <img id="logo_footer" src="assets/images/logo/logo_dark.png" alt="Image">
       </div>
-      <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+      <p class="content mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
       <ul class="social-item">
         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -16,9 +15,22 @@
         <li><a href="#"><i class="icon-fl-tik-tok-2"></i></a></li>
         <li><a href="#"><i class="icon-fl-vt"></i></a></li>
       </ul>
-      <p class="copy-right">Copyright © 2022 Themesflat. All Rights Reserved.</p>
-    </div>
-  </div>
-</div>
+      <p class="copy-right mt-3">Copyright © 2022 Themesflat. All Rights Reserved.</p>
             </div>
-        </footer>
+            <div class="col-md-4"></div> <!-- Col kosong -->
+        </div>
+    </div>
+</footer>
+
+<style>
+    .social-item {
+        list-style: none; /* Menghilangkan bullets pada daftar sosial item */
+        padding: 0; /* Menghilangkan padding bawaan pada daftar */
+        display: flex; /* Mengubah daftar menjadi tampilan flex (horizontal) */
+        justify-content: center; /* Mengatur konten horizontal di tengah-tengah */
+    }
+
+    .social-item li {
+        margin: 0 10px; /* Memberikan jarak antara item sosial */
+    }
+</style>
