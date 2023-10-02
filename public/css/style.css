@@ -1935,7 +1935,7 @@ header.absolute {
   z-index: 100;
   margin: -200px 0 0 -200px;
   background: #ffffff;
-  background: url(../icon/preload.png) center center no-repeat;
+  background: url() center center no-repeat;
   animation: preload 1s linear infinite alternate;
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn;
