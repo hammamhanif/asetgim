@@ -43,7 +43,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::get('dashboard', function () {
-    return view('Tamplate.dashboard.dashboard');
+    return view('sections.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('exploreAsset', function () {
