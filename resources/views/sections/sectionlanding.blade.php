@@ -141,9 +141,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                Details</a>
                                         </div>
 
                                     </div>
@@ -193,9 +193,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}"  
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
@@ -245,9 +245,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                Details</a>
                                         </div>
 
                                     </div>
@@ -297,9 +297,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
@@ -349,9 +349,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}"  
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
@@ -401,9 +401,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
