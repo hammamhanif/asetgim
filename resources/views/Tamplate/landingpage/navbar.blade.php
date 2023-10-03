@@ -70,7 +70,7 @@
                     <div class="header-right">
 
                         <a href="#" onclick="switchTheme()" class="mode-switch">
-                            <img id="img-mode" src="assets/images/icon/moon.png" alt="Image">
+                            <img id="img-mode" src="{{ asset('assets/images/icon/moon.png') }}" alt="Image">
                         </a>
                     </div>
 

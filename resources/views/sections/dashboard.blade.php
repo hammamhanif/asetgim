@@ -38,66 +38,136 @@
                               </div>
                           </div>
                       </div>
-                      <div class="col">
-                          <div class="card radius-10">
-                              <div class="card-body">
-                                  <div class="d-flex align-items-start gap-2">
-                                      <div>
-                                          <p class="mb-0 fs-6">Total Asset</p>
+                      @if (Auth::user()->type == 'admin')
+                          <div class="col">
+                              <div class="card radius-10">
+                                  <div class="card-body">
+                                      <div class="d-flex align-items-start gap-2">
+                                          <div>
+                                              <p class="mb-0 fs-6">Total Asset</p>
+                                          </div>
+                                          <div class="ms-auto widget-icon-small text-white bg-gradient-purple">
+                                              <ion-icon name="wallet-outline"></ion-icon>
+                                          </div>
                                       </div>
-                                      <div class="ms-auto widget-icon-small text-white bg-gradient-purple">
-                                          <ion-icon name="wallet-outline"></ion-icon>
+                                      <div class="d-flex align-items-center mt-3">
+                                          <div>
+                                              <h4 class="mb-0">92,854</h4>
+                                          </div>
+                                          <div class="ms-auto">+6.32%</div>
                                       </div>
-                                  </div>
-                                  <div class="d-flex align-items-center mt-3">
-                                      <div>
-                                          <h4 class="mb-0">$92,854</h4>
-                                      </div>
-                                      <div class="ms-auto">+6.32%</div>
                                   </div>
                               </div>
                           </div>
-                      </div>
-                      <div class="col">
-                          <div class="card radius-10">
-                              <div class="card-body">
-                                  <div class="d-flex align-items-start gap-2">
-                                      <div>
-                                          <p class="mb-0 fs-6">Total Creator </p>
+                      @else
+                          <div class="col">
+                              <div class="card radius-10">
+                                  <div class="card-body">
+                                      <div class="d-flex align-items-start gap-2">
+                                          <div>
+                                              <p class="mb-0 fs-6">Total Point</p>
+                                          </div>
+                                          <div class="ms-auto widget-icon-small text-white bg-gradient-purple">
+                                              <ion-icon name="wallet-outline"></ion-icon>
+                                          </div>
                                       </div>
-                                      <div class="ms-auto widget-icon-small text-white bg-gradient-info">
-                                          <ion-icon name="people-outline"></ion-icon>
+                                      <div class="d-flex align-items-center mt-3">
+                                          <div>
+                                              <h4 class="mb-0">992</h4>
+                                          </div>
+                                          <div class="ms-auto">+6.32%</div>
                                       </div>
-                                  </div>
-                                  <div class="d-flex align-items-center mt-3">
-                                      <div>
-                                          <h4 class="mb-0">48,789</h4>
-                                      </div>
-                                      <div class="ms-auto">+12.45%</div>
                                   </div>
                               </div>
                           </div>
-                      </div>
-                      <div class="col">
-                          <div class="card radius-10">
-                              <div class="card-body">
-                                  <div class="d-flex align-items-start gap-2">
-                                      <div>
-                                          <p class="mb-0 fs-6">Your Assets</p>
+                      @endif
+                      @if (Auth::user()->type == 'admin')
+                          <div class="col">
+                              <div class="card radius-10">
+                                  <div class="card-body">
+                                      <div class="d-flex align-items-start gap-2">
+                                          <div>
+                                              <p class="mb-0 fs-6">Total Creator </p>
+                                          </div>
+                                          <div class="ms-auto widget-icon-small text-white bg-gradient-info">
+                                              <ion-icon name="people-outline"></ion-icon>
+                                          </div>
                                       </div>
-                                      <div class="ms-auto widget-icon-small text-white bg-gradient-success">
-                                          <ion-icon name="bar-chart-outline"></ion-icon>
+                                      <div class="d-flex align-items-center mt-3">
+                                          <div>
+                                              <h4 class="mb-0">48</h4>
+                                          </div>
+                                          <div class="ms-auto">+12.45%</div>
                                       </div>
-                                  </div>
-                                  <div class="d-flex align-items-center mt-3">
-                                      <div>
-                                          <h4 class="mb-0">48</h4>
-                                      </div>
-                                      <div class="ms-auto">+8.52%</div>
                                   </div>
                               </div>
                           </div>
-                      </div>
+                      @else
+                          <div class="col">
+                              <div class="card radius-10">
+                                  <div class="card-body">
+                                      <div class="d-flex align-items-start gap-2">
+                                          <div>
+                                              <p class="mb-0 fs-6">Asset 3D </p>
+                                          </div>
+                                          <div class="ms-auto widget-icon-small text-white bg-gradient-info">
+                                              <ion-icon name="dice-outline"></ion-icon>
+                                          </div>
+                                      </div>
+                                      <div class="d-flex align-items-center mt-3">
+                                          <div>
+                                              <h4 class="mb-0">48</h4>
+                                          </div>
+                                          <div class="ms-auto">+12.45%</div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      @endif
+
+                      @if (Auth::user()->type == 'admin')
+                          <div class="col">
+                              <div class="card radius-10">
+                                  <div class="card-body">
+                                      <div class="d-flex align-items-start gap-2">
+                                          <div>
+                                              <p class="mb-0 fs-6">Your Asset</p>
+                                          </div>
+                                          <div class="ms-auto widget-icon-small text-white bg-gradient-success">
+                                              <ion-icon name="layers-outline"></ion-icon>
+                                          </div>
+                                      </div>
+                                      <div class="d-flex align-items-center mt-3">
+                                          <div>
+                                              <h4 class="mb-0">48</h4>
+                                          </div>
+                                          <div class="ms-auto">+8.52%</div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      @else
+                          <div class="col">
+                              <div class="card radius-10">
+                                  <div class="card-body">
+                                      <div class="d-flex align-items-start gap-2">
+                                          <div>
+                                              <p class="mb-0 fs-6">Asset 2D</p>
+                                          </div>
+                                          <div class="ms-auto widget-icon-small text-white bg-gradient-success">
+                                              <ion-icon name="images-outline"></ion-icon>
+                                          </div>
+                                      </div>
+                                      <div class="d-flex align-items-center mt-3">
+                                          <div>
+                                              <h4 class="mb-0">48</h4>
+                                          </div>
+                                          <div class="ms-auto">+8.52%</div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      @endif
                   </div>
                   <!--end row-->
 

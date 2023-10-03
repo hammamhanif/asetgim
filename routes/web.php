@@ -50,6 +50,10 @@ Route::get('exploreAsset', function () {
     return view('sections.sectionexplore');
 })->name('exploreAsset');
 
+Route::get('upload', function () {
+    return view('sections.uploadAsset');
+})->middleware(['auth', 'verified'])->name('uploadAsset');
+
 Route::get('assetdetail', function () {
     return view('sections.detail-asset');
 })->name('detailasset');

@@ -155,15 +155,15 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                         data-bs-toggle="dropdown">
                         <div class="user-setting">
-                            <img src="assets/images/avatars/06.png" class="user-img" alt="">
+                            <img src="{{ asset('assets/avatars/06.png') }}" class="user-img" alt="">
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
                             <a class="dropdown-item" href="javascript:;">
                                 <div class="d-flex flex-row align-items-center gap-2">
-                                    <img src="assets/images/avatars/06.png" alt="" class="rounded-circle"
-                                        width="54" height="54">
+                                    <img src="{{ asset('assets/avatars/06.png') }}" alt=""
+                                        class="rounded-circle" width="54" height="54">
                                     <div class="">
                                         <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
                                         <small class="mb-0 dropdown-user-designation text-secondary">UI
@@ -196,7 +196,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="javascript:;">
+                            <a class="dropdown-item" href="{{ route('exploreAsset') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="">
                                         <ion-icon name="speedometer-outline"></ion-icon>
@@ -206,12 +206,12 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="javascript:;">
+                            <a class="dropdown-item" href="{{ route('home') }}">
                                 <div class="d-flex align-items-center">
                                     <div class="">
-                                        <ion-icon name="cloud-download-outline"></ion-icon>
+                                        <ion-icon name="albums-outline"></ion-icon>
                                     </div>
-                                    <div class="ms-3"><span>Downloads</span></div>
+                                    <div class="ms-3"><span>Home</span></div>
                                 </div>
                             </a>
                         </li>
