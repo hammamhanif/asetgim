@@ -142,9 +142,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                Details</a>
                                         </div>
 
                                     </div>
@@ -194,9 +194,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}"  
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
@@ -246,9 +246,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                Details</a>
                                         </div>
 
                                     </div>
@@ -298,9 +298,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
@@ -350,9 +350,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}"  
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
@@ -402,9 +402,9 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="#" data-toggle="modal" data-target="#popup_bid"
+                                            <a href="{{ route('details') }}" 
                                                 class="tf-button"> <span class="icon-btn-product"></span>
-                                                Place Bid</a>
+                                                details</a>
                                         </div>
 
                                     </div>
@@ -757,13 +757,8 @@
             </div>
             <div class="col-md-12">
                 <ul class="filter-menu style-2 wow fadeInUp">
-                    <li class="active"><a href="#" data-filter=".3d">3D MODEL</a></li>
-                    <li><a href="#" data-filter=".anime">ANIME/MANGA</a></li>
-                    <li><a href="#" data-filter=".cyber">CYBER PUNK</a></li>
-                    <li><a href="#" data-filter=".pixel">PIXEL ART </a></li>
-                    <li><a href="#" data-filter=".music">MUSIC </a></li>
-                    <li><a href="#" data-filter=".abstract">ABSTRACT </a></li>
-                    <li><a href="#" data-filter=".2d">2D ARTS </a></li>
+                    <li class="active"><a href="#" data-filter=".3d">3D</a></li>
+                    <li><a href="#" data-filter=".anime">2D</a></li>
                 </ul>
             </div>
         </div>

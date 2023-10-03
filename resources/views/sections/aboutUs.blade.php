@@ -1,3 +1,7 @@
+@extends('Tamplate.auth.layout')
+
+@section('login')
+
 <section class="tf-blog-detail">
                 <div class="tf-container">
                     <div class="row justify-content-center">
@@ -58,3 +62,5 @@
                     </div>
                 </div>
             </section>
+
+            @endsection

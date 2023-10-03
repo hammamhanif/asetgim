@@ -268,11 +268,34 @@
                                         <div class="name"> <a href="#">Carly Webster</a></div>
                                     </div>
                                 </div>
+
                                 <div class="current-bid">
                                     <div class="subtitle">Current bid</div>
                                     <div class="price">
                                         <span class="cash">5 ETH</span><span class="icon"><img
                                                 src="assets/images/icon/ethe.svg" alt="images"></span>
+
+                                <div class="bottom">
+                                    <div class="details-product">
+                                        <div class="author">
+                                            <div class="avatar">
+                                                <img src="assets/images/author/author1.png" alt="images">
+                                            </div>
+                                            <div class="content">
+                                                <div class="position">Creator</div>
+                                                <div class="name"> <a href="#">Carly Webster</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="current-bid">
+                                            <div class="subtitle">Current bid</div>
+                                            <div class="price">
+                                                <span class="cash">5 ETH</span><span class="icon"><img src="assets/images/icon/ethe.svg" alt="images"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-button">
+                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> details</a>
+
                                     </div>
                                 </div>
                             </div>

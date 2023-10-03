@@ -337,7 +337,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> Place Bid</a>
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> details</a>
                                                     </div>
                 
                                                 </div>
@@ -382,7 +382,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> Place Bid</a>
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> details</a>
                                                     </div>
                 
                                                 </div>
@@ -427,7 +427,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> Place Bid</a>
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> details</a>
                                                     </div>
                 
                                                 </div>
@@ -472,7 +472,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> Place Bid</a>
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> details</a>
                                                     </div>
                 
                                                 </div>
@@ -517,7 +517,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> Place Bid</a>
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> details</a>
                                                     </div>
                 
                                                 </div>
@@ -562,7 +562,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-button">
-                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> Place Bid</a>
+                                                        <a href="#" data-toggle="modal" data-target="#popup_bid" class="tf-button"> <span class="icon-btn-product"></span> details</a>
                                                     </div>
                 
                                                 </div>
@@ -2165,7 +2165,7 @@
                         <p> Total bid amount:</p>
                         <p class="text-right price color-popup"> 4 ETH </p>
                     </div>
-                    <a href="#" class="button-popup" data-toggle="modal" data-target="#popup_bid_success" data-dismiss="modal" aria-label="Close"> Place bid</a>
+                    <a href="#" class="button-popup" data-toggle="modal" data-target="#popup_bid_success" data-dismiss="modal" aria-label="Close"> details</a>
                 </div>
             </div>
         </div>
