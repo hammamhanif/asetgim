@@ -10,7 +10,7 @@
                                     <div class="content-inner">
                                         <h1 class="heading">
                                             GANA
-                                            <img src="assets/images/slider/bg-slider.png" alt="Image">
+                                            <img src="{{ asset('assets/images/slider/bg-slider.png') }}" alt="Image">
                                         </h1>
                                         <h4>Game Asset Nusantara</h4>
                                         <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur
@@ -29,8 +29,8 @@
                                         </div>
                                     </div>
                                     <div class="image">
-                                        <div class="img-slider-main ani5"><img src="assets/images/slider/slider-1.jpg"
-                                                alt="Image">
+                                        <div class="img-slider-main ani5"><img
+                                                src="{{ asset('assets/images/slider/slider-1.jpg') }}" alt="Image">
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +92,8 @@
             <div class="col-md-12">
                 <div class="tf-heading mb40 wow fadeInUp">
                     <h4 class="heading">Monthly Tranding </h4>
-                    <a class="button" href="live-auction.html">Explore<i class="fal fa-long-arrow-right"></i></a>
+                    <a class="button" href="{{ route('exploreAsset') }}">Explore<i
+                            class="fal fa-long-arrow-right"></i></a>
                 </div>
             </div>
             <div class="col-md-12 wow fadeInUp">

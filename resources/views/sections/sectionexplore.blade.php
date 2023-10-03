@@ -21,7 +21,7 @@
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                 placeholder="Search..">
                         </div>
-                        <button type="submit" class=" justify-content-center btn-primary">Submit</button>
+                        <button type="submit" class=" justify-content-center btn-primary">Search</button>
                     </form>
                 </div>
             </div>
