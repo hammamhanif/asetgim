@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserController;
+
 use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -45,6 +47,12 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('dashboard', function () {
     return view('sections.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('tableuser', [UserController::class, 'index'])->middleware('isAdmin')->name('tableuser');
+Route::put('tableuser/{id}/update', [UserController::class, 'update'])->middleware('isAdmin')->name('tableuser.update');
+Route::delete('tableuser/{id}/delete', [UserController::class, 'destroy'])->middleware('isAdmin')->name('tableuser.delete');
+
+
 
 Route::get('exploreAsset', function () {
     return view('sections.sectionexplore');
