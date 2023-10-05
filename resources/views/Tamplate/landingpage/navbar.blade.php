@@ -44,6 +44,9 @@
                                 <li class="menu-item">
                                     <a href="{{ route('index_contact') }}">Contact</a>
                                 </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('about') }}">About Us</a>
+                                </li>
                                 </li>
                                 @if (auth()->check())
                                     <li class="menu-item menu-item-has-children ">

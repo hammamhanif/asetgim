@@ -74,6 +74,13 @@ Route::get('reset', function () {
     return view('auth.reset-password');
 });
 
+Route::get('about',function(){
+    return view('sections.aboutUs');
+})->name('about');
+
+Route::get('details',function(){
+    return view('sections.detailAsset');
+})->name('details');
 
 Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'index')->name('index_contact');

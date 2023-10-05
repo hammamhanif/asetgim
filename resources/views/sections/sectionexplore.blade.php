@@ -641,7 +641,7 @@
                         <p class="text-right price color-popup"> 4 ETH </p>
                     </div>
                     <a href="#" class="button-popup" data-toggle="modal" data-target="#popup_bid_success"
-                        data-dismiss="modal" aria-label="Close"> Place bid</a>
+                        data-dismiss="modal" aria-label="Close"> details</a>
                 </div>
             </div>
         </div>
