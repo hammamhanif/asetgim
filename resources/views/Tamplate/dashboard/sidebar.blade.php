@@ -22,7 +22,7 @@
                   @if (Auth::user()->type == 'admin')
                       <li class="menu-label">Admin Dashboard</li>
                       <li>
-                          <a href="javascript:;">
+                          <a href="{{ route('tableuser') }}">
                               <div class="parent-icon">
                                   <ion-icon name="receipt-outline"></ion-icon>
                               </div>
