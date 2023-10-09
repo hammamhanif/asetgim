@@ -88,6 +88,7 @@ class UserController extends Controller
         }
 
         $user = User::find($id);
+        $user->status = $request->input('status');
         $user->type = $request->input('type');
         $user->save();
 

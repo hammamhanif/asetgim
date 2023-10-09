@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\ResetPasswordMail;
 use App\Mail\User\AfterRegister;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Auth\Events\Registered;
+use Laravel\Socialite\Facades\Socialite;
 
 
 
@@ -132,5 +135,75 @@ class AuthController extends Controller
 
 
         return redirect('/email/verify');
+    }
+
+    public function forgot()
+    {
+        $title = "Lupa password";
+
+        return view('auth.forgot', compact('title'));
+    }
+    public function forgotRequest(Request $request)
+    {
+        $request->validate(
+            ['email' => 'required|email|exists:users']
+        );
+
+        $token = Str::random(40);
+
+        try {
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => now()
+            ]);
+        } catch (\Exception $e) {
+            return back()->withErrors("Email sudah dikirim sebelumnya! Cek kembali sebelum mengajukan ulang!");
+        }
+
+        Mail::to($request->email)
+            ->send(new ResetPasswordMail($token));
+
+        return back()->with('status', 'Email reset password sudah dikirim!');
+    }
+    public function resetPassword(string $token)
+    {
+        // Ini adalah view setelah user menekan tombol reset password dari email
+        $title = 'Reset Password';
+
+        return view('auth.reset-password', [
+            'token' => $token,
+            'title' => $title
+        ]);
+    }
+    public function resetPasswordRequest(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $updatePassword = DB::table('password_resets')
+            ->where([
+                'email' => $request->email,
+                'token' => $request->token
+            ])
+            ->first();
+
+        if (!$updatePassword) {
+            return back()->withInput()->with('error', 'Token tidak valid');
+        }
+
+        $user = User::where('email', $request->email)->first();
+        $user->update(
+            [
+                'password' => Hash::make($request->password),
+            ]
+        );
+
+        DB::table('password_resets')->where(['email' => $request->email])->delete();
+
+        return redirect('login')->with('status', 'Kata sandi sudah diubah');
     }
 }

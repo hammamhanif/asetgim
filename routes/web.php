@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\UserController;
 
 use GuzzleHttp\Middleware;
@@ -19,9 +20,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/', function () {
-    return view('Tamplate.landingpage.index');
-})->name('home');
+Route::controller(LandingController::class)->group(function () {
+
+    Route::get('/', 'index')->name('home')->middleware('guest');
+});
 
 
 Route::controller(AuthController::class)->group(function () {
@@ -42,11 +44,22 @@ Route::controller(AuthController::class)->group(function () {
 
         return redirect('/dashboard');
     })->middleware(['auth', 'signed'])->name('verification.verify');
+
+    Route::get('forgot', 'forgot')->name('forgot');
+    Route::post('send-forgot-request', 'forgotRequest')->name('forgot.request');
+    Route::get('reset-password/{token}', 'resetPassword')->name('password.reset');
+    Route::post('reset-password-request', 'resetPasswordRequest')->name('password.request');
 });
 
 Route::get('dashboard', function () {
     return view('sections.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'isActive'])->name('dashboard');
+Route::get('profile', function () {
+    return view('sections.profile');
+})->middleware(['auth', 'verified', 'isActive'])->name('profile');
+Route::get('changepass', function () {
+    return view('sections.change-password');
+})->middleware(['auth', 'verified', 'isActive'])->name('changepass');
 
 Route::get('tableuser', [UserController::class, 'index'])->middleware('isAdmin')->name('tableuser');
 Route::put('tableuser/{id}/update', [UserController::class, 'update'])->middleware('isAdmin')->name('tableuser.update');
@@ -66,19 +79,12 @@ Route::get('assetdetail', function () {
     return view('sections.detail-asset');
 })->name('detailasset');
 
-Route::get('forgot', function () {
-    return view('auth.forgot');
-})->name('forgot');
 
-Route::get('reset', function () {
-    return view('auth.reset-password');
-});
-
-Route::get('about',function(){
+Route::get('about', function () {
     return view('sections.aboutUs');
 })->name('about');
 
-Route::get('details',function(){
+Route::get('details', function () {
     return view('sections.detailAsset');
 })->name('details');
 

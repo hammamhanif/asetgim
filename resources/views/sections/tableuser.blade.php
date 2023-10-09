@@ -151,6 +151,17 @@
                                                             readonly>
                                                     </div>
                                                     <div class="mb-3">
+                                                        <label for="status" class="col-form-label">Status</label>
+                                                        <select class="form-select form-select-md"
+                                                            aria-label=".form-select-md example" name="status"
+                                                            id="status">
+                                                            <option @if ($user->status === 'active') selected @endif
+                                                                value="active">active</option>
+                                                            <option @if ($user->status === 'inactive') selected @endif
+                                                                value="inactive">inactive</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label for="type" class="col-form-label">Tipe
                                                             Akun</label>
                                                         <select class="form-select form-select-md"
