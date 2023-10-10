@@ -22,7 +22,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::controller(LandingController::class)->group(function () {
 
-    Route::get('/', 'index')->name('home')->middleware('guest');
+    Route::get('/', 'index')->name('home');
 });
 
 
@@ -54,9 +54,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::get('dashboard', function () {
     return view('sections.dashboard');
 })->middleware(['auth', 'verified', 'isActive'])->name('dashboard');
-Route::get('profile', function () {
-    return view('sections.profile');
-})->middleware(['auth', 'verified', 'isActive'])->name('profile');
+
 Route::get('changepass', function () {
     return view('sections.change-password');
 })->middleware(['auth', 'verified', 'isActive'])->name('changepass');
@@ -64,7 +62,8 @@ Route::get('changepass', function () {
 Route::get('tableuser', [UserController::class, 'index'])->middleware('isAdmin')->name('tableuser');
 Route::put('tableuser/{id}/update', [UserController::class, 'update'])->middleware('isAdmin')->name('tableuser.update');
 Route::delete('tableuser/{id}/delete', [UserController::class, 'destroy'])->middleware('isAdmin')->name('tableuser.delete');
-
+Route::get('profile', [UserController::class, 'profile'])->name('profile');
+Route::put('profile/{id}/update', [UserController::class, 'update_profile'])->whereNumber('id')->name('profile.update');
 
 
 Route::get('exploreAsset', function () {

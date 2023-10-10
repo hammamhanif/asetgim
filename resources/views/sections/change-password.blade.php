@@ -1,5 +1,9 @@
 @extends('Tamplate.dashboard.main')
 
+@push('vendorStyle')
+    @livewireStyles
+@endpush
+
 @section('content_dashboard')
     <!--start wrapper-->
     <div class="wrapper">
@@ -29,33 +33,7 @@
                 </div>
                 <!--end breadcrumb-->
 
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="card radius-10">
-                            <div class="card-body">
-                                <form>
-                                    <h5 class="mb-0 mt-4">Change Password</h5>
-                                    <hr>
-                                    <div class="row g-3">
-                                        <div class="col-12">
-                                            <label class="form-label">New Password</label>
-                                            <input type="password" class="form-control" value="{{ auth()->user()->email }}">
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Password Confirmation</label>
-                                            <input type="password" name="username" class="form-control"
-                                                value="{{ auth()->user()->username }}">
-                                        </div>
-                                    </div>
-                                    <div class="text-start mt-3">
-                                        <button type="button" class="btn btn-primary px-4">Save Changes</button>
-                                    </div>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div><!--end row-->
-
+                @livewire('change-password-component')
             </div>
             <!-- end page content-->
         </div>
@@ -150,3 +128,6 @@
     </div>
     <!--end wrapper-->
 @endsection
+@push('vendorScript')
+    @livewireScripts
+@endpush

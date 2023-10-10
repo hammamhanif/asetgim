@@ -21,6 +21,5 @@ class isCreator
         }
 
         return redirect()->route('login');
-        return $next($request);
     }
 }

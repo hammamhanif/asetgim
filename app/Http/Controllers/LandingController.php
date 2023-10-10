@@ -12,7 +12,7 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users =  User::where('type', 'creator')->get();
         // return view('Tamplate.landingpage.index');
         return view('Tamplate.landingpage.index', compact('users'));
     }

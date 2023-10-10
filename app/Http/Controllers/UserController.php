@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -71,6 +72,42 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('sections.profile', compact('user'));
+    }
+
+    public function update_profile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:4096'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $allowedMimes = ['jpeg', 'png', 'jpg'];
+            $validator = Validator::make($request->all(), [
+                'image' => 'image|mimes:' . implode(',', $allowedMimes) . '|max:4096',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $name = md5(time() . $request->image->getClientOriginalName()) . '.' . $request->image->extension();;
+            $request->image->move(public_path('uploads'), $name);
+            $user->setAttribute('image', '/uploads/' . $name);
+        }
+
+        $user->save();
+
+        return redirect()->route('profile')->withSuccess("Profile updated successfully.");
+    }
     public function update(Request $request, $id)
     {
         $rules = [
