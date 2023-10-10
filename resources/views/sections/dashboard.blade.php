@@ -206,9 +206,6 @@
                                           <td>#89742</td>
                                           <td>
                                               <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-box border">
-                                                      <img src="assets/images/products/11.png" alt="">
-                                                  </div>
                                                   <div class="product-info">
                                                       <h6 class="product-name mb-1">Smart Mobile Phone</h6>
                                                   </div>
@@ -240,9 +237,6 @@
                                           <td>#68570</td>
                                           <td>
                                               <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-box border">
-                                                      <img src="assets/images/products/07.png" alt="">
-                                                  </div>
                                                   <div class="product-info">
                                                       <h6 class="product-name mb-1">Sports Time Watch</h6>
                                                   </div>
@@ -274,9 +268,6 @@
                                           <td>#38567</td>
                                           <td>
                                               <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-box border">
-                                                      <img src="assets/images/products/17.png" alt="">
-                                                  </div>
                                                   <div class="product-info">
                                                       <h6 class="product-name mb-1">Women Red Heals</h6>
                                                   </div>
@@ -308,9 +299,6 @@
                                           <td>#48572</td>
                                           <td>
                                               <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-box border">
-                                                      <img src="assets/images/products/04.png" alt="">
-                                                  </div>
                                                   <div class="product-info">
                                                       <h6 class="product-name mb-1">Yellow Winter Jacket</h6>
                                                   </div>
@@ -342,9 +330,6 @@
                                           <td>#96857</td>
                                           <td>
                                               <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-box border">
-                                                      <img src="assets/images/products/10.png" alt="">
-                                                  </div>
                                                   <div class="product-info">
                                                       <h6 class="product-name mb-1">Orange Micro Headphone</h6>
                                                   </div>
@@ -376,9 +361,6 @@
                                           <td>#96857</td>
                                           <td>
                                               <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-box border">
-                                                      <img src="assets/images/products/12.png" alt="">
-                                                  </div>
                                                   <div class="product-info">
                                                       <h6 class="product-name mb-1">Pro Samsung Laptop</h6>
                                                   </div>

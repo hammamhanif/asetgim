@@ -1,5 +1,10 @@
 @extends('Tamplate.dashboard.main')
 
+@push('vendorStyle')
+    @livewireStyles
+@endpush
+
+
 @section('content_dashboard')
     <!--start wrapper-->
     <div class="wrapper">
@@ -7,6 +12,7 @@
         @include('Tamplate.dashboard.sidebar')
 
         @include('Tamplate.dashboard.header')
+
         <!-- start page content wrapper-->
         <div class="page-content-wrapper">
             <!-- start page content-->
@@ -14,95 +20,94 @@
 
                 <!--start breadcrumb-->
                 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">Forms</div>
+                    <div class="breadcrumb-title pe-3">Pages</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0 align-items-center">
                                 <li class="breadcrumb-item"><a href="javascript:;"><ion-icon
                                             name="home-outline"></ion-icon></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Form Layouts</li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
                             </ol>
                         </nav>
-                    </div>
-                    <div class="ms-auto">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-primary">Settings</button>
-                            <button type="button"
-                                class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item"
-                                    href="javascript:;">Action</a>
-                                <a class="dropdown-item" href="javascript:;">Another action</a>
-                                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                                <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated
-                                    link</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!--end breadcrumb-->
 
-
                 <div class="row">
-                    <div class="col-xl-8 mx-auto">
-                        <div class="card">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card radius-10">
                             <div class="card-body">
-                                <div class="border p-3 rounded">
-                                    <h6 class="mb-0 text-uppercase">Upload Asset</h6>
-                                    <hr>
-                                    <form class="row g-3">
-                                        <div class="col-12">
-                                            <label class="form-label">Judul</label>
-                                            <input type="text" class="form-control">
+                                <div>
+                                    <h5 class="mb-3">Edit Profile</h5>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger" role="alert">
+                                            <ul class="list-disc pl-5">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ htmlentities($error) }}</li>
+                                                @endforeach
+                                            </ul>
                                         </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Jenis Asset</label>
-                                            <select class="form-select mb-3" aria-label="Default select example">
-                                                <option selected="">Pilih Jenis Asset</option>
-                                                <option value="1">2D</option>
-                                                <option value="2">3D</option>
-                                            </select>
+                                    @endif
+                                    <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
+                                        <div class="user-change-photo shadow">
+                                            <img src="{{ Auth::user()->image }}" />
                                         </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Asal Daerah</label>
-                                            <select class="form-select mb-3" aria-label="Default select example">
-                                                <option selected="">Pilih Daerah</option>
-                                                <option value="1">Bandung</option>
-                                                <option value="2">Jogja</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Input File</label>
-                                            <div class="mb-3">
-                                                <input class="form-control" type="file" id="formFileMultiple"
-                                                    multiple="">
+                                        <button type="button" class="btn btn-outline-primary btn-sm radius-30 px-4"
+                                            data-bs-toggle="modal" data-bs-target="#user"><ion-icon
+                                                name="image-sharp"></ion-icon>Change Photo</button>
+                                        <div class="modal fade" id="user" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Ubah Foto Profil
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            Maksimum ukuran gambar 2 MB
+                                                        </p>
+                                                        <form role="form text-left"
+                                                            action="{{ route('profile.update', $user->id) }}" method="post"
+                                                            enctype="multipart/form-data">
+                                                            @method('PUT')
+                                                            @csrf
+                                                            <input type="hidden" name="id" value="12">
+                                                            <div class="input-group">
+                                                                <input type="file" class="form-control"
+                                                                    id="inputGroupFile01" name="image" accept="image/*" />
+                                                            </div>
+                                                            <div class="modal-footer">
+
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Update</button>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Deskripsi</label>
-                                            <textarea class="form-control" rows="4" cols="4"></textarea>
-                                        </div>
-                                        <div class="col-12">
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">Upload</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    </div>
+
+                                    <h5 class="mb-0 mt-4">Contact Information</h5>
+                                    @livewire('update-profile-component')
                                 </div>
                             </div>
                         </div>
-
-                    </div>
+                    </div><!--end row-->
                 </div>
-
 
             </div>
             <!-- end page content-->
         </div>
+
+
 
         <!--start footer-->
         <footer class="footer">
@@ -191,5 +196,9 @@
 
     </div>
     <!--end wrapper-->
-    </div>
 @endsection
+
+@push('vendorScript')
+    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endpush

@@ -1,5 +1,9 @@
 @extends('Tamplate.dashboard.main')
 
+@push('vendorStyle')
+    @livewireStyles
+@endpush
+
 @section('content_dashboard')
     <!--start wrapper-->
     <div class="wrapper">
@@ -7,6 +11,7 @@
         @include('Tamplate.dashboard.sidebar')
 
         @include('Tamplate.dashboard.header')
+
         <!-- start page content wrapper-->
         <div class="page-content-wrapper">
             <!-- start page content-->
@@ -14,95 +19,26 @@
 
                 <!--start breadcrumb-->
                 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">Forms</div>
+                    <div class="breadcrumb-title pe-3">Pages</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0 align-items-center">
                                 <li class="breadcrumb-item"><a href="javascript:;"><ion-icon
                                             name="home-outline"></ion-icon></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Form Layouts</li>
+                                <li class="breadcrumb-item active" aria-current="page">Change Password</li>
                             </ol>
                         </nav>
-                    </div>
-                    <div class="ms-auto">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-primary">Settings</button>
-                            <button type="button"
-                                class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item"
-                                    href="javascript:;">Action</a>
-                                <a class="dropdown-item" href="javascript:;">Another action</a>
-                                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                                <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated
-                                    link</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <!--end breadcrumb-->
 
-
-                <div class="row">
-                    <div class="col-xl-8 mx-auto">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="border p-3 rounded">
-                                    <h6 class="mb-0 text-uppercase">Upload Asset</h6>
-                                    <hr>
-                                    <form class="row g-3">
-                                        <div class="col-12">
-                                            <label class="form-label">Judul</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Jenis Asset</label>
-                                            <select class="form-select mb-3" aria-label="Default select example">
-                                                <option selected="">Pilih Jenis Asset</option>
-                                                <option value="1">2D</option>
-                                                <option value="2">3D</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Asal Daerah</label>
-                                            <select class="form-select mb-3" aria-label="Default select example">
-                                                <option selected="">Pilih Daerah</option>
-                                                <option value="1">Bandung</option>
-                                                <option value="2">Jogja</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Input File</label>
-                                            <div class="mb-3">
-                                                <input class="form-control" type="file" id="formFileMultiple"
-                                                    multiple="">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Deskripsi</label>
-                                            <textarea class="form-control" rows="4" cols="4"></textarea>
-                                        </div>
-                                        <div class="col-12">
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">Upload</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
+                @livewire('change-password-component')
             </div>
             <!-- end page content-->
         </div>
+
+
 
         <!--start footer-->
         <footer class="footer">
@@ -191,5 +127,7 @@
 
     </div>
     <!--end wrapper-->
-    </div>
 @endsection
+@push('vendorScript')
+    @livewireScripts
+@endpush

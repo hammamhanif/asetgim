@@ -64,7 +64,7 @@
                   @endif
                   <li class="menu-label">Account</li>
                   <li>
-                      <a href="pages-user-profile.html">
+                      <a href="{{ route('profile') }}">
                           <div class="parent-icon">
                               <ion-icon name="person-circle-outline"></ion-icon>
                           </div>
@@ -72,11 +72,11 @@
                       </a>
                   </li>
                   <li>
-                      <a href="pages-edit-profile.html">
+                      <a href="{{ route('changepass') }}">
                           <div class="parent-icon">
                               <ion-icon name="create-outline"></ion-icon>
                           </div>
-                          <div class="menu-title">Edit Profile</div>
+                          <div class="menu-title">Change Password</div>
                       </a>
                   </li>
                   <li class="menu-label">Support</li>

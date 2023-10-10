@@ -27,7 +27,8 @@
     <link href="{{ asset('dist/css/semi-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/header-colors.css') }}" rel="stylesheet" />
 
-    <title>Fobia - Bootstrap5 Admin Template</title>
+    <title>GANA - Game Asset Indonesia</title>
+    @stack('vendorStyle')
 </head>
 
 <body>
@@ -53,7 +54,8 @@
     <!-- Main JS-->
     <script src="{{ asset('dist/js/main2.js') }}"></script>
 
-
+    @stack('vendorScript')
 </body>
+@yield('scripts')
 
 </html>
