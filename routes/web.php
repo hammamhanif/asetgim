@@ -59,11 +59,18 @@ Route::get('changepass', function () {
     return view('sections.change-password');
 })->middleware(['auth', 'verified', 'isActive'])->name('changepass');
 
-Route::get('tableuser', [UserController::class, 'index'])->middleware('isAdmin')->name('tableuser');
-Route::put('tableuser/{id}/update', [UserController::class, 'update'])->middleware('isAdmin')->name('tableuser.update');
-Route::delete('tableuser/{id}/delete', [UserController::class, 'destroy'])->middleware('isAdmin')->name('tableuser.delete');
-Route::get('profile', [UserController::class, 'profile'])->name('profile');
-Route::put('profile/{id}/update', [UserController::class, 'update_profile'])->whereNumber('id')->name('profile.update');
+
+
+Route::controller(UserController::class)->group(function () {
+
+    Route::get('tableuser',  'index')->middleware('isAdmin')->name('tableuser');
+    Route::put('tableuser/{id}/update',  'update')->middleware('isAdmin')->name('tableuser.update');
+    Route::delete('tableuser/{id}/delete',  'destroy')->middleware('isAdmin')->name('tableuser.delete');
+    Route::get('profile',  'profile')->name('profile');
+    Route::put('profile/{id}/update',  'update_profile')->whereNumber('id')->name('profile.update');
+});
+
+
 
 
 Route::get('exploreAsset', function () {
