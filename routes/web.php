@@ -87,6 +87,10 @@ Route::get('details', function () {
     return view('sections.detailAsset');
 })->name('details');
 
+Route::get('rating', function () {
+    return view('sections.rating');
+})->name('rating');
+
 Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'index')->name('index_contact');
     Route::post('/contact', 'store')->name('kontaks');
