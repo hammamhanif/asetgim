@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreAssetRequest;
 use App\Http\Requests\UpdateAssetRequest;
 
@@ -22,6 +23,28 @@ class AssetController extends Controller
     public function create()
     {
         //
+    }
+
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:pdf,png|max:2048', // Batasan jenis dan ukuran file
+        ]);
+
+        $user = auth()->user(); // Mengambil pengguna yang sedang masuk
+
+        $file = $request->file('file');
+        $fileName = $user->id . '_' . time() . '.' . $file->getClientOriginalExtension();
+
+        $path = $file->storeAs('uploads', $fileName, 'public');
+
+        Asset::create([
+            'user_id' => $user->id,
+            'name' => $fileName,
+            'path' => $path,
+        ]);
+
+        return redirect()->back()->with('success', 'File berhasil diunggah');
     }
 
     /**
