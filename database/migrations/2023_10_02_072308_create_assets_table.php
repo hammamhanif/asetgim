@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('user_id');
-            $table->enum('type', ['2D', '3D'])->default('2D');
+            $table->enum('area', ['Bandung', 'Jogja']);
+            $table->enum('type', ['2D', '3D']);
+            $table->string('description');
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->string('path');
             $table->unsignedInteger('count')->default(0);

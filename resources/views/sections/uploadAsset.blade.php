@@ -52,37 +52,64 @@
                                 <div class="border p-3 rounded">
                                     <h6 class="mb-0 text-uppercase">Upload Asset</h6>
                                     <hr>
-                                    <form class="row g-3">
+                                    @if (session('success'))
+                                        <div class="alert alert-success" role="alert">
+                                            <strong class="font-bold">Success!</strong>
+                                            <span class="block sm:inline">{{ session('success') }}</span>
+                                        </div>
+                                    @elseif(session('unsuccess'))
+                                        <div class="alert alert-danger" role="alert">
+                                            <strong class="font-bold">Unsuccess!</strong>
+                                            <span class="block sm:inline">{{ session('unsuccess') }}</span>
+                                        </div>
+                                    @endif
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger" role="alert">
+                                            <ul class="list-disc pl-5">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ htmlentities($error) }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    <form method="post" action="{{ route('file.upload') }}" class="row g-3"
+                                        enctype="multipart/form-data">
+                                        @method('POST')
+                                        @csrf
                                         <div class="col-12">
                                             <label class="form-label">Judul</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="name">
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">Jenis Asset</label>
-                                            <select class="form-select mb-3" aria-label="Default select example">
+                                            <label class="form-label" for="type">Jenis Asset</label>
+                                            <select class="form-select mb-3" aria-label="Default select example"
+                                                name="type" id="type">
                                                 <option selected="">Pilih Jenis Asset</option>
-                                                <option value="1">2D</option>
-                                                <option value="2">3D</option>
+                                                <option value="2D">2D
+                                                </option>
+                                                <option value="3D">3D
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">Asal Daerah</label>
-                                            <select class="form-select mb-3" aria-label="Default select example">
+                                            <label class="form-label" for="area">Asal Daerah</label>
+                                            <select class="form-select mb-3" aria-label="Default select example"
+                                                id="area" name="area">
                                                 <option selected="">Pilih Daerah</option>
-                                                <option value="1">Bandung</option>
-                                                <option value="2">Jogja</option>
+                                                <option value="Bandung">Bandung</option>
+                                                <option value="Jogja">Jogja</option>
                                             </select>
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">Input File</label>
+                                            <label for="file" class="form-label">Input File</label>
                                             <div class="mb-3">
-                                                <input class="form-control" type="file" id="formFileMultiple"
-                                                    multiple="">
+                                                <input class="form-control" type="file" name="file" multiple=""
+                                                    id="file">
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">Deskripsi</label>
-                                            <textarea class="form-control" rows="4" cols="4"></textarea>
+                                            <label class="form-label" for="description">Deskripsi</label>
+                                            <textarea class="form-control" rows="4" cols="4" name="description" id="description"></textarea>
                                         </div>
                                         <div class="col-12">
                                         </div>
@@ -121,8 +148,8 @@
         <!--start switcher-->
         <div class="switcher-body">
             <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><ion-icon name="color-palette-sharp"
-                    class="me-0"></ion-icon></button>
+                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><ion-icon
+                    name="color-palette-sharp" class="me-0"></ion-icon></button>
             <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false"
                 tabindex="-1" id="offcanvasScrolling">
                 <div class="offcanvas-header border-bottom">
