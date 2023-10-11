@@ -14,7 +14,7 @@ class AssetController extends Controller
      */
     public function index()
     {
-        //
+        return view('sections.uploadAsset');
     }
 
     /**
@@ -28,7 +28,12 @@ class AssetController extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:pdf,png|max:2048', // Batasan jenis dan ukuran file
+            'file' => 'required|mimes:pdf,png,jpg|max:4096',
+            'type' => 'required|string',
+            'area' => 'required|string',
+        ], [
+            'type.required' => 'Kolom Type harus diisi.',
+            'area.required' => 'Kolom Area harus diisi.',
         ]);
 
         $user = auth()->user(); // Mengambil pengguna yang sedang masuk
@@ -42,6 +47,9 @@ class AssetController extends Controller
             'user_id' => $user->id,
             'name' => $fileName,
             'path' => $path,
+            'type' => $request->input('type'),
+            'area' => $request->input('area'),
+            'description' => $request->input('description'),
         ]);
 
         return redirect()->back()->with('success', 'File berhasil diunggah');

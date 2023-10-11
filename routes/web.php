@@ -1,12 +1,13 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AssetController;
+
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LandingController;
-use App\Http\Controllers\UserController;
-
-use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -70,16 +71,17 @@ Route::controller(UserController::class)->group(function () {
     Route::put('profile/{id}/update',  'update_profile')->whereNumber('id')->name('profile.update');
 });
 
-
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
+    Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
+    Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
+});
 
 
 Route::get('exploreAsset', function () {
     return view('sections.sectionexplore');
 })->name('exploreAsset');
 
-Route::get('upload', function () {
-    return view('sections.uploadAsset');
-})->middleware(['auth', 'verified'])->name('uploadAsset');
 
 Route::get('assetdetail', function () {
     return view('sections.detail-asset');
