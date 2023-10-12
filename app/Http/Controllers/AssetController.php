@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Asset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAssetRequest;
 use App\Http\Requests\UpdateAssetRequest;
+use Illuminate\Support\Facades\Validator;
 
 class AssetController extends Controller
 {
@@ -20,9 +22,10 @@ class AssetController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function view()
     {
-        //
+        $assets = Asset::all();
+        return view('sections.tableasset', compact('assets'));
     }
 
     public function upload(Request $request)
@@ -45,7 +48,7 @@ class AssetController extends Controller
 
         Asset::create([
             'user_id' => $user->id,
-            'name' => $fileName,
+            'name' => $request->input('name'),
             'path' => $path,
             'type' => $request->input('type'),
             'area' => $request->input('area'),
@@ -82,16 +85,50 @@ class AssetController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAssetRequest $request, Asset $asset)
+    public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'status' => 'required',
+            'area' => 'required',
+            'description' => 'required',
+        ];
+
+        $messages = [
+            'area.required' => 'The area field is required.',
+            'status.required' => 'The status field is required.',
+            'description.required' => 'The description field is required.',
+            'name.required' => 'The name field is required.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $assets = Asset::find($id);
+        $assets->name = $request->input('name');
+        $assets->description = $request->input('description');
+        $assets->status = $request->input('status');
+        $assets->area = $request->input('area');
+        $assets->save();
+
+        return redirect()->route('reviewasset')->withSuccess('Pengguna berhasil diupdate.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Asset $asset)
+    public function destroy($id)
     {
-        //
+        $assets = Asset::find($id);
+        if ($assets) {
+            Storage::disk('public')->delete($assets->path);
+            $assets->delete();
+            return redirect()->route('reviewasset')->withSuccess('Aset berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'File tidak ditemukan');
+        }
     }
 }
