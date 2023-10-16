@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Mail\ContactConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -26,6 +28,7 @@ class ContactController extends Controller
         $contact->subject = $request->input('subject');
         $contact->message = $request->input('message');
         $contact->save();
+        Mail::to($contact->email)->send(new ContactConfirmation($contact));
 
         return redirect()->back()->with('success', 'Pesan berhasil dikirim.');
     }
