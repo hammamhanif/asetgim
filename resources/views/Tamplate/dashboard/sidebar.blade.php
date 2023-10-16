@@ -37,7 +37,7 @@
                               <div class="menu-title">Asset Review</div>
                           </a>
                           <ul>
-                              <li> <a href="component-alerts.html">
+                              <li> <a href="{{ route('reviewasset') }}">
                                       <ion-icon name="ellipse-outline"></ion-icon>Status Asset
                                   </a>
                               </li>

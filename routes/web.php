@@ -75,6 +75,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
     Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
+
+
+    Route::get('/review', [AssetController::class, 'view'])->name('reviewasset');
+    Route::put('/review/{id}/update', [AssetController::class, 'update'])->name('reviewasset.update');
+    Route::delete('/review/{id}/update', [AssetController::class, 'destroy'])->name('reviewasset.delete');
 });
 
 
