@@ -104,3 +104,5 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'index')->name('index_contact');
     Route::post('/contact', 'store')->name('kontaks');
 });
+
+Route::get('download', 'Pdf@download');

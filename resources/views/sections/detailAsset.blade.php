@@ -54,7 +54,7 @@
                                         <h4 class="heading">Judul Asset</h4>
                                         <p class="sub-heading">Asset disamping merupakan asset 3D yang dibuat oleh orang Indonesia yang bertemakan budaya Indonesia yang dapat digunakan untuk keperluan kreatif seperti video animasi bahkan untuk pembuatan game.</p>
                                         <div class="btn-slider mb-5 mt-5 text-right">
-                                            <a href="explore-banner.html" class="tf-button style-2">Download now</a>
+                                            <a href="{{ route('download.file', ['file' => 'test.pdf']) }}" class="tf-button style-2">Download now</a>
                                             <a href="{{ route('rating') }}" class="tf-button style-2">Rating</a>
                                         </div>
                                     </div>
