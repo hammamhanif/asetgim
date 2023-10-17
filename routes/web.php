@@ -74,7 +74,9 @@ Route::controller(UserController::class)->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
-    Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
+    //Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
+    Route::get('download', [AssetController::class, 'download'])->name('file.download');;
+
 
 
     Route::get('/review', [AssetController::class, 'view'])->name('reviewasset');
@@ -110,4 +112,3 @@ Route::controller(ContactController::class)->group(function () {
     Route::post('/contact', 'store')->name('kontaks');
 });
 
-Route::get('download', 'Pdf@download');

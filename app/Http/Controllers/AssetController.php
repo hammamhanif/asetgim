@@ -131,4 +131,16 @@ class AssetController extends Controller
             return redirect()->back()->with('error', 'File tidak ditemukan');
         }
     }
+
+    public function download()
+{
+    $filePath = public_path("public/uploads/test.pdf");
+
+    if (Storage::exists($filePath)) {
+        return response()->download($filePath);
+    }
+
+    abort(404);
+}
+
 }
