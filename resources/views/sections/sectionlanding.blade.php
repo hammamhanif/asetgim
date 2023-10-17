@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="image">
                                         <div class="img-slider-main ani5"><img
-                                                src="{{ asset('assets/images/slider/slider-1.jpg') }}" alt="Image">
+                                                src="{{ asset('img/asset.jpg') }}" alt="Image">
                                         </div>
                                     </div>
                                 </div>

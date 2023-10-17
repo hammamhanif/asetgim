@@ -134,13 +134,14 @@ class AssetController extends Controller
 
     public function download()
 {
-    $filePath = public_path("public/uploads/test.pdf");
+    $filePath = public_path("uploads/test.pdf");
 
-    if (Storage::exists($filePath)) {
+    if (file_exists($filePath)) {
         return response()->download($filePath);
     }
 
     abort(404);
 }
+
 
 }
