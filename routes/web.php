@@ -52,10 +52,6 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('reset-password-request', 'resetPasswordRequest')->name('password.request');
 });
 
-Route::get('dashboard', function () {
-    return view('sections.dashboard');
-})->middleware(['auth', 'verified', 'isActive'])->name('dashboard');
-
 Route::get('changepass', function () {
     return view('sections.change-password');
 })->middleware(['auth', 'verified', 'isActive'])->name('changepass');
@@ -74,14 +70,15 @@ Route::controller(UserController::class)->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
-    Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
 
+
+    Route::get('/dashboard', [AssetController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/review', [AssetController::class, 'view'])->name('reviewasset');
     Route::put('/review/{id}/update', [AssetController::class, 'update'])->name('reviewasset.update');
     Route::delete('/review/{id}/update', [AssetController::class, 'destroy'])->name('reviewasset.delete');
 });
-
+Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
 
 Route::get('exploreAsset', function () {
     return view('sections.sectionexplore');
@@ -102,6 +99,12 @@ Route::get('details', function () {
 })->name('details');
 
 Route::controller(ContactController::class)->group(function () {
+
+    // Manage Contact
+    Route::get('/contacts', 'message')->name('contact.index');
+    Route::delete('/contacts/{id}', 'destroy')->name('contact.destroy');
+
+
     Route::get('/contact', 'index')->name('index_contact');
     Route::post('/contact', 'store')->name('kontaks');
 });

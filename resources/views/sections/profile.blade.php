@@ -24,7 +24,7 @@
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0 align-items-center">
-                                <li class="breadcrumb-item"><a href="javascript:;"><ion-icon
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><ion-icon
                                             name="home-outline"></ion-icon></a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
@@ -51,7 +51,7 @@
                                     @endif
                                     <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
                                         <div class="user-change-photo shadow">
-                                            <img src="{{ Auth::user()->image }}" />
+                                            <img src="{{ Auth::user()->image ?? asset('dist/icon/preload.png') }}" />
                                         </div>
                                         <button type="button" class="btn btn-outline-primary btn-sm radius-30 px-4"
                                             data-bs-toggle="modal" data-bs-target="#user"><ion-icon

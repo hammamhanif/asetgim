@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Asset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAssetRequest;
 use App\Http\Requests\UpdateAssetRequest;
@@ -26,6 +28,24 @@ class AssetController extends Controller
     {
         $assets = Asset::all();
         return view('sections.tableasset', compact('assets'));
+    }
+
+    public function dashboard()
+    {
+        $user = Auth::user(); // Mendapatkan informasi pengguna yang sedang masuk
+        $users = User::where('type', 'creator')->count();
+
+        // Mengambil aset yang dimiliki oleh pengguna yang sedang masuk
+        $assets = Asset::where('user_id', $user->id)->get();
+        $assets2D = Asset::where('user_id', $user->id)->where('type', '2D')->get();
+        $assetCount2D = $assets2D->count();
+
+        $assets3D = Asset::where('user_id', $user->id)->where('type', '3D')->get();
+        $assetCount3D = $assets3D->count();
+        // Menghitung jumlah aset
+        $assetCount =  Asset::count();
+
+        return view('sections.dashboard', compact('user', 'assets', 'assetCount', 'assets2D', 'assetCount2D', 'assets3D', 'assetCount3D', 'users'));
     }
 
     public function upload(Request $request)

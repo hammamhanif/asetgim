@@ -52,7 +52,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">92,854</h4>
+                                              <h4 class="mb-0">{{ $assetCount }}</h4>
                                           </div>
                                           <div class="ms-auto">+6.32%</div>
                                       </div>
@@ -95,7 +95,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">48</h4>
+                                              <h4 class="mb-0">{{ $users }}</h4>
                                           </div>
                                           <div class="ms-auto">+12.45%</div>
                                       </div>
@@ -116,7 +116,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">48</h4>
+                                              <h4 class="mb-0">{{ $assetCount3D }}</h4>
                                           </div>
                                           <div class="ms-auto">+12.45%</div>
                                       </div>
@@ -139,7 +139,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">48</h4>
+                                              <h4 class="mb-0">{{ $assetCount }}</h4>
                                           </div>
                                           <div class="ms-auto">+8.52%</div>
                                       </div>
@@ -160,7 +160,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">48</h4>
+                                              <h4 class="mb-0">{{ $assetCount2D }}</h4>
                                           </div>
                                           <div class="ms-auto">+8.52%</div>
                                       </div>
@@ -195,199 +195,47 @@
                                   <thead class="table-light">
                                       <tr>
                                           <th>No.</th>
-                                          <th>Name</th>
+                                          <th>Asset Name</th>
                                           <th>Status</th>
-                                          <th>Date</th>
+                                          <th>Description</th>
                                           <th>Actions</th>
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      <tr>
-                                          <td>#89742</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-info">
-                                                      <h6 class="product-name mb-1">Smart Mobile Phone</h6>
+                                      @foreach ($assets as $asset)
+                                          <tr>
+                                              <td>{{ $loop->iteration }}</td>
+                                              <td>
+                                                  <div class="d-flex align-items-center gap-3">
+                                                      <div class="product-info">
+                                                          <h6 class="product-name mb-1">{{ $asset->name }}</h6>
+                                                      </div>
                                                   </div>
-                                              </div>
-                                          </td>
-                                          <td><span class="badge bg-success">Completed</span></td>
-                                          <td>Apr 8, 2021</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3 fs-6">
-                                                  <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="View detail" aria-label="Views">
-                                                      <ion-icon name="eye-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Edit info" aria-label="Edit">
-                                                      <ion-icon name="pencil-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Delete" aria-label="Delete">
-                                                      <ion-icon name="trash-outline"></ion-icon>
-                                                  </a>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>#68570</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-info">
-                                                      <h6 class="product-name mb-1">Sports Time Watch</h6>
+                                              </td>
+                                              <td><span class="badge bg-success">{{ $asset->status }}</span></td>
+                                              <td>{{ $asset->description }}</td>
+                                              <td>
+                                                  <div class="d-flex align-items-center gap-3 fs-6">
+                                                      <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
+                                                          data-bs-placement="bottom" title=""
+                                                          data-bs-original-title="View detail" aria-label="Views">
+                                                          <ion-icon name="eye-outline"></ion-icon>
+                                                      </a>
+                                                      <a href="javascript:;" class="text-warning"
+                                                          data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                          title="" data-bs-original-title="Edit info"
+                                                          aria-label="Edit">
+                                                          <ion-icon name="pencil-outline"></ion-icon>
+                                                      </a>
+                                                      <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
+                                                          data-bs-placement="bottom" title=""
+                                                          data-bs-original-title="Delete" aria-label="Delete">
+                                                          <ion-icon name="trash-outline"></ion-icon>
+                                                      </a>
                                                   </div>
-                                              </div>
-                                          </td>
-                                          <td><span class="badge bg-success">Completed</span></td>
-                                          <td>Apr 9, 2021</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3 fs-6">
-                                                  <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="View detail" aria-label="Views">
-                                                      <ion-icon name="eye-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Edit info" aria-label="Edit">
-                                                      <ion-icon name="pencil-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Delete" aria-label="Delete">
-                                                      <ion-icon name="trash-outline"></ion-icon>
-                                                  </a>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>#38567</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-info">
-                                                      <h6 class="product-name mb-1">Women Red Heals</h6>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td><span class="badge bg-danger">Cancelled</span></td>
-                                          <td>Apr 10, 2021</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3 fs-6">
-                                                  <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="View detail" aria-label="Views">
-                                                      <ion-icon name="eye-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Edit info" aria-label="Edit">
-                                                      <ion-icon name="pencil-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Delete" aria-label="Delete">
-                                                      <ion-icon name="trash-outline"></ion-icon>
-                                                  </a>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>#48572</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-info">
-                                                      <h6 class="product-name mb-1">Yellow Winter Jacket</h6>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td><span class="badge bg-success">Completed</span></td>
-                                          <td>Apr 11, 2021</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3 fs-6">
-                                                  <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="View detail" aria-label="Views">
-                                                      <ion-icon name="eye-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Edit info" aria-label="Edit">
-                                                      <ion-icon name="pencil-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Delete" aria-label="Delete">
-                                                      <ion-icon name="trash-outline"></ion-icon>
-                                                  </a>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>#96857</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-info">
-                                                      <h6 class="product-name mb-1">Orange Micro Headphone</h6>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td><span class="badge bg-danger">Cancelled</span></td>
-                                          <td>Apr 15, 2021</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3 fs-6">
-                                                  <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="View detail" aria-label="Views">
-                                                      <ion-icon name="eye-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Edit info" aria-label="Edit">
-                                                      <ion-icon name="pencil-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Delete" aria-label="Delete">
-                                                      <ion-icon name="trash-outline"></ion-icon>
-                                                  </a>
-                                              </div>
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>#96857</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3">
-                                                  <div class="product-info">
-                                                      <h6 class="product-name mb-1">Pro Samsung Laptop</h6>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td><span class="badge bg-warning">Pending</span></td>
-                                          <td>Apr 18, 2021</td>
-                                          <td>
-                                              <div class="d-flex align-items-center gap-3 fs-6">
-                                                  <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="View detail" aria-label="Views">
-                                                      <ion-icon name="eye-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Edit info" aria-label="Edit">
-                                                      <ion-icon name="pencil-outline"></ion-icon>
-                                                  </a>
-                                                  <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                                      data-bs-placement="bottom" title=""
-                                                      data-bs-original-title="Delete" aria-label="Delete">
-                                                      <ion-icon name="trash-outline"></ion-icon>
-                                                  </a>
-                                              </div>
-                                          </td>
-                                      </tr>
+                                              </td>
+                                          </tr>
+                                      @endforeach
                                   </tbody>
                               </table>
                           </div>
