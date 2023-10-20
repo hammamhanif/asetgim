@@ -13,9 +13,15 @@ class ContactController extends Controller
     {
         return view('sections.contact');
     }
-    public function message()
+    public function message(Request $request)
     {
-        $contacts = Contact::all();
+        $search = $request->input('search');
+
+        $contacts = Contact::where('name', 'like', "%$search%")
+            ->orWhere('subject', 'like', "%$search%")
+            ->orWhere('email', 'like', "%$search%")
+            ->paginate(5);
+
         return view('sections.managecontact', compact('contacts'));
     }
     public function store(Request $request)

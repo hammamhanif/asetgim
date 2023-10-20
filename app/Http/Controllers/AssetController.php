@@ -24,23 +24,38 @@ class AssetController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function view()
+    public function view(Request $request)
     {
-        $assets = Asset::all();
-        return view('sections.tableasset', compact('assets'));
+        $search = $request->input('search'); // Ambil nilai pencarian dari request
+        $query = Asset::query();
+        $query->select('assets.*', 'users.name as creator_name'); // Pilih kolom yang Anda butuhkan
+
+        if ($search) {
+            $query->where(function ($subquery) use ($search) {
+                $subquery->where('assets.name', 'like', '%' . $search . '%')
+                    ->orWhere('assets.status', 'like', '%' . $search . '%')
+                    ->orWhere('assets.description', 'like', '%' . $search . '%')
+                    ->orWhere('users.name', 'like', '%' . $search . '%');
+            });
+        }
+
+        $query->leftJoin('users', 'assets.user_id', '=', 'users.id'); // Menggabungkan tabel User
+        $assets = $query->paginate(5); // Ubah angka 5 sesuai dengan jumlah item per halaman
+
+        return view('sections.tableasset', compact('assets', 'search'));
     }
 
     public function dashboard()
     {
-        $user = Auth::user(); // Mendapatkan informasi pengguna yang sedang masuk
-        $users = User::where('type', 'creator')->count();
+        $user = Auth::user();
+        $users = User::where('account_type', 'creator')->count();
 
         // Mengambil aset yang dimiliki oleh pengguna yang sedang masuk
-        $assets = Asset::where('user_id', $user->id)->get();
-        $assets2D = Asset::where('user_id', $user->id)->where('type', '2D')->get();
+        $assets = Asset::where('user_id', $user->id)->paginate(5);
+        $assets2D = Asset::where('user_id', $user->id)->where('asset_type', '2D')->get();
         $assetCount2D = $assets2D->count();
 
-        $assets3D = Asset::where('user_id', $user->id)->where('type', '3D')->get();
+        $assets3D = Asset::where('user_id', $user->id)->where('asset_type', '3D')->get();
         $assetCount3D = $assets3D->count();
         // Menghitung jumlah aset
         $assetCount =  Asset::count();
@@ -52,10 +67,10 @@ class AssetController extends Controller
     {
         $request->validate([
             'file' => 'required|mimes:pdf,png,jpg|max:4096',
-            'type' => 'required|string',
+            'asset_type' => 'required|string',
             'area' => 'required|string',
         ], [
-            'type.required' => 'Kolom Type harus diisi.',
+            'asset_type.required' => 'Kolom Type harus diisi.',
             'area.required' => 'Kolom Area harus diisi.',
         ]);
 
@@ -70,7 +85,7 @@ class AssetController extends Controller
             'user_id' => $user->id,
             'name' => $request->input('name'),
             'path' => $path,
-            'type' => $request->input('type'),
+            'asset_type' => $request->input('asset_type'),
             'area' => $request->input('area'),
             'description' => $request->input('description'),
         ]);
@@ -89,9 +104,9 @@ class AssetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Asset $asset)
+    public function show()
     {
-        //
+        // 
     }
 
     /**
@@ -147,6 +162,17 @@ class AssetController extends Controller
             Storage::disk('public')->delete($assets->path);
             $assets->delete();
             return redirect()->route('reviewasset')->withSuccess('Aset berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'File tidak ditemukan');
+        }
+    }
+    public function destroy_dashboard($id)
+    {
+        $assets = Asset::find($id);
+        if ($assets) {
+            Storage::disk('public')->delete($assets->path);
+            $assets->delete();
+            return redirect()->route('dashboard')->withSuccess('Aset berhasil dihapus.');
         } else {
             return redirect()->back()->with('error', 'File tidak ditemukan');
         }

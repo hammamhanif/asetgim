@@ -14,10 +14,15 @@ class ContactFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'subject' => $this->faker->sentence,
+            'message' => $this->faker->paragraph,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

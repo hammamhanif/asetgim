@@ -16,7 +16,7 @@ class isCreator
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->type === 'creator') {
+        if (Auth::check() && Auth::user()->account_type === 'creator') {
             return $next($request);
         }
 

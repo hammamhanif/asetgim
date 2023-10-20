@@ -24,6 +24,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::controller(LandingController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
+    Route::get('exploreAsset', 'exploreAsset')->name('exploreAsset');
+    Route::get('exploreAsset/{id}', 'detailAsset')->name('detailAsset');
 });
 
 
@@ -76,27 +78,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/review', [AssetController::class, 'view'])->name('reviewasset');
     Route::put('/review/{id}/update', [AssetController::class, 'update'])->name('reviewasset.update');
-    Route::delete('/review/{id}/update', [AssetController::class, 'destroy'])->name('reviewasset.delete');
+    Route::delete('/review/{id}/delete', [AssetController::class, 'destroy'])->name('reviewasset.delete');
+    Route::delete('/assets/{id}/delete', [AssetController::class, 'destroy_dashboard'])->name('reviewasset.delete2');
 });
+
 Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
 
-Route::get('exploreAsset', function () {
-    return view('sections.sectionexplore');
-})->name('exploreAsset');
 
-
-Route::get('assetdetail', function () {
-    return view('sections.detail-asset');
-})->name('detailasset');
 
 
 Route::get('about', function () {
     return view('sections.aboutUs');
 })->name('about');
 
-Route::get('details', function () {
-    return view('sections.detailAsset');
-})->name('details');
 
 Route::controller(ContactController::class)->group(function () {
 

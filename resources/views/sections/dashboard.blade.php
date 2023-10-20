@@ -38,7 +38,7 @@
                               </div>
                           </div>
                       </div>
-                      @if (Auth::user()->type == 'admin')
+                      @if (Auth::user()->account_type == 'admin')
                           <div class="col">
                               <div class="card radius-10">
                                   <div class="card-body">
@@ -81,7 +81,7 @@
                               </div>
                           </div>
                       @endif
-                      @if (Auth::user()->type == 'admin')
+                      @if (Auth::user()->account_type == 'admin')
                           <div class="col">
                               <div class="card radius-10">
                                   <div class="card-body">
@@ -125,7 +125,7 @@
                           </div>
                       @endif
 
-                      @if (Auth::user()->type == 'admin')
+                      @if (Auth::user()->account_type == 'admin')
                           <div class="col">
                               <div class="card radius-10">
                                   <div class="card-body">
@@ -191,6 +191,32 @@
                               </div>
                           </div>
                           <div class="table-responsive mt-2">
+                              @if (session('success'))
+                                  <div class="alert alert-dismissible fade show py-2 bg-success mt-3">
+                                      <div class="d-flex align-items-center">
+                                          <div class="fs-3 text-dark"><ion-icon name="information-circle-sharp"></ion-icon>
+                                          </div>
+                                          <div class="ms-3">
+                                              <div class="text-dark">Success!—{{ session('success') }}!</div>
+                                          </div>
+                                      </div>
+                                      <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                          aria-label="Close"></button>
+                                  </div>
+                              @elseif(session('unsuccess'))
+                                  <div class="alert alert-dismissible fade show py-2 bg-danger mt-3">
+                                      <div class="d-flex align-items-center">
+                                          <div class="fs-3 text-dark"><ion-icon
+                                                  name="information-circle-sharp"></ion-icon>
+                                          </div>
+                                          <div class="ms-3">
+                                              <div class="text-dark">Unsuccess!—{{ session('unsuccess') }}!</div>
+                                          </div>
+                                      </div>
+                                      <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                          aria-label="Close"></button>
+                                  </div>
+                              @endif
                               <table class="table align-middle mb-0">
                                   <thead class="table-light">
                                       <tr>
@@ -216,9 +242,10 @@
                                               <td>{{ $asset->description }}</td>
                                               <td>
                                                   <div class="d-flex align-items-center gap-3 fs-6">
-                                                      <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                          data-bs-placement="bottom" title=""
-                                                          data-bs-original-title="View detail" aria-label="Views">
+                                                      <a href="javascript:;" class="text-primary"
+                                                          data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                          title="" data-bs-original-title="View detail"
+                                                          aria-label="Views">
                                                           <ion-icon name="eye-outline"></ion-icon>
                                                       </a>
                                                       <a href="javascript:;" class="text-warning"
@@ -227,112 +254,149 @@
                                                           aria-label="Edit">
                                                           <ion-icon name="pencil-outline"></ion-icon>
                                                       </a>
-                                                      <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip"
-                                                          data-bs-placement="bottom" title=""
-                                                          data-bs-original-title="Delete" aria-label="Delete">
+                                                      <a href="javascript:;" class="text-danger delete-asset"
+                                                          data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                                          title="Delete" aria-label="Delete"
+                                                          data-asset-id="{{ $asset->id }}">
                                                           <ion-icon name="trash-outline"></ion-icon>
                                                       </a>
+                                                      <div class="modal fade" id="confirmDeleteModal" tabindex="-1"
+                                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                          <div class="modal-dialog">
+                                                              <div class="modal-content">
+                                                                  <div class="modal-header">
+                                                                      <h5 class="modal-title" id="exampleModalLabel">
+                                                                          Delete Asset</h5>
+                                                                      <button type="button" class="btn-close"
+                                                                          data-bs-dismiss="modal"
+                                                                          aria-label="Close"></button>
+                                                                  </div>
+                                                                  <div class="modal-body">
+                                                                      Are you sure you want to delete this asset?
+                                                                  </div>
+                                                                  <div class="modal-footer">
+                                                                      <button type="button" class="btn btn-secondary"
+                                                                          data-bs-dismiss="modal">Cancel</button>
+                                                                      <form method="POST"
+                                                                          action="/assets/{{ $asset->id }}/delete">
+                                                                          @csrf
+                                                                          @method('DELETE')
+                                                                          <button type="submit"
+                                                                              class="btn btn-danger">Delete</button>
+                                                                      </form>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
                                                   </div>
-                                              </td>
-                                          </tr>
-                                      @endforeach
-                                  </tbody>
-                              </table>
+
                           </div>
+                          </td>
+                          </tr>
+                          @endforeach
+                          </tbody>
+                          </table>
+
                       </div>
-                  </div>
-              </div>
-              <!-- end page content-->
-          </div>
-          <!--end page content wrapper-->
-
-
-          <!--start footer-->
-          <footer class="footer">
-              <div class="footer-text">
-                  Copyright © 2023. All right reserved.
-              </div>
-          </footer>
-          <!--end footer-->
-
-
-          <!--Start Back To Top Button-->
-          <a href="javaScript:;" class="back-to-top">
-              <ion-icon name="arrow-up-outline"></ion-icon>
-          </a>
-          <!--End Back To Top Button-->
-
-          <!--start switcher-->
-          <div class="switcher-body">
-              <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-                  <ion-icon name="color-palette-outline" class="me-0"></ion-icon>
-              </button>
-              <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true"
-                  data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling">
-                  <div class="offcanvas-header border-bottom">
-                      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Theme Customizer</h5>
-                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-                  </div>
-                  <div class="offcanvas-body">
-                      <h6 class="mb-0">Theme Variation</h6>
-                      <hr>
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme"
-                              value="option1" checked>
-                          <label class="form-check-label" for="LightTheme">Light</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme"
-                              value="option2">
-                          <label class="form-check-label" for="DarkTheme">Dark</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDark"
-                              value="option3">
-                          <label class="form-check-label" for="SemiDark">Semi Dark</label>
-                      </div>
-                      <hr />
-                      <h6 class="mb-0">Header Colors</h6>
-                      <hr />
-                      <div class="header-colors-indigators">
-                          <div class="row row-cols-auto g-3">
-                              <div class="col">
-                                  <div class="indigator headercolor1" id="headercolor1"></div>
-                              </div>
-                              <div class="col">
-                                  <div class="indigator headercolor2" id="headercolor2"></div>
-                              </div>
-                              <div class="col">
-                                  <div class="indigator headercolor3" id="headercolor3"></div>
-                              </div>
-                              <div class="col">
-                                  <div class="indigator headercolor4" id="headercolor4"></div>
-                              </div>
-                              <div class="col">
-                                  <div class="indigator headercolor5" id="headercolor5"></div>
-                              </div>
-                              <div class="col">
-                                  <div class="indigator headercolor6" id="headercolor6"></div>
-                              </div>
-                              <div class="col">
-                                  <div class="indigator headercolor7" id="headercolor7"></div>
-                              </div>
-                              <div class="col">
-                                  <div class="indigator headercolor8" id="headercolor8"></div>
-                              </div>
-                          </div>
+                      <div class="d-flex justify-content-center mt-4">
+                          {{ $assets->links() }}
                       </div>
 
                   </div>
               </div>
           </div>
-          <!--end switcher-->
+          <!-- end page content-->
+      </div>
+      <!--end page content wrapper-->
 
 
-          <!--start overlay-->
-          <div class="overlay nav-toggle-icon"></div>
-          <!--end overlay-->
+      <!--start footer-->
+      <footer class="footer">
+          <div class="footer-text">
+              Copyright © 2023. All right reserved.
+          </div>
+      </footer>
+      <!--end footer-->
+
+
+      <!--Start Back To Top Button-->
+      <a href="javaScript:;" class="back-to-top">
+          <ion-icon name="arrow-up-outline"></ion-icon>
+      </a>
+      <!--End Back To Top Button-->
+
+      <!--start switcher-->
+      <div class="switcher-body">
+          <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+              <ion-icon name="color-palette-outline" class="me-0"></ion-icon>
+          </button>
+          <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false"
+              tabindex="-1" id="offcanvasScrolling">
+              <div class="offcanvas-header border-bottom">
+                  <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Theme Customizer</h5>
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+              </div>
+              <div class="offcanvas-body">
+                  <h6 class="mb-0">Theme Variation</h6>
+                  <hr>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme"
+                          value="option1" checked>
+                      <label class="form-check-label" for="LightTheme">Light</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme"
+                          value="option2">
+                      <label class="form-check-label" for="DarkTheme">Dark</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDark"
+                          value="option3">
+                      <label class="form-check-label" for="SemiDark">Semi Dark</label>
+                  </div>
+                  <hr />
+                  <h6 class="mb-0">Header Colors</h6>
+                  <hr />
+                  <div class="header-colors-indigators">
+                      <div class="row row-cols-auto g-3">
+                          <div class="col">
+                              <div class="indigator headercolor1" id="headercolor1"></div>
+                          </div>
+                          <div class="col">
+                              <div class="indigator headercolor2" id="headercolor2"></div>
+                          </div>
+                          <div class="col">
+                              <div class="indigator headercolor3" id="headercolor3"></div>
+                          </div>
+                          <div class="col">
+                              <div class="indigator headercolor4" id="headercolor4"></div>
+                          </div>
+                          <div class="col">
+                              <div class="indigator headercolor5" id="headercolor5"></div>
+                          </div>
+                          <div class="col">
+                              <div class="indigator headercolor6" id="headercolor6"></div>
+                          </div>
+                          <div class="col">
+                              <div class="indigator headercolor7" id="headercolor7"></div>
+                          </div>
+                          <div class="col">
+                              <div class="indigator headercolor8" id="headercolor8"></div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+      <!--end switcher-->
+
+
+      <!--start overlay-->
+      <div class="overlay nav-toggle-icon"></div>
+      <!--end overlay-->
 
       </div>
       <!--end wrapper-->

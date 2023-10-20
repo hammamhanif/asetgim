@@ -32,11 +32,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0">Review Asset</h5>
-                            <form class="ms-auto position-relative">
+                            <a href="{{ route('reviewasset') }}">
+                                <h5 class="mb-0">Review Asset</h5>
+                            </a>
+                            <form class="ms-auto position-relative" action="{{ route('reviewasset') }}" method="GET">
                                 <div class="position-absolute top-50 translate-middle-y search-icon px-3"><ion-icon
                                         name="search-sharp"></ion-icon></div>
-                                <input class="form-control ps-5" type="text" placeholder="search">
+                                <input class="form-control ps-5" type="text" placeholder="search" name="search">
                             </form>
                         </div>
                         @if (session('success'))
@@ -100,9 +102,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($assets as $asset)
+                    @foreach ($assets as $index => $asset)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $assets->firstItem() + $index }}</td>
                             <td>
                                 <div class="d-flex align-items-center gap-3 cursor-pointer">
                                     <div class="">
@@ -112,7 +114,7 @@
                             </td>
                             <td>{{ htmlentities($asset->description) }}</td>
                             <td>{{ htmlentities($asset->status) }}</td>
-                            <td>{{ htmlentities($asset->type) }}
+                            <td>{{ htmlentities($asset->asset_type) }}
                             </td>
                             <td>{{ htmlentities($asset->user->name) }}
                             </td>
@@ -208,6 +210,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            {{ $assets->links() }}
         </div>
     </div>
     </div>

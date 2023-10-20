@@ -19,7 +19,7 @@
                       </a>
                   </li>
                   {{-- Admin --}}
-                  @if (Auth::user()->type == 'admin')
+                  @if (Auth::user()->account_type == 'admin')
                       <li class="menu-label">Admin Dashboard</li>
                       <li>
                           <a href="{{ route('tableuser') }}">
@@ -57,6 +57,14 @@
                                   <ion-icon name="book-outline"></ion-icon>
                               </div>
                               <div class="menu-title">Message Contact</div>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('uploadAsset') }}">
+                              <div class="parent-icon">
+                                  <ion-icon name="gift-outline"></ion-icon>
+                              </div>
+                              <div class="menu-title">Upload Asset</div>
                           </a>
                       </li>
                   @else

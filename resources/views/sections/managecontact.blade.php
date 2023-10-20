@@ -32,11 +32,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0">Massage Details</h5>
-                            <form class="ms-auto position-relative">
+                            <a href="{{ route('contact.index') }}">
+                                <h5 class="mb-0">Contact Details</h5>
+                            </a>
+                            <form class="ms-auto position-relative" method="GET" action="{{ route('contact.index') }}">
                                 <div class="position-absolute top-50 translate-middle-y search-icon px-3"><ion-icon
                                         name="search-sharp"></ion-icon></div>
-                                <input class="form-control ps-5" type="text" placeholder="search">
+                                <input class="form-control ps-5" type="text" name="search" placeholder="search">
                             </form>
                         </div>
                         @if (session('success'))
@@ -191,6 +193,9 @@
             </table>
         </div>
     </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        {{ $contacts->links() }}
     </div>
 
     </div>

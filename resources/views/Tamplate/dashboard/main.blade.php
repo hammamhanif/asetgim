@@ -54,6 +54,31 @@
     <!-- Main JS-->
     <script src="{{ asset('dist/js/main2.js') }}"></script>
 
+    <script>
+        $(document).ready(function() {
+            $('.delete-asset').on('click', function() {
+                var assetId = $(this).data('asset-id');
+                $('#confirmDeleteButton').data('asset-id', assetId);
+                $('#confirmDeleteModal').modal('show');
+            });
+
+            $('#confirmDeleteButton').on('click', function() {
+                var assetId = $(this).data('asset-id');
+                // Send a DELETE request to the route for asset deletion
+                $.ajax({
+                    url: '/assets/' + assetId + '/delete',
+                    type: 'DELETE',
+                    success: function(data) {
+                        "Asset berhasil di hapus!"
+                    },
+                    error: function(err) {
+                        "Asset gagal dihapus!"
+                    }
+                });
+            });
+        });
+    </script>
+
     @stack('vendorScript')
 </body>
 @yield('scripts')

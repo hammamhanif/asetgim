@@ -81,9 +81,9 @@
                                             <input type="text" class="form-control" name="name">
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label" for="type">Jenis Asset</label>
+                                            <label class="form-label" for="asset_type">Jenis Asset</label>
                                             <select class="form-select mb-3" aria-label="Default select example"
-                                                name="type" id="type">
+                                                name="asset_type" id="asset_type">
                                                 <option selected="">Pilih Jenis Asset</option>
                                                 <option value="2D">2D
                                                 </option>

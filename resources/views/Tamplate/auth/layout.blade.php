@@ -120,7 +120,9 @@
 <script src="{{ asset('dist/js/plugin.js') }}"></script>
 <script src="{{ asset('dist/js/shortcodes.js') }}"></script>
 <script src="{{ asset('dist/js/main.js') }}"></script>
+@stack('vendorScript')
 
 </body>
+@yield('scripts')
 
 </html>
