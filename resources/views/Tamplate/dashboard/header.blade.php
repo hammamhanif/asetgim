@@ -155,15 +155,16 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                         data-bs-toggle="dropdown">
                         <div class="user-setting">
-                            <img src="{{ Auth::user()->image }}" class="user-img" alt="">
+                            <img src="{{ Auth::user()->image ?? asset('dist/icon/preload.png') }}" class="user-img"
+                                alt="">
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
-                            <a class="dropdown-item" href="javascript:;">
+                            <a class="dropdown-item" href="{{ route('profile') }}">
                                 <div class="d-flex flex-row align-items-center gap-2">
-                                    <img src="{{ Auth::user()->image }}" alt="" class="rounded-circle"
-                                        width="54" height="54">
+                                    <img src="{{ Auth::user()->image ?? asset('dist/icon/preload.png') }}"
+                                        alt="" class="rounded-circle" width="54" height="54">
                                     <div class="">
                                         <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
                                         <small

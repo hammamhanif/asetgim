@@ -142,7 +142,7 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="{{ route('details') }}" class="tf-button"> <span
+                                            <a href="" class="tf-button"> <span
                                                     class="icon-btn-product"></span>
                                                 Details</a>
                                         </div>
@@ -194,7 +194,7 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="{{ route('details') }}" class="tf-button"> <span
+                                            <a href="" class="tf-button"> <span
                                                     class="icon-btn-product"></span>
                                                 details</a>
                                         </div>
@@ -246,7 +246,7 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="{{ route('details') }}" class="tf-button"> <span
+                                            <a href="" class="tf-button"> <span
                                                     class="icon-btn-product"></span>
                                                 Details</a>
                                         </div>
@@ -298,7 +298,7 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="{{ route('details') }}" class="tf-button"> <span
+                                            <a href="" class="tf-button"> <span
                                                     class="icon-btn-product"></span>
                                                 details</a>
                                         </div>
@@ -350,7 +350,7 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="{{ route('details') }}" class="tf-button"> <span
+                                            <a href="" class="tf-button"> <span
                                                     class="icon-btn-product"></span>
                                                 details</a>
                                         </div>
@@ -402,7 +402,7 @@
                                             </div>
                                         </div>
                                         <div class="product-button">
-                                            <a href="{{ route('details') }}" class="tf-button"> <span
+                                            <a href="" class="tf-button"> <span
                                                     class="icon-btn-product"></span>
                                                 details</a>
                                         </div>
@@ -452,7 +452,7 @@
                                 <span class="icon"><i class="far fa-plus"></i></span>
                             </div>
                             <div class="price">
-                                <span class="price-eth">{{ htmlentities($user->type) }}</span>
+                                <span class="price-eth">{{ htmlentities($user->account_type) }}</span>
                                 <span>#{{ $loop->iteration }}</span>
                             </div>
                         </div>
@@ -474,353 +474,37 @@
             <div class="col-md-12">
                 <ul class="filter-menu style-2 wow fadeInUp">
                     <li class="active"><a href="#" data-filter=".3d">3D</a></li>
-                    <li><a href="#" data-filter=".anime">2D</a></li>
+                    <li><a href="#" data-filter=".2d">2D</a></li>
                 </ul>
             </div>
         </div>
         <div class="row tf-filter-container wow fadeInUp">
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d cyber">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product3.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“The Monkey sad ”</a> </div>
-                            <div class="creator"> <a href="#">@SolvadorDali</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d pixel">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product44.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“Phyllis Lowe”</a> </div>
-                            <div class="creator"> <a href="#">@Samson Hartley</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d music">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product45.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“Camille Rogers”</a> </div>
-                            <div class="creator"> <a href="#">@SolvadorDali</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d 2d">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product46.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“Skye Carter”</a> </div>
-                            <div class="creator"> <a href="#">@Russell Loxley</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d abstract">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product48.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“Valentine Romero”</a> </div>
-                            <div class="creator"> <a href="#">@IrisHayward</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d abstract">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product49.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“Julia Tomlinson”</a>
+            @foreach ($assets as $asset)
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore {{ $asset->asset_type }} cyber">
+                    <div class="sc-product style3"><a href="{{ route('detailAsset', ['id' => $asset->id]) }}">
+                            <div class="features">
+                                <div class="product-media">
+                                    <img src="{{ asset('storage/' . $asset->path) }}" alt="images" height="500">
+                                </div>
                             </div>
-                            <div class="creator"> <a href="#">@ZoePeay</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d anime">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product50.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“Herbert Nunez”</a> </div>
-                            <div class="creator"> <a href="#">@JuliaTomlinson</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore 3d anime">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product47.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“Herbert Little”</a> </div>
-                            <div class="creator"> <a href="#">@Sidney Hall</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore anime ">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product3.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“The Monkey sad ”</a>
+                            <div class="content">
+                                <div class="details-product">
+                                    <div class="title"> <a href="">“{{ $asset->name }} ”</a> </div>
+                                    <div class="creator"> <a href="">{{ $asset->user->name }}</a> </div>
+                                </div>
+                                <div class="price">
+                                    <div class="cash">{{ $asset->area }}</div>
+                                </div>
                             </div>
-                            <div class="creator"> <a href="#">@SolvadorDali</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore cyber ">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product45.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“The Monkey sad ”</a>
-                            </div>
-                            <div class="creator"> <a href="#">@SolvadorDali</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore pixel ">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product47.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“The Monkey sad ”</a>
-                            </div>
-                            <div class="creator"> <a href="#">@SolvadorDali</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore music ">
-                <div class="sc-product style3">
-                    <div class="features">
-                        <div class="product-media">
-                            <img src="assets/images/product/product49.jpg" alt="images">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="details-product">
-                            <div class="title"> <a href="item-details.html">“The Monkey sad ”</a>
-                            </div>
-                            <div class="creator"> <a href="#">@SolvadorDali</a> </div>
-                        </div>
-                        <div class="price">
-                            <div class="subtitle">Current bid</div>
-                            <div class="cash">1.56wETH</div>
-                        </div>
-                        <div class="profile-author">
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Jordan"
-                                tabindex="0"><img src="assets/images/author/authorpd14.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Daniel Rose" tabindex="0"><img
-                                    src="assets/images/author/authorpd15.png" alt="images"></a>
-                            <a href="#" class="avatar" data-tooltip="Creator: Solvador" tabindex="0"><img
-                                    src="assets/images/author/authorpd16.png" alt="images"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
         <div class="col-md-12">
             <div class="btn-loadmore mt8 wow fadeInUp">
-                <a href="explore-grid.html" class="tf-button loadmore style-4">Load more</a>
+                <a href="{{ route('exploreAsset') }}" class="tf-button loadmore style-4">Load more</a>
             </div>
         </div>
     </div>

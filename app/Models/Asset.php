@@ -10,8 +10,8 @@ class Asset extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    public function creator()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'creator_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
