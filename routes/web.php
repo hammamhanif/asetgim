@@ -72,6 +72,7 @@ Route::controller(UserController::class)->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
+    Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
 
 
     Route::get('/dashboard', [AssetController::class, 'dashboard'])->name('dashboard');
@@ -91,6 +92,10 @@ Route::get('about', function () {
     return view('sections.aboutUs');
 })->name('about');
 
+
+Route::get('rating', function () {
+    return view('sections.rating');
+})->name('rating');
 
 Route::controller(ContactController::class)->group(function () {
 

@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="image">
                                         <div class="img-slider-main ani5"><img
-                                                src="{{ asset('assets/images/slider/slider-1.jpg') }}" alt="Image">
+                                                src="{{ asset('img/asset.jpg') }}" alt="Image">
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                         <div class="swiper-slide">
                             <div class="slider-item">
                                 <div class="tf-product-category">
-                                    <img src="assets/images/product-category/product-category-1.jpg" alt="Image">
+                                    <img src="{{asset('img/3d.png')}}" alt="Image">
                                     <div class="category"><a href="#">3D Asset</a></div>
                                 </div>
                             </div><!-- item-->
@@ -68,7 +68,7 @@
                         <div class="swiper-slide">
                             <div class="slider-item">
                                 <div class="tf-product-category">
-                                    <img src="assets/images/product-category/product-category-3.jpg" alt="Image">
+                                    <img src="{{asset('img/2d.png')}}" alt="Image">
                                     <div class="category"><a href="#">2D Asset</a></div>
                                 </div>
                             </div><!-- item-->
