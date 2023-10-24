@@ -109,6 +109,7 @@ Route::controller(ContactController::class)->group(function () {
     Route::post('/contact', 'store')->name('kontaks');
 });
 
-Route::get('download', [AssetController::class, 'download'])->name('file.download');
+Route::get('/downloadAsset/{id}', [AssetController::class, 'download'])->name('downloadAsset');
+
 
 Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');

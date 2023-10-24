@@ -22,7 +22,7 @@
             <div class="row ">
                 <div class="col-md-6">
                     <div class="image ani4">
-                        <img src="assets/images/img-contact.png" alt="Image">
+                        <img src="{{ asset('img/contact.jpg') }}" alt="Image">
                     </div>
                 </div>
                 <div class="col-md-6">
