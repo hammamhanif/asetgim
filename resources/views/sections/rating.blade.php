@@ -53,25 +53,27 @@
                             <div class="add-nft-inner">
                                 <div id="comments">
                                     <h5>Rating</h5>
-                                    <div class="rate">
-                                        <input type="radio" id="star5" name="rate" value="5" />
-                                        <label for="star5" title="text">5 stars</label>
-                                        <input type="radio" id="star4" name="rate" value="4" />
-                                        <label for="star4" title="text">4 stars</label>
-                                        <input type="radio" id="star3" name="rate" value="3" />
-                                        <label for="star3" title="text">3 stars</label>
-                                        <input type="radio" id="star2" name="rate" value="2" />
-                                        <label for="star2" title="text">2 stars</label>
-                                        <input type="radio" id="star1" name="rate" value="1" />
-                                        <label for="star1" title="text">1 star</label>
-                                    </div>
-                                    <div class="review-form">
-                                        <textarea id="review-text" placeholder="Tulis ulasan Anda..."></textarea>
-                                        <div class="btn-slider mb-5 mt-5 text-right">
-                                            <a href="explore-banner.html" class="tf-button style-2">Submit</a>
+                                    <div class="stars">
+                                </div>
+                                
+                                <div class="review-form">
+                                <form action="{{ route('Rating') }}" method="post" id="commentform" class="comment-form" enctype="multipart/form-data">
+                                @csrf
+                                <fieldset class="ulasan">
+                                    <textarea id="review-text" name="review_text" placeholder="Tulis ulasan Anda..."></textarea>
+                                    <div class="btn-slider mb-5 mt-5 text-right">
+                                        <div class="btn-submit">
+                                            <button class="tf-button" type="submit">Kirim Ulasan</button>
                                         </div>
                                     </div>
+                                </fieldset>
+                                </form>
                                 </div>
+                                @if (session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

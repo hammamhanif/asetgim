@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetController;
-
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -75,10 +75,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
     //Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
-    Route::get('download', [AssetController::class, 'download'])->name('file.download');;
-
-
-
     Route::get('/review', [AssetController::class, 'view'])->name('reviewasset');
     Route::put('/review/{id}/update', [AssetController::class, 'update'])->name('reviewasset.update');
     Route::delete('/review/{id}/update', [AssetController::class, 'destroy'])->name('reviewasset.delete');
@@ -112,3 +108,6 @@ Route::controller(ContactController::class)->group(function () {
     Route::post('/contact', 'store')->name('kontaks');
 });
 
+Route::get('download', [AssetController::class, 'download'])->name('file.download');
+
+Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');
