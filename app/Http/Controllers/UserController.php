@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserController extends Controller
 {
@@ -15,27 +17,49 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usersPerPage = 10;
+        $usersPerPage = 4;
         $totalUsers = User::count();
         $totalPages = ceil($totalUsers / $usersPerPage);
-        $currentPage = request()->page ?? 10;
+        $currentPage = request()->page ?? 1;
 
         $query = User::query()->latest();
 
         if (request()->filled('search')) {
             $search = request()->input('search');
+            $search = htmlspecialchars($search); // Validasi input pencarian
+
             $query->where(function ($q) use ($search) {
                 $q->where('username', 'LIKE', '%' . $search . '%')
                     ->orWhere('name', 'LIKE', '%' . $search . '%')
                     ->orWhere('email', 'LIKE', '%' . $search . '%')
-                    ->orWhere('type', 'LIKE', '%' . $search . '%');
+                    ->orWhere('account_type', 'LIKE', '%' . $search . '%');
             });
         }
 
-        $users = $query->get();
+        if (request()->filled('sort')) {
+            $sort = request()->input('sort');
+            if ($sort == 'name') {
+                $query->orderBy('name');
+            } elseif ($sort == 'email') {
+                $query->orderBy('email');
+            } elseif ($sort == 'account_type') {
+                $query->orderBy('account_type');
+            }
+        }
 
-        return view('sections.tableuser', compact('users',  'currentPage', 'totalPages'));
+        $users = $query->paginate($usersPerPage);
+
+        return view('sections.tableuser', compact('users', 'currentPage', 'totalPages'));
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -111,11 +135,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'type' => 'required',
+            'account_type' => 'required',
         ];
 
         $messages = [
-            'type.required' => 'The type field is required.',
+            'account_type.required' => 'The type field is required.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -126,7 +150,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->status = $request->input('status');
-        $user->type = $request->input('type');
+        $user->account_type = $request->input('account_type');
         $user->save();
 
         return redirect()->route('tableuser')->withSuccess('Pengguna berhasil diupdate.');

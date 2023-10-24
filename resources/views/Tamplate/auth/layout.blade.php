@@ -14,7 +14,8 @@
                             <div id="site-logo" class="clearfix">
                                 <div id="site-logo-inner">
                                     <a href="{{ route('home') }}" rel="home" class="main-logo">
-                                        <img id="logo_header" src="assets/images/logo/logobrin.png" alt="Image">
+                                        <img id="logo_header" src=" {{ asset('/assets/images/logo/logobrin.png') }}"
+                                            alt="Image">
                                     </a>
                                 </div>
                             </div>
@@ -29,8 +30,11 @@
                                         <li class="menu-item menu-item-has-children">
                                             <a href="#">Category</a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item"><a href="explore-grid.html">2D</a></li>
-                                                <li class="menu-item"><a href="explore-banner.html">3D</a>
+                                                <li class="menu-item"><a
+                                                        href="{{ route('exploreAsset', ['search' => '2d']) }}">2D</a>
+                                                </li>
+                                                <li class="menu-item"><a
+                                                        href="{{ route('exploreAsset', ['search' => '3d']) }}">3D</a>
                                                 </li>
 
                                             </ul>
@@ -78,7 +82,7 @@
                             <div class="header-right">
 
                                 <a href="#" onclick="switchTheme()" class="mode-switch">
-                                    <img id="img-mode" src="assets/images/icon/moon.png" alt="Image">
+                                    <img id="img-mode" src="{{ asset('assets/images/icon/moon.png') }}" alt="Image">
                                 </a>
                             </div>
 
@@ -120,7 +124,9 @@
 <script src="{{ asset('dist/js/plugin.js') }}"></script>
 <script src="{{ asset('dist/js/shortcodes.js') }}"></script>
 <script src="{{ asset('dist/js/main.js') }}"></script>
+@stack('vendorScript')
 
 </body>
+@yield('scripts')
 
 </html>

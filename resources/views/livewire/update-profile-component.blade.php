@@ -21,7 +21,7 @@
         <div class="col-6">
             <label class="form-label">Username</label>
             <input type="text" name="username" class="form-control" value="{{ auth()->user()->username }}"
-                wire:model.defer='username' required>
+                wire:model.defer='username' required readonly>
         </div>
         <div class="col-6">
             <label class="form-label">Name</label>

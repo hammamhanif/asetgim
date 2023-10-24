@@ -21,7 +21,7 @@
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><ion-icon
                                             name="home-outline"></ion-icon></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Review Asset</li>
+                                <li class="breadcrumb-item active" aria-current="page">Detail Message Contact</li>
                             </ol>
                         </nav>
                     </div>
@@ -32,13 +32,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
-                            <a href="{{ route('reviewasset') }}">
-                                <h5 class="mb-0">Review Asset</h5>
+                            <a href="{{ route('contact.index') }}">
+                                <h5 class="mb-0">Contact Details</h5>
                             </a>
-                            <form class="ms-auto position-relative" action="{{ route('reviewasset') }}" method="GET">
+                            <form class="ms-auto position-relative" method="GET" action="{{ route('contact.index') }}">
                                 <div class="position-absolute top-50 translate-middle-y search-icon px-3"><ion-icon
                                         name="search-sharp"></ion-icon></div>
-                                <input class="form-control ps-5" type="text" placeholder="search" name="search">
+                                <input class="form-control ps-5" type="text" name="search" placeholder="search">
                             </form>
                         </div>
                         @if (session('success'))
@@ -92,104 +92,78 @@
                     <tr>
                         <th>No.</th>
                         <th>Name</th>
-                        <th>Deskripsi</th>
-                        <th>Status</th>
-                        <th>Asset Type</th>
-                        <th>Creator</th>
-                        <th>Daerah</th>
-
-                        <th>Actions</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Massage</th>
+                        <th>Detail</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($assets as $index => $asset)
+                    @foreach ($contacts as $contact)
                         <tr>
-                            <td>{{ $assets->firstItem() + $index }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
                                 <div class="d-flex align-items-center gap-3 cursor-pointer">
                                     <div class="">
-                                        <p class="mb-0">{{ htmlentities($asset->name) }}</p>
+                                        <p class="mb-0">{{ htmlentities($contact->name) }}</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ htmlentities($asset->description) }}</td>
-                            <td>{{ htmlentities($asset->status) }}</td>
-                            <td>{{ htmlentities($asset->asset_type) }}
+                            <td>{{ htmlentities($contact->email) }}</td>
+                            <td>{{ htmlentities($contact->subject) }}</td>
+                            <td>{{ htmlentities($contact->message) }}
                             </td>
-                            <td>{{ htmlentities($asset->user->name) }}
-                            </td>
-                            <td>{{ htmlentities($asset->area) }}</td>
                             <td><button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                    data-bs-target="#user{{ $asset->id }}">
+                                    data-bs-target="#user{{ $contact->id }}">
                                     <ion-icon name="create-outline"></ion-icon></button>
-                                <div class="modal fade" id="user{{ $asset->id }}" tabindex="-1"
+                                <div class="modal fade" id="user{{ $contact->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
-                                        <!-- Tambahkan class modal-dialog-scrollable di sini -->
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Asset</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Detail Pesan
+                                                </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
-                                                <div style="text-align: center;">
-                                                    <img src="{{ asset('storage/' . $asset->path) }}" alt="Image"
-                                                        style="max-width: 200px; max-height: 200px;">
-                                                </div>
-                                                <form role="form text-left"
-                                                    action="{{ route('reviewasset.update', $asset->id) }}" method="post"
-                                                    enctype="multipart/form-data">
-                                                    <form role="form text-left"
-                                                        action="{{ route('reviewasset.update', $asset->id) }}"
-                                                        method="post" enctype="multipart/form-data">
-                                                        @method('PUT')
-                                                        @csrf
-                                                        <div class="mb-3">
-                                                            <label for="name" class="col-form-label">Nama:</label>
-                                                            <input type="text" class="form-control" id="name"
-                                                                name="name" value="{{ htmlentities($asset->name) }}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="description"
-                                                                class="col-form-label">description:</label>
-                                                            <textarea class="form-control" id="description" name="description">{{ htmlentities($asset->description) }}</textarea>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="status" class="col-form-label">Status</label>
-                                                            <select class="form-select form-select-md"
-                                                                aria-label=".form-select-md example" name="status"
-                                                                id="status">
-                                                                <option @if ($asset->status === 'active') selected @endif
-                                                                    value="active">active</option>
-                                                                <option @if ($asset->status === 'inactive') selected @endif
-                                                                    value="inactive">inactive</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="type" class="col-form-label">Daerah</label>
-                                                            <select class="form-select form-select-md"
-                                                                aria-label=".form-select-md example" name="area"
-                                                                id="area">
-                                                                <option @if ($asset->area === 'Bandung') selected @endif
-                                                                    value="Bandung">Bandung</option>
-                                                                <option @if ($asset->area === 'Jogja') selected @endif
-                                                                    value="Jogja">Jogja</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Update</button>
-                                                    </form>
+                                            <div class="modal-body">
+                                                <form role="form text-left" action="" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="mb-3">
+                                                        <label for="name" class="col-form-label">Nama:</label>
+                                                        <input type="text" class="form-control" id="name"
+                                                            name="name" value="{{ htmlentities($contact->name) }}"
+                                                            readonly>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="email" class="col-form-label">email:</label>
+                                                        <input type="text" class="form-control" id="email"
+                                                            name="email" value="{{ htmlentities($contact->email) }}"
+                                                            readonly>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="subject" class="col-form-label">subject:</label>
+                                                        <input type="text" class="form-control" id="subject"
+                                                            name="subject" value="{{ htmlentities($contact->subject) }}"
+                                                            readonly>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="message" class="col-form-label">message:</label>
+                                                        <input type="text" class="form-control" id="message"
+                                                            name="message" value="{{ htmlentities($contact->message) }}"
+                                                            readonly>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
                                                 </form>
-                                                <a href="{{ route('reviewasset.delete', ['id' => $asset->id]) }}"
-                                                    onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this asset?')) document.getElementById('delete-form-{{ htmlentities($asset->id) }}').submit();">
+                                                <a href="{{ route('contact.destroy', ['id' => $contact->id]) }}"
+                                                    onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this massage?')) document.getElementById('delete-form-{{ htmlentities($contact->id) }}').submit();">
                                                     <button type="button" class="btn btn-danger"
                                                         data-bs-dismiss="modal">Hapus</button>
                                                 </a>
-                                                <form id="delete-form-{{ htmlentities($asset->id) }}"
-                                                    action="{{ route('reviewasset.delete', ['id' => $asset->id]) }}"
+                                                <form id="delete-form-{{ htmlentities($contact->id) }}"
+                                                    action="{{ route('contact.destroy', ['id' => $contact->id]) }}"
                                                     method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
@@ -198,7 +172,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </td>
 
                             <td>
@@ -219,10 +192,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="d-flex justify-content-center mt-4">
-            {{ $assets->links() }}
-        </div>
     </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        {{ $contacts->links() }}
     </div>
 
     </div>
