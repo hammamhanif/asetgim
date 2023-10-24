@@ -21,7 +21,6 @@
 
     <section class="tf-live-auction explore tf-filter">
         <div class="tf-container">
-<<<<<<< HEAD
             <div class="row ">
                 <div class="col-md-12">
                     <div class="top-menu">
@@ -41,7 +40,6 @@
                                 <li><span>Recently Last Sale</span></li>
                                 <li><span>Oldest</span></li>
                             </ul>
-=======
             <form action="{{ route('exploreAsset') }}" method="GET">
                 <div class="mb-3">
                     <input type="text" name="search" placeholder="Cari aset...">
@@ -86,7 +84,6 @@
                                 </div>
                             </div>
 
->>>>>>> 9b1a1865f9993426b7b0b81a2ae1f415f06bc750
                         </div>
                     </div>
                 @endforeach

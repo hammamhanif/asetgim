@@ -72,15 +72,12 @@ Route::controller(UserController::class)->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
-<<<<<<< HEAD
     //Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
-=======
     Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
 
 
     Route::get('/dashboard', [AssetController::class, 'dashboard'])->name('dashboard');
 
->>>>>>> 9b1a1865f9993426b7b0b81a2ae1f415f06bc750
     Route::get('/review', [AssetController::class, 'view'])->name('reviewasset');
     Route::put('/review/{id}/update', [AssetController::class, 'update'])->name('reviewasset.update');
     Route::delete('/review/{id}/delete', [AssetController::class, 'destroy'])->name('reviewasset.delete');
@@ -111,10 +108,7 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'index')->name('index_contact');
     Route::post('/contact', 'store')->name('kontaks');
 });
-<<<<<<< HEAD
 
 Route::get('download', [AssetController::class, 'download'])->name('file.download');
 
 Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');
-=======
->>>>>>> 9b1a1865f9993426b7b0b81a2ae1f415f06bc750
