@@ -124,57 +124,64 @@
                                     <ion-icon name="create-outline"></ion-icon></button>
                                 <div class="modal fade" id="user{{ $asset->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                    <div class="modal-dialog modal-dialog-scrollable">
+                                        <!-- Tambahkan class modal-dialog-scrollable di sini -->
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Asset
-                                                </h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Asset</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                                                <div style="text-align: center;">
+                                                    <img src="{{ asset('storage/' . $asset->path) }}" alt="Image"
+                                                        style="max-width: 200px; max-height: 200px;">
+                                                </div>
                                                 <form role="form text-left"
                                                     action="{{ route('reviewasset.update', $asset->id) }}" method="post"
                                                     enctype="multipart/form-data">
-                                                    @method('PUT')
-                                                    @csrf
-                                                    <div class="mb-3">
-                                                        <label for="name" class="col-form-label">Nama:</label>
-                                                        <input type="text" class="form-control" id="name"
-                                                            name="name" value="{{ htmlentities($asset->name) }}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="description" class="col-form-label">description:</label>
-                                                        <input type="text" class="form-control" id="description"
-                                                            name="description"
-                                                            value="{{ htmlentities($asset->description) }}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="status" class="col-form-label">Status</label>
-                                                        <select class="form-select form-select-md"
-                                                            aria-label=".form-select-md example" name="status"
-                                                            id="status">
-                                                            <option @if ($asset->status === 'active') selected @endif
-                                                                value="active">active</option>
-                                                            <option @if ($asset->status === 'inactive') selected @endif
-                                                                value="inactive">inactive</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="type" class="col-form-label">Daerah</label>
-                                                        <select class="form-select form-select-md"
-                                                            aria-label=".form-select-md example" name="area"
-                                                            id="area">
-                                                            <option @if ($asset->area === 'Bandung') selected @endif
-                                                                value="Bandung">Bandung</option>
-                                                            <option @if ($asset->area === 'Jogja') selected @endif
-                                                                value="Jogja">Jogja</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    <form role="form text-left"
+                                                        action="{{ route('reviewasset.update', $asset->id) }}"
+                                                        method="post" enctype="multipart/form-data">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <label for="name" class="col-form-label">Nama:</label>
+                                                            <input type="text" class="form-control" id="name"
+                                                                name="name" value="{{ htmlentities($asset->name) }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="description"
+                                                                class="col-form-label">description:</label>
+                                                            <textarea class="form-control" id="description" name="description">{{ htmlentities($asset->description) }}</textarea>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="status" class="col-form-label">Status</label>
+                                                            <select class="form-select form-select-md"
+                                                                aria-label=".form-select-md example" name="status"
+                                                                id="status">
+                                                                <option @if ($asset->status === 'active') selected @endif
+                                                                    value="active">active</option>
+                                                                <option @if ($asset->status === 'inactive') selected @endif
+                                                                    value="inactive">inactive</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="type" class="col-form-label">Daerah</label>
+                                                            <select class="form-select form-select-md"
+                                                                aria-label=".form-select-md example" name="area"
+                                                                id="area">
+                                                                <option @if ($asset->area === 'Bandung') selected @endif
+                                                                    value="Bandung">Bandung</option>
+                                                                <option @if ($asset->area === 'Jogja') selected @endif
+                                                                    value="Jogja">Jogja</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                    </form>
                                                 </form>
                                                 <a href="{{ route('reviewasset.delete', ['id' => $asset->id]) }}"
                                                     onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this asset?')) document.getElementById('delete-form-{{ htmlentities($asset->id) }}').submit();">
@@ -191,6 +198,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </td>
 
                             <td>

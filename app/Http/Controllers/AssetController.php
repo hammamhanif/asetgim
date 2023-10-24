@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Asset;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -124,7 +125,7 @@ class AssetController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'status' => 'required',
+            'status' => 'required|in:active,inactive',
             'area' => 'required',
             'description' => 'required',
         ];
@@ -132,6 +133,7 @@ class AssetController extends Controller
         $messages = [
             'area.required' => 'The area field is required.',
             'status.required' => 'The status field is required.',
+            'status.in' => 'The status must be either active or inactive.',
             'description.required' => 'The description field is required.',
             'name.required' => 'The name field is required.',
         ];
@@ -142,14 +144,48 @@ class AssetController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $assets = Asset::find($id);
-        $assets->name = $request->input('name');
-        $assets->description = $request->input('description');
-        $assets->status = $request->input('status');
-        $assets->area = $request->input('area');
-        $assets->save();
+        // Periksa apakah asset menjadi tidak aktif
+        $asset = Asset::find($id);
+        $statusChangedToInactive = $request->input('status') === 'inactive' && $asset->status !== 'inactive';
 
-        return redirect()->route('reviewasset')->withSuccess('Pengguna berhasil diupdate.');
+        $asset->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'status' => $request->input('status'),
+            'area' => $request->input('area'),
+        ]);
+
+        if ($statusChangedToInactive) {
+            // Kirim pesan jika status berubah menjadi inactive
+            $senderId = auth()->user()->id;
+            $receiverId = $asset->user_id;
+            $subject = $asset->name;
+            $messageText = "Mohon maaf, '{$asset->name}' tidak aktif dan akan kami tinjau ulang. Terima Kasih.";
+
+            Message::create([
+                'sender_id' => $senderId,
+                'receiver_id' => $receiverId,
+                'subject' => $subject,
+                'message' => $messageText,
+            ]);
+
+            return redirect()->route('reviewasset')->withSuccess('Asset berhasil diperbarui dan pesan terkirim jika diperlukan.');
+        } else {
+            // Kirim pesan jika status berubah menjadi active
+            $senderId = auth()->user()->id;
+            $receiverId = $asset->user_id;
+            $subject = $asset->name;
+            $messageText = "Selamat, Asset Anda '{$asset->name}' sudah aktif dan dapat dilihat pada halaman utama.";
+
+            Message::create([
+                'sender_id' => $senderId,
+                'receiver_id' => $receiverId,
+                'subject' => $subject,
+                'message' => $messageText,
+            ]);
+
+            return redirect()->route('reviewasset')->withSuccess('Asset berhasil diperbarui dan pesan terkirim jika diperlukan.');
+        }
     }
 
     /**

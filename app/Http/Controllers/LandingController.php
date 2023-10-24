@@ -14,7 +14,11 @@ class LandingController extends Controller
     public function index()
     {
         $users =  User::where('account_type', 'creator')->get();
-        $assets = Asset::orderBy('updated_at')->take(8)->get();
+        $assets = Asset::where('status', 'active')
+            ->orderBy('updated_at', 'desc')
+            ->take(8)
+            ->get();
+
         return view('Tamplate.landingpage.index', compact('users', 'assets'));
     }
 
@@ -33,6 +37,7 @@ class LandingController extends Controller
 
         // Melakukan pencarian aset berdasarkan kata kunci dan menggabungkan data user pembuat
         $assets = Asset::join('users', 'assets.user_id', '=', 'users.id')
+            ->where('assets.status', 'active') // Hanya aset dengan status 'active'
             ->where(function ($query) use ($searchQuery) {
                 $query->where('assets.name', 'like', '%' . $searchQuery . '%')
                     ->orWhere('assets.description', 'like', '%' . $searchQuery . '%')
@@ -47,7 +52,10 @@ class LandingController extends Controller
     }
     public function detailAsset($id,)
     {
-        $assets = Asset::where('id', $id)->first();
+        $assets = Asset::where('id', $id)
+            ->where('status', 'active')
+            ->first();
+
         if (!$assets) {
             return abort(404);
         }

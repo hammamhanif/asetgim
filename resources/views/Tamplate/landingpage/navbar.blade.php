@@ -6,7 +6,8 @@
                     <div id="site-logo" class="clearfix">
                         <div id="site-logo-inner">
                             <a href="{{ route('home') }}" rel="home" class="main-logo">
-                                <img id="logo_header" src="assets/images/logo/logobrin.png" alt="Image">
+                                <img id="logo_header" src="{{ asset('assets/images/logo/logobrin.png') }}"
+                                    alt="Image">
                             </a>
                         </div>
                     </div>
@@ -21,8 +22,10 @@
                                 <li class="menu-item menu-item-has-children">
                                     <a href="#">Category</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="explore-grid.html">2D</a></li>
-                                        <li class="menu-item"><a href="explore-banner.html">3D</a>
+                                        <li class="menu-item"><a
+                                                href="{{ route('exploreAsset', ['search' => '2d']) }}">2D</a></li>
+                                        <li class="menu-item"><a
+                                                href="{{ route('exploreAsset', ['search' => '3d']) }}">3D</a>
                                         </li>
 
                                     </ul>

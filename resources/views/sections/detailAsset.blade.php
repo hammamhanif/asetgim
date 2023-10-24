@@ -22,7 +22,9 @@
                         <div class="content">
                             <div class="content-top">
                                 <div class="author">
-                                    <img src="assets/images/author/author-detail-3.png" alt="Image">
+                                    <img src="{{ $assets->user->image ? asset($assets->user->image) : asset('dist/icon/preload.png') }}"
+                                        alt="Image" style="width: 100px; height: 100px;">
+
                                     <h6 class="title">{{ htmlentities($assets->user->name) }}</h6>
                                 </div>
                                 <div class="wishlish">

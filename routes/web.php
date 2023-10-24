@@ -24,8 +24,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::controller(LandingController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
-    Route::get('exploreAsset', 'exploreAsset')->name('exploreAsset');
-    Route::get('exploreAsset/{id}', 'detailAsset')->name('detailAsset');
+    Route::get('/exploreAsset', 'exploreAsset')->name('exploreAsset');
+    Route::get('/exploreAsset/{id}', 'detailAsset')->name('detailAsset');
 });
 
 
