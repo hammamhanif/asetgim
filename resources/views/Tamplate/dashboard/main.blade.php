@@ -81,6 +81,31 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('.delete-asset').on('click', function() {
+                var assetId = $(this).data('asset-id');
+                $('#confirmDeleteButtonMessage').data('asset-id', assetId);
+                $('#confirmDeleteModalMessage').modal('show');
+            });
+
+            $('#confirmDeleteButtonMessage').on('click', function() {
+                var assetId = $(this).data('asset-id');
+                // Send a DELETE request to the route for message deletion
+                $.ajax({
+                    url: '/message/' + assetId + '/delete',
+                    type: 'DELETE',
+                    success: function(data) {
+                        "Message berhasil dihapus!"
+                    },
+                    error: function(err) {
+                        "Message gagal dihapus!"
+                    }
+                });
+            });
+        });
+    </script>
+
 
     @stack('vendorScript')
 </body>

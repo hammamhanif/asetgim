@@ -7,6 +7,11 @@
     {{-- ======================================================= --}}
 
     @yield('main')
+    <script>
+        function submitForm() {
+            document.forms[0].submit();
+        }
+    </script>
 
 
     <!-- Javascript -->

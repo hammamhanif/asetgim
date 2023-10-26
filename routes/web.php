@@ -24,8 +24,8 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 Route::controller(LandingController::class)->group(function () {
 
     Route::get('/', 'index')->name('home');
-    Route::get('/exploreAsset', 'exploreAsset')->name('exploreAsset');
-    Route::get('/exploreAsset/{id}', 'detailAsset')->name('detailAsset');
+    Route::get('exploreAsset', 'exploreAsset')->name('exploreAsset');
+    Route::get('/exploreAsset-{id}', 'detailAsset')->name('detailAsset');
 });
 
 
@@ -72,7 +72,6 @@ Route::controller(UserController::class)->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
-    Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
 
 
     Route::get('/dashboard', [AssetController::class, 'dashboard'])->name('dashboard');
@@ -81,9 +80,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/review/{id}/update', [AssetController::class, 'update'])->name('reviewasset.update');
     Route::delete('/review/{id}/delete', [AssetController::class, 'destroy'])->name('reviewasset.delete');
     Route::delete('/assets/{id}/delete', [AssetController::class, 'destroy_dashboard'])->name('reviewasset.delete2');
+
+    Route::delete('/message/{id}/delete',  [AssetController::class, 'destroy_message'])->name('message.delete');
 });
 
 Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
+
 
 
 

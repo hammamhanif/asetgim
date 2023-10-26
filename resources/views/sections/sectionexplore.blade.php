@@ -40,7 +40,8 @@
                                 <div class="details-product">
                                     <div class="author">
                                         <div class="avatar">
-                                            <img src="assets/images/author/author31.png" alt="images">
+                                            <img src="{{ $asset->user->image ? asset($asset->user->image) : asset('images/author/7309681.jpg') }}"
+                                                alt="images">
                                         </div>
                                         <div class="content">
                                             <div class="position">Creator</div>

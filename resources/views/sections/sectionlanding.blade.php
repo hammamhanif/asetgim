@@ -21,10 +21,11 @@
                                                 now</a>
                                             <a href="{{ route('dashboard') }}" class="tf-button style-3 mb-5">Create</a>
                                             <div class="search-form mb-5 mt-3">
-                                                <input type="text" class=" col-sm-6 col-md-6  tf-button "
-                                                    id="inputGroupFile02">
-                                                <label class="col-sm-6 col-md-2 tf-button text-center"
-                                                    for="inputGroupFile02">search</label>
+                                                <form action="{{ route('exploreAsset') }}" method="get">
+                                                    <input type="text" class="col-sm-6 col-md-6 tf-button"
+                                                        id="inputGroupFile02" name="search">
+                                                    <button type="submit" class="tf-button style-3">Search</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -435,7 +436,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="tf-author">
                         <div class="image">
-                            <img src="{{ $user->image ? asset($user->image) : asset('dist/icon/preload.png') }}"
+                            <img src="{{ $user->image ? asset($user->image) : asset('images/author/7309681.jpg') }}"
                                 alt="Image">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -494,7 +495,7 @@
         <div class="row tf-filter-container wow fadeInUp">
             @foreach ($assets as $asset)
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 tf-loadmore {{ $asset->asset_type }} cyber">
-                    <div class="sc-product style3"><a href="{{ route('detailAsset', ['id' => $asset->id]) }}">
+                    <div class="sc-product style3"><a href="{{ route('detailAsset', $asset->id) }}">
                             <div class="features">
                                 <div class="product-media">
                                     <img src="{{ asset('storage/' . $asset->path) }}" alt="images" height="500">

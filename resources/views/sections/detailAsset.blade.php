@@ -22,14 +22,14 @@
                         <div class="content">
                             <div class="content-top">
                                 <div class="author">
-                                    <img src="{{ $assets->user->image ? asset($assets->user->image) : asset('dist/icon/preload.png') }}"
+                                    <img src="{{ $assets->user->image ? asset($assets->user->image) : asset('images/author/7309681.jpg') }}"
                                         alt="Image" style="width: 100px; height: 100px;">
 
                                     <h6 class="title">{{ htmlentities($assets->user->name) }}</h6>
                                 </div>
                                 <div class="wishlish">
                                     <div class="number-wishlish"><i class="far fa-heart"></i>68</div>
-                                    <div class="number-wishlish"><i class="far fa-download"></i>68</div>
+                                    <div class="number-wishlish"><i class="far fa-download"></i>{{ $assets->count }}</div>
                                 </div>
                             </div>
                             <div class="tf-heading style-3">

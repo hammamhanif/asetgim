@@ -61,7 +61,11 @@ class AssetController extends Controller
         // Menghitung jumlah aset
         $assetCount =  Asset::count();
 
-        return view('sections.dashboard', compact('user', 'assets', 'assetCount', 'assets2D', 'assetCount2D', 'assets3D', 'assetCount3D', 'users'));
+        $messages = Message::where('sender_id', $user->id)
+            ->orWhere('receiver_id', $user->id)
+            ->paginate(5);
+
+        return view('sections.dashboard', compact('user', 'assets', 'assetCount', 'assets2D', 'assetCount2D', 'assets3D', 'assetCount3D', 'users', 'messages'));
     }
 
     public function upload(Request $request)
@@ -212,5 +216,21 @@ class AssetController extends Controller
         } else {
             return redirect()->back()->with('error', 'File tidak ditemukan');
         }
+    }
+    public function destroy_message($id)
+    {
+        $message = Message::find($id);
+
+        if (!$message) {
+            return redirect()->back()->with('error', 'Pesan tidak ditemukan.');
+        }
+
+        // Pastikan hanya pengirim atau penerima yang dapat menghapus pesan
+        if ($message->sender_id == auth()->user()->id || $message->receiver_id == auth()->user()->id) {
+            $message->delete();
+            return redirect()->back()->with('success', 'Pesan berhasil dihapus.');
+        }
+
+        return redirect()->back()->with('error', 'Anda tidak memiliki izin untuk menghapus pesan ini.');
     }
 }
