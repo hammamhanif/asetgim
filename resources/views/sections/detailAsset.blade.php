@@ -37,6 +37,7 @@
                                 <p class="sub-heading">{{ htmlentities($assets->description) }}</p>
                                 <div class="btn-slider mb-5 mt-5 text-right">
                                     <a href="{{ route('downloadAsset', $assets->id) }}" class="tf-button style-2">Download now</a>
+                                    <a href="{{ route('rating', ['id' => $assets->id]) }}" class="tf-button style-2">Rating</a>
                                 </div>
                             </div>
                         </div>

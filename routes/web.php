@@ -112,4 +112,6 @@ Route::controller(ContactController::class)->group(function () {
 Route::get('/downloadAsset/{id}', [AssetController::class, 'download'])->name('downloadAsset');
 
 
-Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');
+Route::post('/rating', [RatingController::class, 'store'])->name('rating');
+
+Route::get('/rating/{id}', 'RatingController@index');
