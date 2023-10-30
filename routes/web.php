@@ -85,7 +85,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/message/{id}/delete',  [AssetController::class, 'destroy_message'])->name('message.delete');
 });
 
-Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
+Route::get('/download/{id}', [AssetController::class, 'download_asset'])->name('file.download');
 
 
 

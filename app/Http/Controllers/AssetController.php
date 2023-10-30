@@ -27,6 +27,7 @@ class AssetController extends Controller
      */
     public function view(Request $request)
     {
+        $statuses = Asset::select('status')->distinct()->pluck('status');
         $search = $request->input('search'); // Ambil nilai pencarian dari request
         $query = Asset::query();
         $query->select('assets.*', 'users.name as creator_name'); // Pilih kolom yang Anda butuhkan
@@ -40,18 +41,16 @@ class AssetController extends Controller
             });
         }
 
-        $query->leftJoin('users', 'assets.user_id', '=', 'users.id'); // Menggabungkan tabel User
-        $assets = $query->paginate(5); // Ubah angka 5 sesuai dengan jumlah item per halaman
+        $query->leftJoin('users', 'assets.user_id', '=', 'users.id');
+        $assets = $query->paginate(5);
 
-        return view('sections.tableasset', compact('assets', 'search'));
+        return view('sections.tableasset', compact('assets', 'search', 'statuses'));
     }
 
     public function dashboard()
     {
         $user = Auth::user();
         $users = User::where('account_type', 'creator')->count();
-
-        // Mengambil aset yang dimiliki oleh pengguna yang sedang masuk
         $assets = Asset::where('user_id', $user->id)->paginate(5);
         $assets2D = Asset::where('user_id', $user->id)->where('asset_type', '2D')->get();
         $assetCount2D = $assets2D->count();
@@ -60,12 +59,12 @@ class AssetController extends Controller
         $assetCount3D = $assets3D->count();
         // Menghitung jumlah aset
         $assetCount =  Asset::count();
+        $assetCountUser =  Asset::where('user_id', $user->id)->count();
 
-        $messages = Message::where('sender_id', $user->id)
-            ->orWhere('receiver_id', $user->id)
+        $messages = Message::Where('receiver_id', $user->id)
             ->paginate(5);
 
-        return view('sections.dashboard', compact('user', 'assets', 'assetCount', 'assets2D', 'assetCount2D', 'assets3D', 'assetCount3D', 'users', 'messages'));
+        return view('sections.dashboard', compact('user', 'assets', 'assetCount', 'assets2D', 'assetCount2D', 'assets3D', 'assetCount3D', 'users', 'messages', 'assetCountUser'));
     }
 
     public function upload(Request $request)
@@ -98,29 +97,39 @@ class AssetController extends Controller
         return redirect()->back()->with('success', 'File berhasil diunggah');
     }
 
-    public function download($id)
+    public function download_asset($id)
     {
-        // 1. Lakukan validasi atau periksa apakah ID yang diberikan adalah valid.
-        // Misalnya, jika Anda memiliki model Asset:
-        $assets = Asset::find($id);
+        $asset = Asset::find($id);
 
-        if (!$assets) {
+        if (!$asset) {
             return redirect()->back()->with('error', 'Asset tidak ditemukan.');
         }
 
-        // 2. Dapatkan path file yang akan diunduh berdasarkan data dari database (misalnya, atribut 'path' dari model $asset).
-        $filePath = storage_path('app/' . $assets->path);
+        $filePath = storage_path('app/public/' . $asset->path);
 
-        // 3. Lakukan validasi atau periksa apakah file ada.
         if (!file_exists($filePath)) {
             return redirect()->back()->with('error', 'File tidak ditemukan.');
         }
 
-        // 4. Dapatkan nama file dari database (misalnya, atribut 'nama_file' dari model $asset).
-        $namaFile = $assets->name;
+        $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
 
-        // 5. Kembalikan respons file untuk mengunduh file dengan nama yang sesuai.
-        return response()->download($filePath, $namaFile);
+        $namaFile = $asset->name;
+
+        $mimeTypes = [
+            'png' => 'image/png',
+            'jpg' => 'image/jpeg',
+            'pdf' => 'application/pdf',
+        ];
+
+        // 7. Pastikan ekstensi file sesuai dengan tipe MIME yang didefinisikan.
+        if (array_key_exists($fileExtension, $mimeTypes)) {
+            // Mengatur header respons dengan jenis file yang sesuai.
+            header("Content-Type: " . $mimeTypes[$fileExtension]);
+            // Kembalikan respons file untuk mengunduh file dengan nama yang sesuai.
+            return response()->download($filePath, $namaFile . '.' . $fileExtension);
+        } else {
+            return redirect()->back()->with('error', 'Tipe file tidak didukung.');
+        }
     }
 
 
@@ -156,7 +165,7 @@ class AssetController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'status' => 'required|in:active,inactive',
+            'status' => 'required|in:active,inactive,pending',
             'area' => 'required',
             'description' => 'required',
         ];
@@ -177,7 +186,7 @@ class AssetController extends Controller
 
         // Periksa apakah asset menjadi tidak aktif
         $asset = Asset::find($id);
-        $statusChangedToInactive = $request->input('status') === 'inactive' && $asset->status !== 'inactive';
+        $statusChangedToInactive = $request->input('status') === 'inactive' && $asset->status !== 'inactive' && $asset->status !== 'pending';
 
         $asset->update([
             'name' => $request->input('name'),
@@ -187,7 +196,6 @@ class AssetController extends Controller
         ]);
 
         if ($statusChangedToInactive) {
-            // Kirim pesan jika status berubah menjadi inactive
             $senderId = auth()->user()->id;
             $receiverId = $asset->user_id;
             $subject = $asset->name;
@@ -201,6 +209,20 @@ class AssetController extends Controller
             ]);
 
             return redirect()->route('reviewasset')->withSuccess('Asset berhasil diperbarui dan pesan terkirim jika diperlukan.');
+        } elseif ($request->input('status') === 'pending') {
+            $senderId = auth()->user()->id;
+            $receiverId = $asset->user_id;
+            $subject = $asset->name;
+            $messageText = "Asset '{$asset->name}' sedang kami tinjau terlebih dahulu sebelum diterbitkan!";
+
+            Message::create([
+                'sender_id' => $senderId,
+                'receiver_id' => $receiverId,
+                'subject' => $subject,
+                'message' => $messageText,
+            ]);
+
+            return redirect()->route('reviewasset')->withSuccess('Asset berhasil diperbarui dan pesan terkirim.');
         } else {
             // Kirim pesan jika status berubah menjadi active
             $senderId = auth()->user()->id;
@@ -215,7 +237,7 @@ class AssetController extends Controller
                 'message' => $messageText,
             ]);
 
-            return redirect()->route('reviewasset')->withSuccess('Asset berhasil diperbarui dan pesan terkirim jika diperlukan.');
+            return redirect()->route('reviewasset')->withSuccess('Asset berhasil diperbarui dan pesan terkirim.');
         }
     }
 

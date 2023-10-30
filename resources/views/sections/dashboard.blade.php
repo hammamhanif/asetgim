@@ -161,7 +161,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">{{ $assetCount }}</h4>
+                                              <h4 class="mb-0">{{ $assetCountUser }}</h4>
                                           </div>
                                           <div class="ms-auto">+8.52%</div>
                                       </div>
