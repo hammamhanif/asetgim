@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetController;
-
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -72,6 +72,7 @@ Route::controller(UserController::class)->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
+    //Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');
 
 
     Route::get('/dashboard', [AssetController::class, 'dashboard'])->name('dashboard');
@@ -109,3 +110,8 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/contact', 'index')->name('index_contact');
     Route::post('/contact', 'store')->name('kontaks');
 });
+
+Route::get('/downloadAsset/{id}', [AssetController::class, 'download'])->name('downloadAsset');
+
+
+Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');

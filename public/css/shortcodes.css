@@ -6813,6 +6813,11 @@
 .carousel-indicators .active {
   background-color: #000;
 }
+
+*{
+  margin: 0;
+  padding: 0;
+}
 .rate {
   float: left;
   height: 46px;

@@ -36,7 +36,7 @@
                                 <h4 class="heading">{{ htmlentities($assets->name) }}</h4>
                                 <p class="sub-heading">{{ htmlentities($assets->description) }}</p>
                                 <div class="btn-slider mb-5 mt-5 text-right">
-                                    <a href="explore-banner.html" class="tf-button style-2">Download now</a>
+                                    <a href="{{ route('downloadAsset', $assets->id) }}" class="tf-button style-2">Download now</a>
                                 </div>
                             </div>
                         </div>

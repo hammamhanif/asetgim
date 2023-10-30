@@ -98,6 +98,33 @@ class AssetController extends Controller
         return redirect()->back()->with('success', 'File berhasil diunggah');
     }
 
+    public function download($id)
+    {
+        // 1. Lakukan validasi atau periksa apakah ID yang diberikan adalah valid.
+        // Misalnya, jika Anda memiliki model Asset:
+        $assets = Asset::find($id);
+
+        if (!$assets) {
+            return redirect()->back()->with('error', 'Asset tidak ditemukan.');
+        }
+
+        // 2. Dapatkan path file yang akan diunduh berdasarkan data dari database (misalnya, atribut 'path' dari model $asset).
+        $filePath = storage_path('app/' . $assets->path);
+
+        // 3. Lakukan validasi atau periksa apakah file ada.
+        if (!file_exists($filePath)) {
+            return redirect()->back()->with('error', 'File tidak ditemukan.');
+        }
+
+        // 4. Dapatkan nama file dari database (misalnya, atribut 'nama_file' dari model $asset).
+        $namaFile = $assets->name;
+
+        // 5. Kembalikan respons file untuk mengunduh file dengan nama yang sesuai.
+        return response()->download($filePath, $namaFile);
+    }
+
+
+
     /**
      * Store a newly created resource in storage.
      */
