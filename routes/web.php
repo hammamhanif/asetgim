@@ -8,6 +8,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LandingController;
+use App\Models\Rating;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -26,6 +27,7 @@ Route::controller(LandingController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/exploreAsset', 'exploreAsset')->name('exploreAsset');
     Route::get('/exploreAsset/{id}', 'detailAsset')->name('detailAsset');
+    Route::get('/detailAsset/{id}', 'rating')->name('rating');
 });
 
 
@@ -94,9 +96,6 @@ Route::get('about', function () {
 })->name('about');
 
 
-Route::get('rating', function () {
-    return view('sections.rating');
-})->name('rating');
 
 Route::controller(ContactController::class)->group(function () {
 
@@ -112,6 +111,11 @@ Route::controller(ContactController::class)->group(function () {
 Route::get('/downloadAsset/{id}', [AssetController::class, 'download'])->name('downloadAsset');
 
 
-Route::post('/rating', [RatingController::class, 'store'])->name('rating');
+Route::post('/submit-review', [RatingController::class, 'store'])->name('submit-review');
 
-Route::get('/rating/{id}', 'RatingController@index');
+// Route::post('/add-rating', [RatingController::class, 'store'])->name('add-rating');
+
+// Route::match(['GET','POST'],'/add-rating', [RatingController::class, 'addRating']);
+// // Route::post('/add-rating', 'RatingController@store')->name('add-rating');
+
+
