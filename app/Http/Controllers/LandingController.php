@@ -62,6 +62,18 @@ class LandingController extends Controller
         return view('sections.detailAsset', compact('assets',));
     }
 
+    public function rating($id,)
+    {
+        $assets = Asset::where('id', $id)
+            ->where('status', 'active')
+            ->first();
+
+        if (!$assets) {
+            return abort(404);
+        }
+        return view('sections.rating', compact('assets'));
+    }
+
 
 
     /**

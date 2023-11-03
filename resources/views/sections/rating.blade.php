@@ -1,85 +1,67 @@
 @extends('Tamplate.auth.layout')
 
-
 @section('login')
-
-<section class="tf-page-title style-2">    
-                <div class="tf-container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="breadcrumbs">
-                                <li><a href="blog2.html">Rating</a></li>
-                                <li>Rating</li>
-                            </ul>
-                   
-                        </div>
-                    </div>
-                </div>                    
-            </section>
+    <section class="tf-page-title style-2">    
+        <div class="tf-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumbs">
+                        <li><a href="blog2.html">Rating</a></li>
+                        <li>Rating</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
             <section class="tf-add-nft">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="detail-inner">
-                            <div class="image">
-                                <div id="imageCarousel" class="carousel slide" data-ride="carousel">
-                                    <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
-                                        <li data-target="#imageCarousel" data-slide-to="1"></li>
-                                        <li data-target="#imageCarousel" data-slide-to="2"></li>
-                                        <!-- Add more indicators for additional images -->
-                                    </ol>
-            
-                                    <!-- Slides -->
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="assets/images/blog/blog-details-1.jpg" alt="Image 1">
-                                        </div>
-                                        <!-- Add more slides for additional images -->
-                                    </div>
-            
-                                    <!-- Controls -->
-                                    <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+                            style="background-color: #000; margin-right: 20px; margin-bottom: 10px;">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active justify-content-center">
+                                    <img src="{{ asset('storage/' . $assets->path) }}" alt="Image" width="480"
+                                        height="220">
                                 </div>
                             </div>
-                            <div class="add-nft-inner">
+                            <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                            </div>
+                            <div class="Rating">
                                 <div id="comments">
-                                    <h5>Rating</h5>
-                                    <div class="stars">
+                                <h5>Rating</h5>
+<form method="POST" action="{{ route('submit-review') }}" name="ratingsForm" id="ratingsForm">
+    @csrf
+    <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5" />
+        <label for="star5" title="5 stars">5 stars</label>
+        <input type="radio" id="star4" name="rating" value="4" />
+        <label for="star4" title="4 stars">4 stars</label>
+        <input type="radio" id="star3" name="rating" value="3" />
+        <label for="star3" title="3 stars">3 stars</label>
+        <input type="radio" id="star2" name="rating" value="2" />
+        <label for="star2" title="2 stars">2 stars</label>
+        <input type="radio" id="star1" name="rating" value="1" />
+        <label for="star1" title="1 star">1 star</label>
+    </div>
+
+    <div class="form-group">
+        <fieldset class="review">
+            <textarea id="review" name="review" placeholder="Tulis ulasan Anda..." required=""></textarea>
+        </fieldset>
+    </div>
+
+    <input type="submit" value="kirim ulasan">
+</form>
+
                                 </div>
-                                
-                                <div class="review-form">
-                                <form action="{{ route('Rating') }}" method="post" id="commentform" class="comment-form" enctype="multipart/form-data">
-                                @csrf
-                                <fieldset class="ulasan">
-                                    <textarea id="review-text" name="review_text" placeholder="Tulis ulasan Anda..."></textarea>
-                                    <div class="btn-slider mb-5 mt-5 text-right">
-                                        <div class="btn-submit">
-                                            <button class="tf-button" type="submit">Kirim Ulasan</button>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                </form>
-                                </div>
-                                @if (session('success'))
-                                    <div class="alert alert-success">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             
-
-            
-            @endsection
+@endsection

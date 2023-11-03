@@ -8,6 +8,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LandingController;
+use App\Models\Rating;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -96,9 +97,6 @@ Route::get('about', function () {
 })->name('about');
 
 
-Route::get('rating', function () {
-    return view('sections.rating');
-})->name('rating');
 
 Route::controller(ContactController::class)->group(function () {
 
@@ -114,4 +112,9 @@ Route::controller(ContactController::class)->group(function () {
 Route::get('/downloadAsset/{id}', [AssetController::class, 'download'])->name('downloadAsset');
 
 
-Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');
+Route::post('/submit-review', [RatingController::class, 'store'])->name('submit-review');
+
+// Route::post('/add-rating', [RatingController::class, 'store'])->name('add-rating');
+
+// Route::match(['GET','POST'],'/add-rating', [RatingController::class, 'addRating']);
+// // Route::post('/add-rating', 'RatingController@store')->name('add-rating');
