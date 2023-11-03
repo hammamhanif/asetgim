@@ -121,11 +121,13 @@ class AssetController extends Controller
             'pdf' => 'application/pdf',
         ];
 
-        // 7. Pastikan ekstensi file sesuai dengan tipe MIME yang didefinisikan.
+
         if (array_key_exists($fileExtension, $mimeTypes)) {
-            // Mengatur header respons dengan jenis file yang sesuai.
+
             header("Content-Type: " . $mimeTypes[$fileExtension]);
-            // Kembalikan respons file untuk mengunduh file dengan nama yang sesuai.
+            // Update column count asset
+            $asset->count++; // Menambahkan 1 ke column count asset
+            $asset->save();  // Menyimpan perubahan ke database
             return response()->download($filePath, $namaFile . '.' . $fileExtension);
         } else {
             return redirect()->back()->with('error', 'Tipe file tidak didukung.');
