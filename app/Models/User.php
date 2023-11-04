@@ -59,4 +59,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Message::class, 'receiver_id');
     }
+    // Definisikan relasi ke laporan aset
+    public function assetReports()
+    {
+        return $this->hasMany(AssetReport::class);
+    }
 }

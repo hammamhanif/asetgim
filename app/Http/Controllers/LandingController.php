@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Asset;
+use App\Models\AssetReport;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -50,7 +51,7 @@ class LandingController extends Controller
 
         return view('sections.sectionexplore', compact('assets'));
     }
-    public function detailAsset($id,)
+    public function detailAsset(Request $request, $id)
     {
         $assets = Asset::where('id', $id)
             ->where('status', 'active')
@@ -59,10 +60,12 @@ class LandingController extends Controller
         if (!$assets) {
             return abort(404);
         }
+
         return view('sections.detailAsset', compact('assets',));
     }
 
-    public function rating($id,)
+
+    public function rating($id)
     {
         $assets = Asset::where('id', $id)
             ->where('status', 'active')
@@ -81,7 +84,19 @@ class LandingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'asset_id' => 'required|exists:assets,id',
+            'description' => 'required',
+            'asset_name' => 'required',
+            'creator_name' => 'required',
+        ]);
+        $report = new AssetReport();
+        $report->asset_id = $request->input('asset_id');
+        $report->asset_name = $request->input('asset_name');
+        $report->creator_name = $request->input('creator_name');
+        $report->description = $request->input('description');
+        $report->save();
+        return redirect()->back()->with('success', 'Pesan laporan berhasil dikirim.');
     }
 
     /**

@@ -14,4 +14,8 @@ class Asset extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function assetReports()
+    {
+        return $this->hasMany(AssetReport::class);
+    }
 }

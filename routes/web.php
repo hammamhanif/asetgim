@@ -27,6 +27,8 @@ Route::controller(LandingController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('exploreAsset', 'exploreAsset')->name('exploreAsset');
     Route::get('/exploreAsset-{id}', 'detailAsset')->name('detailAsset');
+    Route::post('/report', 'store')->name('report')->middleware('auth');
+    Route::get('/detailAsset-{id}', 'rating')->name('rating');
 });
 
 
@@ -109,8 +111,7 @@ Route::controller(ContactController::class)->group(function () {
     Route::post('/contact', 'store')->name('kontaks');
 });
 
-Route::get('/downloadAsset/{id}', [AssetController::class, 'download'])->name('downloadAsset');
-
+Route::get('/downloadAsset/{id}', [AssetController::class, 'download_asset'])->name('downloadAsset');
 
 Route::post('/submit-review', [RatingController::class, 'store'])->name('submit-review');
 
@@ -118,3 +119,5 @@ Route::post('/submit-review', [RatingController::class, 'store'])->name('submit-
 
 // Route::match(['GET','POST'],'/add-rating', [RatingController::class, 'addRating']);
 // // Route::post('/add-rating', 'RatingController@store')->name('add-rating');
+
+Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');

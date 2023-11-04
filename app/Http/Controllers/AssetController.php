@@ -97,11 +97,9 @@ class AssetController extends Controller
         return redirect()->back()->with('success', 'File berhasil diunggah');
     }
 
-    public function download($id)
+    public function download_asset($id)
     {
-        // 1. Lakukan validasi atau periksa apakah ID yang diberikan adalah valid.
-        // Misalnya, jika Anda memiliki model Asset:
-        $assets = Asset::find($id);
+        $asset = Asset::find($id);
 
         if (!$asset) {
             return redirect()->back()->with('error', 'Asset tidak ditemukan.');
@@ -113,11 +111,27 @@ class AssetController extends Controller
             return redirect()->back()->with('error', 'File tidak ditemukan.');
         }
 
-        // 4. Dapatkan nama file dari database (misalnya, atribut 'nama_file' dari model $asset).
-        $namaFile = $assets->name;
+        $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
 
-        // 5. Kembalikan respons file untuk mengunduh file dengan nama yang sesuai.
-        return response()->download($filePath, $namaFile);
+        $namaFile = $asset->name;
+
+        $mimeTypes = [
+            'png' => 'image/png',
+            'jpg' => 'image/jpeg',
+            'pdf' => 'application/pdf',
+        ];
+
+
+        if (array_key_exists($fileExtension, $mimeTypes)) {
+
+            header("Content-Type: " . $mimeTypes[$fileExtension]);
+            // Update column count asset
+            $asset->count++; // Menambahkan 1 ke column count asset
+            $asset->save();  // Menyimpan perubahan ke database
+            return response()->download($filePath, $namaFile . '.' . $fileExtension);
+        } else {
+            return redirect()->back()->with('error', 'Tipe file tidak didukung.');
+        }
     }
 
 
