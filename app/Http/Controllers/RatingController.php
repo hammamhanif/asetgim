@@ -12,13 +12,12 @@ class RatingController extends Controller
 {
 
 public function store(Request $request)
-{
     // Validasi data yang diterima dari permintaan
-    // dd($request->all());
-    $data = $request->validate([
-        'rating' => 'required|numeric|min:1|max:5',
-        'review' => 'required|string',
-    ]);
+    { // dd($request->all());
+        $data = $request->validate([
+            'rating' => 'required|numeric|min:1|max:5',
+            'review' => 'required|string',
+        ]);
 
     // Dapatkan ID aset berdasarkan beberapa kriteria, misalnya, nama aset
     // $assetName = $request->input('asset_name'); // Ganti dengan kriteria yang sesuai
@@ -36,26 +35,13 @@ public function store(Request $request)
 
     // Simpan ulasan
     Ratings::create($data);
+        $data['user_id'] = auth()->id(); // Mengambil ID pengguna yang sedang login
+
+        Ratings::create($data); // Pastikan model Review sudah diimpor
 
     return redirect()->back()->with('success', 'Ulasan Anda telah berhasil disimpan.');
-}
-
-//     public function store(Request $request)
-// {
-//     //dd($request->all());
-//     $data = $request->validate([
-//         'rating' => 'required|numeric|min:1|max:5',
-//         'review' => 'required|string',
-//         'asset_id' => 'required|exists:assets,id'
-//     ]);
-
-//     $data['user_id'] = auth()->id(); // Mengambil ID pengguna yang sedang login
-
-//     Ratings::create($data); // Pastikan model Review sudah diimpor
-
-//     return redirect()->back()->with('success', 'Ulasan Anda telah berhasil disimpan.');
     
-// }
+}
 
     
 }

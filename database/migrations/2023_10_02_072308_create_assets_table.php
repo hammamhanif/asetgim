@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('area', ['Bandung', 'Jogja']);
             $table->enum('asset_type', ['2d', '3d']);
             $table->text('description');
-            $table->enum('status', ['active', 'inactive'])->default('inactive');
+            $table->enum('status', ['active', 'inactive', 'pending'])->default('inactive');
             $table->string('path');
             $table->unsignedInteger('count')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
