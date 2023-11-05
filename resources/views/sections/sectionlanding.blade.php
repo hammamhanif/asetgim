@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <div class="image">
-                                        <div class="img-slider-main ani5"><img src="{{ asset('img/asset.jpg') }}"
+                                        <div class="img-slider-main ani5"><img src="{{ asset('img/asset.png') }}"
                                                 alt="Image">
                                         </div>
                                     </div>
