@@ -160,10 +160,12 @@
                                                             <select class="form-select form-select-md"
                                                                 aria-label=".form-select-md example" name="status"
                                                                 id="status">
-                                                                <option @if ($asset->status === 'active') selected @endif
-                                                                    value="active">active</option>
-                                                                <option @if ($asset->status === 'inactive') selected @endif
-                                                                    value="inactive">inactive</option>
+                                                                @foreach (['active', 'inactive', 'pending'] as $status)
+                                                                    <option
+                                                                        @if ($asset->status === $status) selected @endif
+                                                                        value="{{ $status }}">{{ $status }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">

@@ -21,25 +21,6 @@
 
     <section class="tf-live-auction explore tf-filter">
         <div class="tf-container">
-            <div class="row ">
-                <div class="col-md-12">
-                    <div class="top-menu">
-                        <ul class="filter-menu">
-                            <li class="active"><a href="#" data-filter=".3d">3D MODEL</a></li>
-                            <li><a href="#" data-filter=".2d">2D ARTS </a></li>
-                        </ul>
-                        <div id="item_category" class="dropdown">
-                            <a href="#" class="btn-selector nolink ">Recently Create</a>
-                            <ul>
-                                <li><span>Recently Listed</span></li>
-                                <li class="active"><span>Recently Created</span></li>
-                                <li><span>Recently Sold</span></li>
-                                <li><span>Recently Received</span></li>
-                                <li><span>Recently Soon</span></li>
-                                <li><span>Recently Low to Hight</span></li>
-                                <li><span>Recently Last Sale</span></li>
-                                <li><span>Oldest</span></li>
-                            </ul>
             <form action="{{ route('exploreAsset') }}" method="GET">
                 <div class="mb-3">
                     <input type="text" name="search" placeholder="Cari aset...">
@@ -59,7 +40,8 @@
                                 <div class="details-product">
                                     <div class="author">
                                         <div class="avatar">
-                                            <img src="assets/images/author/author31.png" alt="images">
+                                            <img src="{{ $asset->user->image ? asset($asset->user->image) : asset('images/author/7309681.jpg') }}"
+                                                alt="images">
                                         </div>
                                         <div class="content">
                                             <div class="position">Creator</div>

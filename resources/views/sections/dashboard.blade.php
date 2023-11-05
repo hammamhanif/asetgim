@@ -19,7 +19,29 @@
                       <div class="breadcrumb-title pe-3">Dashboard</div>
                   </div>
                   <!--end breadcrumb-->
-
+                  @if (session('success'))
+                      <div class="alert alert-dismissible fade show py-2 bg-success mt-3">
+                          <div class="d-flex align-items-center">
+                              <div class="fs-3 text-dark"><ion-icon name="information-circle-sharp"></ion-icon>
+                              </div>
+                              <div class="ms-3">
+                                  <div class="text-dark">Success!—{{ session('success') }}!</div>
+                              </div>
+                          </div>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                  @elseif(session('unsuccess'))
+                      <div class="alert alert-dismissible fade show py-2 bg-danger mt-3">
+                          <div class="d-flex align-items-center">
+                              <div class="fs-3 text-dark"><ion-icon name="information-circle-sharp"></ion-icon>
+                              </div>
+                              <div class="ms-3">
+                                  <div class="text-dark">Unsuccess!—{{ session('unsuccess') }}!</div>
+                              </div>
+                          </div>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                  @endif
 
                   <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-4">
                       <div class="col">
@@ -139,7 +161,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">{{ $assetCount }}</h4>
+                                              <h4 class="mb-0">{{ $assetCountUser }}</h4>
                                           </div>
                                           <div class="ms-auto">+8.52%</div>
                                       </div>
@@ -191,32 +213,7 @@
                               </div>
                           </div>
                           <div class="table-responsive mt-2">
-                              @if (session('success'))
-                                  <div class="alert alert-dismissible fade show py-2 bg-success mt-3">
-                                      <div class="d-flex align-items-center">
-                                          <div class="fs-3 text-dark"><ion-icon name="information-circle-sharp"></ion-icon>
-                                          </div>
-                                          <div class="ms-3">
-                                              <div class="text-dark">Success!—{{ session('success') }}!</div>
-                                          </div>
-                                      </div>
-                                      <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                          aria-label="Close"></button>
-                                  </div>
-                              @elseif(session('unsuccess'))
-                                  <div class="alert alert-dismissible fade show py-2 bg-danger mt-3">
-                                      <div class="d-flex align-items-center">
-                                          <div class="fs-3 text-dark"><ion-icon
-                                                  name="information-circle-sharp"></ion-icon>
-                                          </div>
-                                          <div class="ms-3">
-                                              <div class="text-dark">Unsuccess!—{{ session('unsuccess') }}!</div>
-                                          </div>
-                                      </div>
-                                      <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                          aria-label="Close"></button>
-                                  </div>
-                              @endif
+
                               <table class="table align-middle mb-0">
                                   <thead class="table-light">
                                       <tr>
@@ -305,8 +302,109 @@
 
                   </div>
               </div>
+              <div class="card radius-10 w-100">
+                  <div class="card-body">
+                      <div class="d-flex align-items-center">
+                          <h6 class="mb-0">Message From Admin</h6>
+                          <div class="fs-5 ms-auto dropdown">
+                              <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
+                                  data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></div>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">Action</a></li>
+                                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                                  <li>
+                                      <hr class="dropdown-divider">
+                                  </li>
+                                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                              </ul>
+                          </div>
+                      </div>
+
+                      <table class="table align-middle mb-0">
+                          <thead class="table-light">
+                              <tr>
+                                  <th>No.</th>
+                                  <th>Subject</th>
+                                  <th>Message</th>
+                                  <th>Waktu</th>
+                                  <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach ($messages as $index => $message)
+                                  <tr>
+                                      <td>{{ $messages->firstItem() + $index }}</td>
+                                      <td>
+                                          <div class="d-flex align-items-center gap-3">
+                                              <div class="product-info">
+                                                  <h6 class="product-name mb-1">{{ $message->subject }}</h6>
+                                              </div>
+                                          </div>
+                                      </td>
+                                      <td>{{ $message->message }}</td>
+                                      <td>{{ $message->updated_at }}</td>
+                                      <td>
+                                          <div class="d-flex align-items-center gap-3 fs-6">
+                                              <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
+                                                  data-bs-placement="bottom" title=""
+                                                  data-bs-original-title="View detail" aria-label="Views">
+                                                  <ion-icon name="eye-outline"></ion-icon>
+                                              </a>
+                                              <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
+                                                  data-bs-placement="bottom" title=""
+                                                  data-bs-original-title="Edit info" aria-label="Edit">
+                                                  <ion-icon name="pencil-outline"></ion-icon>
+                                              </a>
+                                              <a href="javascript:;" class="text-danger delete-asset"
+                                                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"
+                                                  aria-label="Delete" data-asset-id="{{ $message->id }}">
+                                                  <ion-icon name="trash-outline"></ion-icon>
+                                              </a>
+                                              <div class="modal fade" id="confirmDeleteModalMessage" tabindex="-1"
+                                                  aria-labelledby="deleteMessage" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                      <div class="modal-content">
+                                                          <div class="modal-header">
+                                                              <h5 class="modal-title" id="deleteMessage">
+                                                                  Delete Message</h5>
+                                                              <button type="button" class="btn-close"
+                                                                  data-bs-dismiss="modal" aria-label="Close"></button>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                              Are you sure you want to delete this message?
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                              <button type="button" class="btn btn-secondary"
+                                                                  data-bs-dismiss="modal">Cancel</button>
+                                                              <form method="POST"
+                                                                  action="/message/{{ $message->id }}/delete">
+                                                                  @csrf
+                                                                  @method('DELETE')
+                                                                  <button type="submit"
+                                                                      class="btn btn-danger">Delete</button>
+                                                              </form>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+                  </div>
+                  </td>
+                  </tr>
+                  @endforeach
+                  </tbody>
+                  </table>
+
+              </div>
+              <div class="d-flex justify-content-center mt-4">
+                  {{ $messages->links() }}
+              </div>
+
           </div>
-          <!-- end page content-->
+      </div>
+      <!-- end page content-->
       </div>
       <!--end page content wrapper-->
 

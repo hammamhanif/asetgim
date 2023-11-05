@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report_assets', function (Blueprint $table) {
+        Schema::create('asset_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('message');
-            $table->foreignId('assets_id')->constrained();
+            $table->unsignedBigInteger('asset_id');
+            $table->string('asset_name');
+            $table->string('creator_name');
+            $table->text('description');
             $table->timestamps();
+
+            // Definisi kunci asing untuk relasi
+            $table->foreign('asset_id')->references('id')->on('assets');
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report_assets');
+        Schema::dropIfExists('asset_reports');
     }
 };
