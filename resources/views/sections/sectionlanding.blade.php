@@ -30,8 +30,8 @@
                                         </div>
                                     </div>
                                     <div class="image">
-                                        <div class="img-slider-main ani5"><img src="{{ asset('img/asset.jpg') }}"
-                                                alt="Image">
+                                        <div class="img-slider-main ani5"><img
+                                                src="{{ asset('img/landingavatar-01.png') }}" alt="Image">
                                         </div>
                                     </div>
                                 </div>
@@ -99,321 +99,65 @@
             </div>
             <div class="col-md-12 wow fadeInUp">
                 <div class="swiper-container live-auction visible">
-                    <div class="swiper-wrapper ">
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="sc-product style1">
-                                    <div class="top">
-                                        <a href="item-details.html" class="tag">Giulia Glur #32</a>
-                                        <div class="wish-list">
-                                            <a href="#" class="heart-icon"></a>
-                                        </div>
-                                    </div>
-                                    <div class="features">
-                                        <div class="product-media">
-                                            <img src="assets/images/product/product1.jpg" alt="images">
-                                        </div>
-                                        <div class="featured-countdown">
-                                            <span class="js-countdown" data-timer="55555"
-                                                data-labels=" ,  h , m , s "></span>
-                                        </div>
-                                        <div class="rain-drop1"><img src="assets/images/icon/rain1.svg" alt="images">
-                                        </div>
-                                        <div class="rain-drop2"><img src="assets/images/icon/rain2.svg" alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="details-product">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/author/author1.png" alt="images">
-                                                </div>
-                                                <div class="content">
-                                                    <div class="position">Creator</div>
-                                                    <div class="name"> <a href="#">Magnus
-                                                            Perry</a></div>
-                                                </div>
-                                            </div>
-                                            <div class="current-bid">
-                                                <div class="subtitle">Current bid</div>
-                                                <div class="price">
-                                                    <span class="cash">5 ETH</span><span class="icon"><img
-                                                            src="assets/images/icon/ethe.svg" alt="images"></span>
-                                                </div>
+                    @foreach ($assetsTrending as $assetTrending)
+                        <div class="swiper-wrapper ">
+                            <div class="swiper-slide">
+                                <div class="slider-item">
+                                    <div class="sc-product style1">
+                                        <div class="top">
+                                            <a href="item-details.html" class="tag">{{ $assetTrending->name }}</a>
+                                            <div class="wish-list">
+                                                <a href="#" class="heart-icon"></a>
                                             </div>
                                         </div>
-                                        <div class="product-button">
-                                            <a href="" class="tf-button"> <span
-                                                    class="icon-btn-product"></span>
-                                                Details</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div><!-- item-->
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="sc-product style1">
-                                    <div class="top">
-                                        <a href="item-details.html" class="tag">Giulia Glur #32</a>
-                                        <div class="wish-list">
-                                            <a href="#" class="heart-icon"></a>
-                                        </div>
-                                    </div>
-                                    <div class="features">
-                                        <div class="product-media">
-                                            <img src="assets/images/product/product27.jpg" alt="images">
-                                        </div>
-                                        <div class="featured-countdown">
-                                            <span class="js-countdown" data-timer="55555"
-                                                data-labels=" ,  h , m , s "></span>
-                                        </div>
-                                        <div class="rain-drop1"><img src="assets/images/icon/rain1.svg"
-                                                alt="images"></div>
-                                        <div class="rain-drop2"><img src="assets/images/icon/rain2.svg"
-                                                alt="images"></div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="details-product">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/author/author14.png" alt="images">
-                                                </div>
-                                                <div class="content">
-                                                    <div class="position">Creator</div>
-                                                    <div class="name"> <a href="#">Frederick
-                                                            Dixon</a></div>
-                                                </div>
+                                        <div class="features">
+                                            <div class="product-media">
+                                                <img src="{{ asset('storage/' . $assetTrending->path) }}"
+                                                    alt="{{ $assetTrending->name }}">
                                             </div>
-                                            <div class="current-bid">
-                                                <div class="subtitle">Current bid</div>
-                                                <div class="price">
-                                                    <span class="cash">5 ETH</span><span class="icon"><img
-                                                            src="assets/images/icon/ethe.svg" alt="images"></span>
-                                                </div>
+                                            <div class="rain-drop1"><img
+                                                    src="{{ asset('assets/images/icon/rain1.svg') }}" alt="images">
+                                            </div>
+                                            <div class="rain-drop2"><img
+                                                    src="{{ asset('assets/images/icon/rain2.svg') }}" alt="images">
                                             </div>
                                         </div>
-                                        <div class="product-button">
-                                            <a href="" class="tf-button"> <span
-                                                    class="icon-btn-product"></span>
-                                                details</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div><!-- item-->
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="sc-product style1">
-                                    <div class="top">
-                                        <a href="item-details.html" class="tag">Archetype #588</a>
-                                        <div class="wish-list">
-                                            <a href="#" class="heart-icon"></a>
-                                        </div>
-                                    </div>
-                                    <div class="features">
-                                        <div class="product-media">
-                                            <img src="assets/images/product/product28.jpg" alt="images">
-                                        </div>
-                                        <div class="featured-countdown">
-                                            <span class="js-countdown" data-timer="55555"
-                                                data-labels=" ,  h , m , s "></span>
-                                        </div>
-                                        <div class="rain-drop1"><img src="assets/images/icon/rain1.svg"
-                                                alt="images"></div>
-                                        <div class="rain-drop2"><img src="assets/images/icon/rain2.svg"
-                                                alt="images"></div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="details-product">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/author/author15.png" alt="images">
+                                        <div class="bottom">
+                                            <div class="details-product">
+                                                <div class="author">
+                                                    <div class="avatar">
+                                                        <img src="{{ $assetTrending->user->image ? asset($assetTrending->user->image) : asset('images/author/7309681.jpg') }}"
+                                                            alt="images">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="position">Creator</div>
+                                                        <div class="name"> <a
+                                                                href="#">{{ $assetTrending->user->name }}</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="content">
-                                                    <div class="position">Creator</div>
-                                                    <div class="name"> <a href="#">Theo Watts</a>
+                                                <div class="current-bid">
+                                                    <div class="subtitle">Daerah</div>
+                                                    <div class="price">
+                                                        <span class="cash">{{ $assetTrending->area }}</span><span
+                                                            class="icon"></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="current-bid">
-                                                <div class="subtitle">Current bid</div>
-                                                <div class="price">
-                                                    <span class="cash">5 ETH</span><span class="icon"><img
-                                                            src="assets/images/icon/ethe.svg" alt="images"></span>
-                                                </div>
+                                            <div class="product-button">
+                                                <a href="{{ route('detailAsset', $assetTrending->id) }}"
+                                                    class="tf-button"> <span class="icon-btn-product"></span>
+                                                    details</a>
                                             </div>
-                                        </div>
-                                        <div class="product-button">
-                                            <a href="" class="tf-button"> <span
-                                                    class="icon-btn-product"></span>
-                                                Details</a>
-                                        </div>
 
+                                        </div>
                                     </div>
-                                </div>
-                            </div><!-- item-->
+                                </div><!-- item-->
+                            </div>
+
+
                         </div>
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="sc-product style1">
-                                    <div class="top">
-                                        <a href="item-details.html" class="tag">3DPunks #070</a>
-                                        <div class="wish-list">
-                                            <a href="#" class="heart-icon"></a>
-                                        </div>
-                                    </div>
-                                    <div class="features">
-                                        <div class="product-media">
-                                            <img src="assets/images/product/product29.jpg" alt="images">
-                                        </div>
-                                        <div class="featured-countdown">
-                                            <span class="js-countdown" data-timer="55555"
-                                                data-labels=" ,  h , m , s "></span>
-                                        </div>
-                                        <div class="rain-drop1"><img src="assets/images/icon/rain1.svg"
-                                                alt="images"></div>
-                                        <div class="rain-drop2"><img src="assets/images/icon/rain2.svg"
-                                                alt="images"></div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="details-product">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/author/author16.png" alt="images">
-                                                </div>
-                                                <div class="content">
-                                                    <div class="position">Creator</div>
-                                                    <div class="name"> <a href="#">Neville
-                                                            Gutierrez</a></div>
-                                                </div>
-                                            </div>
-                                            <div class="current-bid">
-                                                <div class="subtitle">Current bid</div>
-                                                <div class="price">
-                                                    <span class="cash">5 ETH</span><span class="icon"><img
-                                                            src="assets/images/icon/ethe.svg" alt="images"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-button">
-                                            <a href="" class="tf-button"> <span
-                                                    class="icon-btn-product"></span>
-                                                details</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div><!-- item-->
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="sc-product style1">
-                                    <div class="top">
-                                        <a href="item-details.html" class="tag">Angelic Nyan Cat</a>
-                                        <div class="wish-list">
-                                            <a href="#" class="heart-icon"></a>
-                                        </div>
-                                    </div>
-                                    <div class="features">
-                                        <div class="product-media">
-                                            <img src="assets/images/product/product31.jpg" alt="images">
-                                        </div>
-                                        <div class="featured-countdown">
-                                            <span class="js-countdown" data-timer="55555"
-                                                data-labels=" ,  h , m , s "></span>
-                                        </div>
-                                        <div class="rain-drop1"><img src="assets/images/icon/rain1.svg"
-                                                alt="images"></div>
-                                        <div class="rain-drop2"><img src="assets/images/icon/rain2.svg"
-                                                alt="images"></div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="details-product">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/author/author17.png" alt="images">
-                                                </div>
-                                                <div class="content">
-                                                    <div class="position">Creator</div>
-                                                    <div class="name"> <a href="#">Frederick
-                                                            Dixon</a></div>
-                                                </div>
-                                            </div>
-                                            <div class="current-bid">
-                                                <div class="subtitle">Current bid</div>
-                                                <div class="price">
-                                                    <span class="cash">5 ETH</span><span class="icon"><img
-                                                            src="assets/images/icon/ethe.svg" alt="images"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-button">
-                                            <a href="" class="tf-button"> <span
-                                                    class="icon-btn-product"></span>
-                                                details</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div><!-- item-->
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="slider-item">
-                                <div class="sc-product style1">
-                                    <div class="top">
-                                        <a href="item-details.html" class="tag">Sweet Baby #1</a>
-                                        <div class="wish-list">
-                                            <a href="#" class="heart-icon"></a>
-                                        </div>
-                                    </div>
-                                    <div class="features">
-                                        <div class="product-media">
-                                            <img src="assets/images/product/product30.jpg" alt="images">
-                                        </div>
-                                        <div class="featured-countdown">
-                                            <span class="js-countdown" data-timer="55555"
-                                                data-labels=" ,  h , m , s "></span>
-                                        </div>
-                                        <div class="rain-drop1"><img src="assets/images/icon/rain1.svg"
-                                                alt="images"></div>
-                                        <div class="rain-drop2"><img src="assets/images/icon/rain2.svg"
-                                                alt="images"></div>
-                                    </div>
-                                    <div class="bottom">
-                                        <div class="details-product">
-                                            <div class="author">
-                                                <div class="avatar">
-                                                    <img src="assets/images/author/author1.png" alt="images">
-                                                </div>
-                                                <div class="content">
-                                                    <div class="position">Creator</div>
-                                                    <div class="name"> <a href="#">Stephan
-                                                            Neal</a></div>
-                                                </div>
-                                            </div>
-                                            <div class="current-bid">
-                                                <div class="subtitle">Current bid</div>
-                                                <div class="price">
-                                                    <span class="cash">5 ETH</span><span class="icon"><img
-                                                            src="assets/images/icon/ethe.svg" alt="images"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-button">
-                                            <a href="" class="tf-button"> <span
-                                                    class="icon-btn-product"></span>
-                                                details</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div><!-- item-->
-                        </div>
-
-                    </div>
+                    @endforeach
 
                 </div>
                 <div class="swiper-pagination swiper-pagination-live-auction"></div>

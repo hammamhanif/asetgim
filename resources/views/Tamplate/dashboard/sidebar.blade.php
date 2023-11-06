@@ -44,17 +44,17 @@
                           </ul>
                       </li>
                       <li>
-                          <a href="javascript:;">
+                          <a href="{{ route('tablereport') }}">
                               <div class="parent-icon">
-                                  <ion-icon name="grid-outline"></ion-icon>
+                                  <ion-icon name="warning-outline"></ion-icon>
                               </div>
-                              <div class="menu-title">Landing Page</div>
+                              <div class="menu-title">Report Asset</div>
                           </a>
                       </li>
                       <li>
                           <a href="{{ route('contact.index') }}">
                               <div class="parent-icon">
-                                  <ion-icon name="book-outline"></ion-icon>
+                                  <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                               </div>
                               <div class="menu-title">Message Contact</div>
                           </a>
@@ -102,14 +102,6 @@
                               <ion-icon name="chatbox-ellipses-outline"></ion-icon>
                           </div>
                           <div class="menu-title">Contact Us</div>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="javascript:;">
-                          <div class="parent-icon">
-                              <ion-icon name="warning-outline"></ion-icon>
-                          </div>
-                          <div class="menu-title">Report Asset</div>
                       </a>
                   </li>
               </ul>

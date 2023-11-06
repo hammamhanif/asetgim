@@ -14,14 +14,21 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $users =  User::where('account_type', 'creator')->get();
+        $users = User::where('account_type', 'creator')->get();
+
         $assets = Asset::where('status', 'active')
             ->orderBy('updated_at', 'desc')
             ->take(8)
             ->get();
 
-        return view('Tamplate.landingpage.index', compact('users', 'assets'));
+        $assetsTrending = Asset::where('status', 'active')
+            ->orderBy('count', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('Tamplate.landingpage.index', compact('users', 'assets', 'assetsTrending'));
     }
+
 
     /**
      * Show the form for creating a new resource.
