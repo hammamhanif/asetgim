@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Definisi kunci asing untuk relasi
-            $table->foreign('asset_id')->references('id')->on('assets');
+            $table->foreign('asset_id')->references('id')->on('assets')->onDelete('cascade');
         });
     }
 

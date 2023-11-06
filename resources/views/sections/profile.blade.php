@@ -51,7 +51,7 @@
                                     @endif
                                     <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
                                         <div class="user-change-photo shadow">
-                                            <img src="{{ Auth::user()->image ?? asset('dist/icon/preload.png') }}" />
+                                            <img src="{{ Auth::user()->image ?? asset('img/Avatar_Profile.png') }}" />
                                         </div>
                                         <button type="button" class="btn btn-outline-primary btn-sm radius-30 px-4"
                                             data-bs-toggle="modal" data-bs-target="#user"><ion-icon

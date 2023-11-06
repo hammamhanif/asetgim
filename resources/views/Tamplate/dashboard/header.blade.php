@@ -19,7 +19,7 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                         data-bs-toggle="dropdown">
                         <div class="user-setting">
-                            <img src="{{ Auth::user()->image ?? asset('dist/icon/preload.png') }}" class="user-img"
+                            <img src="{{ Auth::user()->image ?? asset('img/Avatar_Profile.png') }}" class="user-img"
                                 alt="">
                         </div>
                     </a>
@@ -27,7 +27,7 @@
                         <li>
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <div class="d-flex flex-row align-items-center gap-2">
-                                    <img src="{{ Auth::user()->image ?? asset('dist/icon/preload.png') }}"
+                                    <img src="{{ Auth::user()->image ?? asset('img/Avatar_Profile.png') }}"
                                         alt="" class="rounded-circle" width="54" height="54">
                                     <div class="">
                                         <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
