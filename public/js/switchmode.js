@@ -47,8 +47,8 @@ function switchTheme() {
 
         } else  if($('.body').hasClass('is_light')) {
                 document.getElementById("img-mode").src = "assets/images/icon/sun.png";
-                document.getElementById("logo_header").src = "assets/images/logo/logobrin.png";
-                document.getElementById("logo_footer").src = "assets/images/logo/logobrin.png";
+                document.getElementById("logo_header").src = "assets/images/logo/logobrind.png";
+                document.getElementById("logo_footer").src = "assets/images/logo/logobrind.png";
             }
         
 
@@ -64,8 +64,8 @@ function switchTheme() {
 
         } else  if($('.body').hasClass('is_light')) {
                 document.getElementById("img-mode").src = "assets/images/icon/sun.png";
-                document.getElementById("logo_header").src = "assets/images/logo/logobrin.png";
-                document.getElementById("logo_footer").src = "assets/images/logo/logobrin.png";
+                document.getElementById("logo_header").src = "assets/images/logo/logobrind.png";
+                document.getElementById("logo_footer").src = "assets/images/logo/logobrind.png";
             }
 
         
