@@ -173,11 +173,19 @@
                                                             <select class="form-select form-select-md"
                                                                 aria-label=".form-select-md example" name="area"
                                                                 id="area">
-                                                                <option @if ($asset->area === 'Bandung') selected @endif
-                                                                    value="Bandung">Bandung</option>
-                                                                <option @if ($asset->area === 'Jogja') selected @endif
-                                                                    value="Jogja">Jogja</option>
+                                                                @foreach (['Jawa Tengah', 'Sumatera Utara', 'Sulawesi Utara', 'NTB', 'NTT', 'Bali'] as $area)
+                                                                    <option
+                                                                        @if ($asset->area === $area) selected @endif
+                                                                        value="{{ $area }}">{{ $area }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="file" class="col-form-label">File
+                                                                Asset:</label>
+                                                            <input type="file" class="form-control" id="file"
+                                                                name="file">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"

@@ -8,6 +8,7 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ReportController;
 use App\Models\Rating;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -68,8 +69,13 @@ Route::controller(UserController::class)->group(function () {
     Route::get('tableuser',  'index')->middleware('isAdmin')->name('tableuser');
     Route::put('tableuser/{id}/update',  'update')->middleware('isAdmin')->name('tableuser.update');
     Route::delete('tableuser/{id}/delete',  'destroy')->middleware('isAdmin')->name('tableuser.delete');
-    Route::get('profile',  'profile')->name('profile');
-    Route::put('profile/{id}/update',  'update_profile')->whereNumber('id')->name('profile.update');
+    Route::get('profile',  'profile')->name('profile')->middleware('auth');
+    Route::put('profile/{id}/update',  'update_profile')->whereNumber('id')->name('profile.update')->middleware('auth');
+});
+
+Route::controller(ReportController::class)->group(function () {
+    Route::get('tablereport',  'index')->middleware('isAdmin')->name('tablereport');
+    Route::delete('tablereport/{id}/delete',  'destroy')->middleware('isAdmin')->name('tablereport.delete');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

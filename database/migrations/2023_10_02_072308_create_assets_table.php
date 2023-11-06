@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('user_id');
-            $table->enum('area', ['Bandung', 'Jogja']);
+            $table->enum('area', ['Jawa Tengah', 'Sumatera Utara', 'Sulawesi Utara', 'NTB', 'NTT', 'Bali']);
             $table->enum('asset_type', ['2d', '3d']);
             $table->text('description');
             $table->enum('status', ['active', 'inactive', 'pending'])->default('inactive');

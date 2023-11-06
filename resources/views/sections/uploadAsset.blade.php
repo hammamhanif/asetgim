@@ -96,8 +96,9 @@
                                             <select class="form-select mb-3" aria-label="Default select example"
                                                 id="area" name="area">
                                                 <option selected="">Pilih Daerah</option>
-                                                <option value="Bandung">Bandung</option>
-                                                <option value="Jogja">Jogja</option>
+                                                @foreach (['Jawa Tengah', 'Sumatera Utara', 'Sulawesi Utara', 'NTB', 'NTT', 'Bali'] as $area)
+                                                    <option value="{{ $area }}">{{ $area }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="col-12">

@@ -14,12 +14,12 @@ class AssetReport extends Model
     // Relasi ke model Asset
     public function asset()
     {
-        return $this->belongsTo(Asset::class);
+        return $this->belongsTo(Asset::class, 'asset_id');
     }
 
     // Relasi ke model User
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -188,14 +188,36 @@ class AssetController extends Controller
 
         // Periksa apakah asset menjadi tidak aktif
         $asset = Asset::find($id);
+
+        // Check if there is a file to update
+        if ($request->hasFile('file')) {
+            // Validate the new file
+            $request->validate([
+                'file' => 'required|mimes:pdf,png,jpg|max:4096',
+            ]);
+
+            // Delete the old file
+            Storage::delete('public/' . $asset->path);
+
+            // Store the new file
+            $file = $request->file('file');
+            $fileName = $asset->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads', $fileName, 'public');
+
+            // Update the asset with the new file path
+            $asset->path = $path;
+        }
+
+        // Update other asset attributes
+        $asset->name = $request->input('name');
+        $asset->description = $request->input('description');
+        $asset->status = $request->input('status');
+        $asset->area = $request->input('area');
+
+        $asset->save();
+
         $statusChangedToInactive = $request->input('status') === 'inactive' && $asset->status !== 'inactive' && $asset->status !== 'pending';
 
-        $asset->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'status' => $request->input('status'),
-            'area' => $request->input('area'),
-        ]);
 
         if ($statusChangedToInactive) {
             $senderId = auth()->user()->id;
