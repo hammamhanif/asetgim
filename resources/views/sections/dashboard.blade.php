@@ -239,170 +239,211 @@
                                               <td>{{ $asset->description }}</td>
                                               <td>
                                                   <div class="d-flex align-items-center gap-3 fs-6">
-                                                      <a href="javascript:;" class="text-primary"
-                                                          data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                          title="" data-bs-original-title="View detail"
-                                                          aria-label="Views">
-                                                          <ion-icon name="eye-outline"></ion-icon>
-                                                      </a>
-                                                      <a href="javascript:;" class="text-warning"
-                                                          data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                          title="" data-bs-original-title="Edit info"
-                                                          aria-label="Edit">
-                                                          <ion-icon name="pencil-outline"></ion-icon>
-                                                      </a>
-                                                      <a href="javascript:;" class="text-danger delete-asset"
-                                                          data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                          title="Delete" aria-label="Delete"
-                                                          data-asset-id="{{ $asset->id }}">
-                                                          <ion-icon name="trash-outline"></ion-icon>
-                                                      </a>
-                                                      <div class="modal fade" id="confirmDeleteModal" tabindex="-1"
-                                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                          <div class="modal-dialog">
+
+                                                      <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                                                          data-bs-target="#user{{ $asset->id }}">
+                                                          <ion-icon name="create-outline"></ion-icon></button>
+                                                      <div class="modal fade" id="user{{ $asset->id }}"
+                                                          tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                          aria-hidden="true">
+                                                          <div class="modal-dialog modal-dialog-scrollable">
+                                                              <!-- Tambahkan class modal-dialog-scrollable di sini -->
                                                               <div class="modal-content">
                                                                   <div class="modal-header">
-                                                                      <h5 class="modal-title" id="exampleModalLabel">
-                                                                          Delete Asset</h5>
+                                                                      <h5 class="modal-title" id="exampleModalLabel">Edit
+                                                                          Asset</h5>
                                                                       <button type="button" class="btn-close"
                                                                           data-bs-dismiss="modal"
                                                                           aria-label="Close"></button>
                                                                   </div>
-                                                                  <div class="modal-body">
-                                                                      Are you sure you want to delete this asset?
-                                                                  </div>
-                                                                  <div class="modal-footer">
-                                                                      <button type="button" class="btn btn-secondary"
-                                                                          data-bs-dismiss="modal">Cancel</button>
-                                                                      <form method="POST"
-                                                                          action="/assets/{{ $asset->id }}/delete">
+                                                                  <div class="modal-body"
+                                                                      style="max-height: 400px; overflow-y: auto;">
+                                                                      <div style="text-align: center;">
+                                                                          <img src="{{ asset('storage/' . $asset->path) }}"
+                                                                              alt="Image"
+                                                                              style="max-width: 200px; max-height: 200px;">
+                                                                      </div>
+                                                                      <form role="form text-left"
+                                                                          action="{{ route('dashboard.update', $asset->id) }}"
+                                                                          method="post" enctype="multipart/form-data">
+                                                                          <form role="form text-left"
+                                                                              action="{{ route('dashboard.update', $asset->id) }}"
+                                                                              method="post"
+                                                                              enctype="multipart/form-data">
+                                                                              @method('PUT')
+                                                                              @csrf
+                                                                              <div class="mb-3">
+                                                                                  <label for="name"
+                                                                                      class="col-form-label">Nama:</label>
+                                                                                  <input type="text"
+                                                                                      class="form-control" id="name"
+                                                                                      name="name"
+                                                                                      value="{{ htmlentities($asset->name) }}">
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                  <label for="description"
+                                                                                      class="col-form-label">description:</label>
+                                                                                  <textarea class="form-control" id="description" name="description">{{ htmlentities($asset->description) }}</textarea>
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                  <label for="type"
+                                                                                      class="col-form-label">Daerah</label>
+                                                                                  <select
+                                                                                      class="form-select form-select-md"
+                                                                                      aria-label=".form-select-md example"
+                                                                                      name="area" id="area">
+                                                                                      @foreach (['Jawa Tengah', 'Sumatera Utara', 'Sulawesi Utara', 'NTB', 'NTT', 'Bali'] as $area)
+                                                                                          <option
+                                                                                              @if ($asset->area === $area) selected @endif
+                                                                                              value="{{ $area }}">
+                                                                                              {{ $area }}
+                                                                                          </option>
+                                                                                      @endforeach
+                                                                                  </select>
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                  <label for="file"
+                                                                                      class="col-form-label">File
+                                                                                      Asset:</label>
+                                                                                  <input type="file"
+                                                                                      class="form-control" id="file"
+                                                                                      name="file">
+                                                                              </div>
+                                                                              <div class="modal-footer">
+                                                                                  <button type="button"
+                                                                                      class="btn btn-secondary"
+                                                                                      data-bs-dismiss="modal">Close</button>
+                                                                                  <button type="submit"
+                                                                                      class="btn btn-primary">Update</button>
+                                                                          </form>
+                                                                      </form>
+                                                                      <a href="{{ route('reviewasset.delete2', ['id' => $asset->id]) }}"
+                                                                          onclick="event.preventDefault(); if (confirm('Are you sure you want to delete this asset?')) document.getElementById('delete-form-{{ htmlentities($asset->id) }}').submit();">
+                                                                          <button type="button" class="btn btn-danger"
+                                                                              data-bs-dismiss="modal">Hapus</button>
+                                                                      </a>
+                                                                      <form
+                                                                          id="delete-form-{{ htmlentities($asset->id) }}"
+                                                                          action="{{ route('reviewasset.delete2', ['id' => $asset->id]) }}"
+                                                                          method="POST" style="display: none;">
                                                                           @csrf
                                                                           @method('DELETE')
-                                                                          <button type="submit"
-                                                                              class="btn btn-danger">Delete</button>
                                                                       </form>
                                                                   </div>
                                                               </div>
                                                           </div>
                                                       </div>
 
-                                                  </div>
+                                              </td>
 
                           </div>
-                          </td>
-                          </tr>
-                          @endforeach
-                          </tbody>
-                          </table>
 
                       </div>
-                      <div class="d-flex justify-content-center mt-4">
-                          {{ $assets->links() }}
-                      </div>
+                      </td>
+                      </tr>
+                      @endforeach
+                      </tbody>
+                      </table>
 
                   </div>
-              </div>
-              <div class="card radius-10 w-100">
-                  <div class="card-body">
-                      <div class="d-flex align-items-center">
-                          <h6 class="mb-0">Message From Admin</h6>
-                          <div class="fs-5 ms-auto dropdown">
-                              <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
-                                  data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></div>
-                              <ul class="dropdown-menu">
-                                  <li><a class="dropdown-item" href="#">Action</a></li>
-                                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                                  <li>
-                                      <hr class="dropdown-divider">
-                                  </li>
-                                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                              </ul>
-                          </div>
-                      </div>
+                  <div class="d-flex justify-content-center mt-4">
+                      {{ $assets->links() }}
+                  </div>
 
-                      <table class="table align-middle mb-0">
-                          <thead class="table-light">
+              </div>
+          </div>
+          <div class="card radius-10 w-100">
+              <div class="card-body">
+                  <div class="d-flex align-items-center">
+                      <h6 class="mb-0">Message From Admin</h6>
+                      <div class="fs-5 ms-auto dropdown">
+                          <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i
+                                  class="bi bi-three-dots"></i></div>
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li>
+                                  <hr class="dropdown-divider">
+                              </li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <table class="table align-middle mb-0">
+                      <thead class="table-light">
+                          <tr>
+                              <th>No.</th>
+                              <th>Subject</th>
+                              <th>Message</th>
+                              <th>Waktu</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach ($messages as $index => $message)
                               <tr>
-                                  <th>No.</th>
-                                  <th>Subject</th>
-                                  <th>Message</th>
-                                  <th>Waktu</th>
-                                  <th>Actions</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              @foreach ($messages as $index => $message)
-                                  <tr>
-                                      <td>{{ $messages->firstItem() + $index }}</td>
-                                      <td>
-                                          <div class="d-flex align-items-center gap-3">
-                                              <div class="product-info">
-                                                  <h6 class="product-name mb-1">{{ $message->subject }}</h6>
-                                              </div>
+                                  <td>{{ $messages->firstItem() + $index }}</td>
+                                  <td>
+                                      <div class="d-flex align-items-center gap-3">
+                                          <div class="product-info">
+                                              <h6 class="product-name mb-1">{{ $message->subject }}</h6>
                                           </div>
-                                      </td>
-                                      <td>{{ $message->message }}</td>
-                                      <td>{{ $message->updated_at }}</td>
-                                      <td>
-                                          <div class="d-flex align-items-center gap-3 fs-6">
-                                              <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip"
-                                                  data-bs-placement="bottom" title=""
-                                                  data-bs-original-title="View detail" aria-label="Views">
-                                                  <ion-icon name="eye-outline"></ion-icon>
-                                              </a>
-                                              <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip"
-                                                  data-bs-placement="bottom" title=""
-                                                  data-bs-original-title="Edit info" aria-label="Edit">
-                                                  <ion-icon name="pencil-outline"></ion-icon>
-                                              </a>
-                                              <a href="javascript:;" class="text-danger delete-asset"
-                                                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"
-                                                  aria-label="Delete" data-asset-id="{{ $message->id }}">
-                                                  <ion-icon name="trash-outline"></ion-icon>
-                                              </a>
-                                              <div class="modal fade" id="confirmDeleteModalMessage" tabindex="-1"
-                                                  aria-labelledby="deleteMessage" aria-hidden="true">
-                                                  <div class="modal-dialog">
-                                                      <div class="modal-content">
-                                                          <div class="modal-header">
-                                                              <h5 class="modal-title" id="deleteMessage">
-                                                                  Delete Message</h5>
-                                                              <button type="button" class="btn-close"
-                                                                  data-bs-dismiss="modal" aria-label="Close"></button>
-                                                          </div>
-                                                          <div class="modal-body">
-                                                              Are you sure you want to delete this message?
-                                                          </div>
-                                                          <div class="modal-footer">
-                                                              <button type="button" class="btn btn-secondary"
-                                                                  data-bs-dismiss="modal">Cancel</button>
-                                                              <form method="POST"
-                                                                  action="/message/{{ $message->id }}/delete">
-                                                                  @csrf
-                                                                  @method('DELETE')
-                                                                  <button type="submit"
-                                                                      class="btn btn-danger">Delete</button>
-                                                              </form>
-                                                          </div>
+                                      </div>
+                                  </td>
+                                  <td>{{ $message->message }}</td>
+                                  <td>{{ $message->updated_at }}</td>
+                                  <td>
+                                      <div class="d-flex align-items-center gap-3 fs-6">
+
+                                          <a href="javascript:;" class="text-danger delete-asset"
+                                              data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"
+                                              aria-label="Delete" data-asset-id="{{ $message->id }}">
+                                              <ion-icon name="trash-outline"></ion-icon>
+                                          </a>
+                                          <div class="modal fade" id="confirmDeleteModalMessage" tabindex="-1"
+                                              aria-labelledby="deleteMessage" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                  <div class="modal-content">
+                                                      <div class="modal-header">
+                                                          <h5 class="modal-title" id="deleteMessage">
+                                                              Delete Message</h5>
+                                                          <button type="button" class="btn-close"
+                                                              data-bs-dismiss="modal" aria-label="Close"></button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                          Are you sure you want to delete this message?
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                          <button type="button" class="btn btn-secondary"
+                                                              data-bs-dismiss="modal">Cancel</button>
+                                                          <form method="POST"
+                                                              action="/message/{{ $message->id }}/delete">
+                                                              @csrf
+                                                              @method('DELETE')
+                                                              <button type="submit"
+                                                                  class="btn btn-danger">Delete</button>
+                                                          </form>
                                                       </div>
                                                   </div>
                                               </div>
-
                                           </div>
 
-                  </div>
-                  </td>
-                  </tr>
-                  @endforeach
-                  </tbody>
-                  </table>
+                                      </div>
 
               </div>
-              <div class="d-flex justify-content-center mt-4">
-                  {{ $messages->links() }}
-              </div>
+              </td>
+              </tr>
+              @endforeach
+              </tbody>
+              </table>
 
           </div>
+          <div class="d-flex justify-content-center mt-4">
+              {{ $messages->links() }}
+          </div>
+
+      </div>
       </div>
       <!-- end page content-->
       </div>

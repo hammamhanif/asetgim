@@ -155,9 +155,55 @@ class AssetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Asset $asset)
+    public function edit(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'area' => 'required',
+            'description' => 'required',
+        ];
+
+        $messages = [
+            'area.required' => 'The area field is required.',
+            'status.required' => 'The status field is required.',
+            'description.required' => 'The description field is required.',
+            'name.required' => 'The name field is required.',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Periksa apakah asset menjadi tidak aktif
+        $asset = Asset::find($id);
+
+        // Check if there is a file to update
+        if ($request->hasFile('file')) {
+            // Validate the new file
+            $request->validate([
+                'file' => 'required|mimes:pdf,png,jpg|max:4096',
+            ]);
+
+            // Delete the old file
+            Storage::delete('public/' . $asset->path);
+
+            // Store the new file
+            $file = $request->file('file');
+            $fileName = $asset->user_id . '_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads', $fileName, 'public');
+
+            // Update the asset with the new file path
+            $asset->path = $path;
+        }
+
+        // Update other asset attributes
+        $asset->name = $request->input('name');
+        $asset->description = $request->input('description');
+        $asset->area = $request->input('area');
+
+        $asset->save();
+        return redirect()->route('dashboard')->withSuccess('Asset berhasil diperbarui');
     }
 
     /**

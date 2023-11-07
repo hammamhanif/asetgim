@@ -56,6 +56,9 @@
                                         <li class="menu-item">
                                             <a href="{{ route('index_contact') }}">Contact</a>
                                         </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('about') }}">About Us</a>
+                                        </li>
                                         </li>
                                         @auth
                                             <li class="menu-item menu-item-has-children ">
@@ -76,13 +79,14 @@
                                             </li>
                                         @endauth
                                     </ul>
-                                </nav><!-- /#main-nav -->
+                                </nav>
                             </div>
 
                             <div class="header-right">
 
                                 <a href="#" onclick="switchTheme()" class="mode-switch">
-                                    <img id="img-mode" src="{{ asset('assets/images/icon/moon.png') }}" alt="Image">
+                                    <img id="img-mode" src="{{ asset('assets/images/icon/moon.png') }}"
+                                        alt="Image">
                                 </a>
                             </div>
 

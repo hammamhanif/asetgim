@@ -25,22 +25,6 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="ms-auto">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-outline-primary">Settings</button>
-                            <button type="button"
-                                class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a class="dropdown-item"
-                                    href="javascript:;">Action</a>
-                                <a class="dropdown-item" href="javascript:;">Another action</a>
-                                <a class="dropdown-item" href="javascript:;">Something else here</a>
-                                <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">Separated
-                                    link</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!--end breadcrumb-->
 
@@ -149,8 +133,8 @@
         <!--start switcher-->
         <div class="switcher-body">
             <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><ion-icon
-                    name="color-palette-sharp" class="me-0"></ion-icon></button>
+                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><ion-icon name="color-palette-sharp"
+                    class="me-0"></ion-icon></button>
             <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false"
                 tabindex="-1" id="offcanvasScrolling">
                 <div class="offcanvas-header border-bottom">

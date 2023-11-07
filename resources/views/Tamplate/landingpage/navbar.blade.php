@@ -35,11 +35,24 @@
                                 <li class="menu-item menu-item-has-children ">
                                     <a href="#">Daerah</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item "><a href="blog.html">DKI Jakarta</a></li>
-                                        <li class="menu-item "><a href="blog2.html">Jawa Barat</a></li>
-                                        <li class="menu-item"><a href="blog-details.html">Jawa Tengah</a>
+                                        <li class="menu-item "><a
+                                                href="{{ route('exploreAsset', ['search' => 'Jawa Tengah']) }}">Jawa
+                                                Tengah</a></li>
+                                        <li class="menu-item "><a
+                                                href="{{ route('exploreAsset', ['search' => 'Sumatera Utara']) }}">Sumatera
+                                                Utara</a></li>
+                                        <li class="menu-item"><a
+                                                href="{{ route('exploreAsset', ['search' => 'Sulawesi Utara']) }}">Sulawesi
+                                                Utara</a>
                                         </li>
-                                        <li class="menu-item"><a href="blog-details2.html">Jawa Timur</a>
+                                        <li class="menu-item"><a
+                                                href="{{ route('exploreAsset', ['search' => 'NTB']) }}">NTB</a>
+                                        </li>
+                                        <li class="menu-item"><a
+                                                href="{{ route('exploreAsset', ['search' => 'NTT']) }}">NTT</a>
+                                        </li>
+                                        <li class="menu-item"><a
+                                                href="{{ route('exploreAsset', ['search' => 'Bali']) }}">Bali</a>
                                         </li>
                                     </ul>
                                 </li>

@@ -85,6 +85,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::get('/dashboard', [AssetController::class, 'dashboard'])->name('dashboard');
+    Route::put('/dashboard/{id}/update', [AssetController::class, 'edit'])->name('dashboard.update');
 
     Route::get('/review', [AssetController::class, 'view'])->name('reviewasset');
     Route::put('/review/{id}/update', [AssetController::class, 'update'])->name('reviewasset.update');

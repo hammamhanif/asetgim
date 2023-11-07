@@ -107,6 +107,8 @@
     </script>
 
 
+
+
     @stack('vendorScript')
 </body>
 @yield('scripts')

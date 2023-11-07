@@ -13,9 +13,8 @@
                                             <img src="{{ asset('assets/images/slider/bg-slider.png') }}" alt="Image">
                                         </h1>
                                         <h4>Game Asset Nusantara</h4>
-                                        <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Integer nec odio. Praesent libero. Sed cursus
-                                            ante dapibus diam.</p>
+                                        <p class="sub-heading">GANA (Game Asset Nusantara), platform aset gim dengan
+                                            tema budaya Indonesia.</p>
                                         <div class="btn-slider mb-5 ">
                                             <a href="{{ route('exploreAsset') }}" class="tf-button style-2">Explore
                                                 now</a>
@@ -99,8 +98,8 @@
             </div>
             <div class="col-md-12 wow fadeInUp">
                 <div class="swiper-container live-auction visible">
-                    @foreach ($assetsTrending as $assetTrending)
-                        <div class="swiper-wrapper ">
+                    <div class="swiper-wrapper ">
+                        @foreach ($assetsTrending as $assetTrending)
                             <div class="swiper-slide">
                                 <div class="slider-item">
                                     <div class="sc-product style1">
@@ -126,7 +125,7 @@
                                             <div class="details-product">
                                                 <div class="author">
                                                     <div class="avatar">
-                                                        <img src="{{ $assetTrending->user->image ? asset($assetTrending->user->image) : asset('images/author/7309681.jpg') }}"
+                                                        <img src="{{ $assetTrending->user->image ? asset($assetTrending->user->image) : asset('img/Avatar_Profile.png') }}"
                                                             alt="images">
                                                     </div>
                                                     <div class="content">
@@ -154,10 +153,8 @@
                                     </div>
                                 </div><!-- item-->
                             </div>
-
-
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
 
                 </div>
                 <div class="swiper-pagination swiper-pagination-live-auction"></div>
@@ -180,7 +177,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="tf-author">
                         <div class="image">
-                            <img src="{{ $user->image ? asset($user->image) : asset('images/author/7309681.jpg') }}"
+                            <img src="{{ $user->image ? asset($user->image) : asset('img/Avatar_Profile.png') }}"
                                 alt="Image">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

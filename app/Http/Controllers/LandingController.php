@@ -49,6 +49,7 @@ class LandingController extends Controller
             ->where(function ($query) use ($searchQuery) {
                 $query->where('assets.name', 'like', '%' . $searchQuery . '%')
                     ->orWhere('assets.description', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('assets.area', 'like', '%' . $searchQuery . '%')
                     ->orWhere('assets.asset_type', 'like', '%' . $searchQuery . '%')
                     ->orWhere('users.name', 'like', '%' . $searchQuery . '%'); // Cari juga berdasarkan nama creator
             })
