@@ -18,4 +18,8 @@ class Asset extends Model
     {
         return $this->hasMany(AssetReport::class);
     }
+    public function ratings()
+    {
+        return $this->hasMany(Ratings::class, 'asset_id');
+    }
 }

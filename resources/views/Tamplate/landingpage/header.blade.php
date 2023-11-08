@@ -22,8 +22,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/responsive.css') }}">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{ asset('assets/icon/Favicon.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/icon/Favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('img/preload.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('img/preload.png') }}">
     @stack('vendorStyle')
 
 </head>

@@ -122,9 +122,4 @@ Route::get('/downloadAsset/{id}', [AssetController::class, 'download_asset'])->n
 
 Route::post('/submit-review', [RatingController::class, 'store'])->name('submit-review');
 
-// Route::post('/add-rating', [RatingController::class, 'store'])->name('add-rating');
-
-// Route::match(['GET','POST'],'/add-rating', [RatingController::class, 'addRating']);
-// // Route::post('/add-rating', 'RatingController@store')->name('add-rating');
-
 Route::post('/Rating', [RatingController::class, 'store'])->name('Rating');

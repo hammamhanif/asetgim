@@ -6,11 +6,31 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="breadcrumbs">
-                        <li><a href="blog2.html">Rating</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li>Rating</li>
                     </ul>
                 </div>
             </div>
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                </div>
+            @elseif(session('unsuccess'))
+                <div class="alert alert-danger" role="alert">
+                    <strong class="font-bold">Unsuccess!</strong>
+                    <span class="block sm:inline">{{ session('unsuccess') }}</span>
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <ul class="list-disc pl-5">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ htmlentities($error) }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
     </section>
 
@@ -53,7 +73,7 @@
                                     <textarea id="review" name="review" placeholder="Tulis ulasan Anda..." required=""></textarea>
                                 </fieldset>
                             </div>
-
+                            <input type="hidden" name="asset_id" value="{{ $assets->id }}">
                             <input type="submit" value="kirim ulasan">
                         </form>
 

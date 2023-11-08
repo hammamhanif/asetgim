@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Icon Tab -->
-    <link href="{{ asset('favicon.png') }}" rel="shortcut icon" />
+    <link href="{{ asset('img/preload.png') }}" rel="shortcut icon" />
 
     <!-- loader-->
     <link href="{{ asset('dist/css/pace.min.css') }}" rel="stylesheet" />

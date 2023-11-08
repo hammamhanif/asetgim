@@ -105,9 +105,6 @@
                                     <div class="sc-product style1">
                                         <div class="top">
                                             <a href="item-details.html" class="tag">{{ $assetTrending->name }}</a>
-                                            <div class="wish-list">
-                                                <a href="#" class="heart-icon"></a>
-                                            </div>
                                         </div>
                                         <div class="features">
                                             <div class="product-media">

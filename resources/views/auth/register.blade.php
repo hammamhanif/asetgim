@@ -65,7 +65,7 @@
                         </fieldset>
                         <div class="forgot-pass-wrap">
                             <label>I agree to the terms and services
-                                <input type="checkbox">
+                                <input type="checkbox" required>
                                 <span class="btn-checkbox"></span>
                             </label>
                             <a class="forgot-pass" href="{{ route('login') }}">Already have an account?</a>

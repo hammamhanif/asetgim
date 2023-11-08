@@ -10,7 +10,7 @@
                             <h4 class="title">Tentang Kami</h4>
                         </div>
                         <div class="image">
-                            <img src="assets/images/blog/blog-details-1.jpg" alt="Image">
+                            <img src="{{ asset('images/blog/About.jpeg') }}" alt="Image">
                         </div>
                         <div class="content-inner">
                             <h6 class="title">Selamat datang di GANA!
@@ -22,10 +22,6 @@
                                 terutama yang berbasis kearifan budaya.
                             </p>
                         </div>
-                        <div class="image style-2">
-                            <img class="mr20" src="assets/images/blog/blog-details-2.jpg" alt="Image">
-                            <img src="assets/images/blog/blog-details-3.jpg" alt="Image">
-                        </div>
                         <div class="content-inner">
                             <h6 class="title"></h6>
                             <p>Aset-aset gim dikelola dan didistribusikan secara gratis serta dapat diakses dengan mudah
@@ -36,23 +32,11 @@
                                 Indonesia dapat dikenal lebih luas lagi.
                             </p>
                         </div>
-                        <div class="image">
-                            <img src="assets/images/blog/blog-details-4.jpg" alt="Image">
-                        </div>
                         <div class="content-inner">
                             <p>Dukung terus GANA untuk selalu berkembang dan dapat menjadi garda terdepan dalam pengenalan
                                 budaya Indonesia pada industri gim. </p>
                         </div>
                         <div class="content-bottom">
-                            <div class="widget widget-socical">
-                                <h6 class="widget-title">Share:</h6>
-                                <ul>
-                                    <li><a href="#" class="icon-fl-mess"></a></li>
-                                    <li><a href="#" class="icon-fl-coolicon"></a></li>
-                                    <li><a href="#" class="icon-fl-facebook"></a></li>
-                                </ul>
-
-                            </div>
                             <div class="widget widget-tag">
                                 <h6 class="widget-title">Created:</h6>
                                 <ul>

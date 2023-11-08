@@ -31,8 +31,7 @@
                             style="background-color: #242424; margin-right: 20px; margin-bottom: 10px; ro">
                             <div class="carousel-inner">
                                 <div class="carousel-item active justify-content-center">
-                                    <img src="{{ asset('storage/' . $assets->path) }}" alt="Image" width="480"
-                                        height="220">
+                                    <img src="{{ asset('storage/' . $assets->path) }}" alt="Image">
                                 </div>
                             </div>
 
@@ -40,13 +39,14 @@
                         <div class="content">
                             <div class="content-top">
                                 <div class="author">
-                                    <img src="{{ $assets->user->image ? asset($assets->user->image) : asset('images/author/7309681.jpg') }}"
+                                    <img src="{{ $assets->user->image ? asset($assets->user->image) : asset('img/Avatar_Profile.png') }}"
                                         alt="Image" style="width: 100px; height: 100px;">
 
                                     <h6 class="title">{{ htmlentities($assets->user->name) }}</h6>
                                 </div>
                                 <div class="wishlish">
-                                    <div class="number-wishlish"><i class="far fa-heart"></i>68</div>
+                                    <div class="number-wishlish"><i class="far fa-star"></i>{{ $roundedAverageRating }}
+                                    </div>
                                     <div class="number-wishlish"><i class="far fa-download"></i>{{ $assets->count }}</div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                         class="tf-button style-2">Rating</a>
                                 </div>
                                 <div class="btn-slider mb-5 mt-5 text-right">
-                                    <a href="{{ route('downloadAsset', $assets->id) }}" class="tf-button style-3">Download
+                                    <a href="{{ route('file.download', $assets->id) }}" class="tf-button style-3">Download
                                         now</a>
                                 </div>
 

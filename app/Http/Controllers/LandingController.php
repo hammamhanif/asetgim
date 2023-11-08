@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Asset;
+use App\Models\Ratings;
 use App\Models\AssetReport;
 use Illuminate\Http\Request;
 
@@ -68,8 +69,11 @@ class LandingController extends Controller
         if (!$assets) {
             return abort(404);
         }
+        $averageRating = Ratings::where('asset_id', $id)->avg('rating');
+        $roundedAverageRating = round($averageRating, 1);
 
-        return view('sections.detailAsset', compact('assets',));
+
+        return view('sections.detailAsset', compact('assets', 'roundedAverageRating'));
     }
 
 

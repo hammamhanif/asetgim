@@ -118,6 +118,7 @@ class AssetController extends Controller
         $mimeTypes = [
             'png' => 'image/png',
             'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
             'pdf' => 'application/pdf',
         ];
 
