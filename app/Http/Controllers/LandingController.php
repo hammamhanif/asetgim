@@ -15,7 +15,8 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $users = User::where('account_type', 'creator')->get();
+        $users = User::where('account_type', 'creator')->take(12)->get();
+
 
         $assets = Asset::where('status', 'active')
             ->orderBy('updated_at', 'desc')

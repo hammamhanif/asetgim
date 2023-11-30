@@ -8,8 +8,8 @@
                 <div class="col-md-12">
 
                     <ul class="breadcrumbs">
-                        <li><a href="index.html">Home</a></li>
-                        <li>Contact</li>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li>Kontak</li>
                     </ul>
 
                 </div>
@@ -27,9 +27,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="tf-heading style-3">
-                        <h4 class="heading">Drop Up A Message</h4>
-                        <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati
-                            dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit. </p>
+                        <h4 class="heading">Hubungi Kami.</h4>
+                        <p class="sub-heading">Jangan ragu untuk menghubungi kami melalui formulir kontak di halaman utama
+                            situs web kami apabila Anda memiliki pertanyaan atau membutuhkan bantuan lebih lanjut. </p>
                     </div>
                     @if (session('success'))
                         <div class="alert alert-success" role="alert">
@@ -63,7 +63,7 @@
                             <textarea id="message" name="message" rows="4" placeholder="Message" tabindex="4" aria-required="true"
                                 required=""></textarea>
                         </fieldset>
-                        <div class="btn-submit"><button class="tf-button" type="submit">Send message</button></div>
+                        <div class="btn-submit"><button class="tf-button" type="submit">Kirim Pesan</button></div>
                     </form>
                 </div>
             </div>

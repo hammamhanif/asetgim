@@ -86,10 +86,18 @@
                                             </select>
                                         </div>
                                         <div class="col-12">
-                                            <label for="file" class="form-label">Input File</label>
+                                            <label for="file" class="form-label">Poster (Maksimal 4 Mb)</label>
                                             <div class="mb-3">
                                                 <input class="form-control" type="file" name="file" multiple=""
                                                     id="file">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="file" class="form-label">Aset File (Format .zip atau .rar
+                                                maksimal 5 Mb)</label>
+                                            <div class="mb-3">
+                                                <input class="form-control" type="file" name="file2" multiple=""
+                                                    id="file2">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -133,8 +141,8 @@
         <!--start switcher-->
         <div class="switcher-body">
             <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><ion-icon name="color-palette-sharp"
-                    class="me-0"></ion-icon></button>
+                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><ion-icon
+                    name="color-palette-sharp" class="me-0"></ion-icon></button>
             <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false"
                 tabindex="-1" id="offcanvasScrolling">
                 <div class="offcanvas-header border-bottom">

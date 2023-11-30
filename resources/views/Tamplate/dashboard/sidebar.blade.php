@@ -26,7 +26,7 @@
                               <div class="parent-icon">
                                   <ion-icon name="receipt-outline"></ion-icon>
                               </div>
-                              <div class="menu-title">User Join</div>
+                              <div class="menu-title">User Terdaftar</div>
                           </a>
                       </li>
                       <li>
@@ -34,11 +34,11 @@
                               <div class="parent-icon">
                                   <ion-icon name="gift-outline"></ion-icon>
                               </div>
-                              <div class="menu-title">Asset Review</div>
+                              <div class="menu-title">Review Aset</div>
                           </a>
                           <ul>
                               <li> <a href="{{ route('reviewasset') }}">
-                                      <ion-icon name="ellipse-outline"></ion-icon>Status Asset
+                                      <ion-icon name="ellipse-outline"></ion-icon>Status Aset
                                   </a>
                               </li>
                           </ul>
@@ -48,7 +48,7 @@
                               <div class="parent-icon">
                                   <ion-icon name="warning-outline"></ion-icon>
                               </div>
-                              <div class="menu-title">Report Asset</div>
+                              <div class="menu-title">Laporkan Aset</div>
                           </a>
                       </li>
                       <li>
@@ -56,7 +56,7 @@
                               <div class="parent-icon">
                                   <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                               </div>
-                              <div class="menu-title">Message Contact</div>
+                              <div class="menu-title">Daftar Pesan</div>
                           </a>
                       </li>
                       <li>
@@ -64,7 +64,7 @@
                               <div class="parent-icon">
                                   <ion-icon name="gift-outline"></ion-icon>
                               </div>
-                              <div class="menu-title">Upload Asset</div>
+                              <div class="menu-title">Unggah Aset</div>
                           </a>
                       </li>
                   @else
@@ -74,17 +74,17 @@
                               <div class="parent-icon">
                                   <ion-icon name="gift-outline"></ion-icon>
                               </div>
-                              <div class="menu-title">Upload Asset</div>
+                              <div class="menu-title">Unggah Aset</div>
                           </a>
                       </li>
                   @endif
-                  <li class="menu-label">Account</li>
+                  <li class="menu-label">Akun</li>
                   <li>
                       <a href="{{ route('profile') }}">
                           <div class="parent-icon">
                               <ion-icon name="person-circle-outline"></ion-icon>
                           </div>
-                          <div class="menu-title">User Profile</div>
+                          <div class="menu-title">Profil Pengguna</div>
                       </a>
                   </li>
                   <li>
@@ -92,7 +92,7 @@
                           <div class="parent-icon">
                               <ion-icon name="create-outline"></ion-icon>
                           </div>
-                          <div class="menu-title">Change Password</div>
+                          <div class="menu-title">Ubah Password</div>
                       </a>
                   </li>
                   <li class="menu-label">Support</li>
@@ -101,7 +101,7 @@
                           <div class="parent-icon">
                               <ion-icon name="chatbox-ellipses-outline"></ion-icon>
                           </div>
-                          <div class="menu-title">Contact Us</div>
+                          <div class="menu-title">Hubungi Kami</div>
                       </a>
                   </li>
               </ul>

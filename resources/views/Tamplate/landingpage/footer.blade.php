@@ -4,16 +4,16 @@
             <div class="col-md-4"></div> <!-- Col kosong -->
             <div class="col-md-4">
                 <div class="logo mb-3S">
-                    <img id="logo_footer" src="assets/images/logo/logo_dark.png" alt="Image">
+                    <img id="logo_footer" src="{{ asset('assets/images/logo/logobrind.png') }}" alt="Image">
                 </div>
                 <p class="content mb-3"></p>
                 <ul class="social-item">
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="icon-fl-tik-tok-2"></i></a></li>
-                    <li><a href="#"><i class="icon-fl-vt"></i></a></li>
+                    <li><a href="https://twitter.com/i/flow/login?redirect_after_login=%2Fbrin_indonesia"><i
+                                class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/brin.indonesia/"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/brin_indonesia/"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCr1ihEI566IJib9P-JjENSA"><i
+                                class="fab fa-youtube"></i></a></li>
                 </ul>
                 <p class="copy-right mt-3">Copyright © 2022 BRIN. GANA (Game Asset Nusantara).</p>
             </div>

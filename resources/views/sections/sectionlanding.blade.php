@@ -16,14 +16,15 @@
                                         <p class="sub-heading">GANA (Game Asset Nusantara), platform aset gim dengan
                                             tema budaya Indonesia.</p>
                                         <div class="btn-slider mb-5 ">
-                                            <a href="{{ route('exploreAsset') }}" class="tf-button style-2">Explore
-                                                now</a>
-                                            <a href="{{ route('dashboard') }}" class="tf-button style-3 mb-5">Create</a>
+                                            <a href="{{ route('exploreAsset') }}" class="tf-button style-2">Jelajahi
+                                                Sekarang</a>
+                                            <a href="{{ route('dashboard') }}"
+                                                class="tf-button style-3 mb-5">Bergabung</a>
                                             <div class="search-form mb-5 mt-3">
                                                 <form action="{{ route('exploreAsset') }}" method="get">
                                                     <input type="text" class="col-sm-6 col-md-6 tf-button"
                                                         id="inputGroupFile02" name="search">
-                                                    <button type="submit" class="tf-button style-3">Search</button>
+                                                    <button type="submit" class="tf-button style-3">Cari</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -51,7 +52,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="tf-heading mb40 wow fadeInUp">
-                    <h4 class="heading text-center">Asset Categories</h4>
+                    <h4 class="heading text-center">Kategori Aset</h4>
                 </div>
             </div>
             <div class="col-md-12 wow fadeInUp">
@@ -61,7 +62,8 @@
                             <div class="slider-item">
                                 <div class="tf-product-category">
                                     <img src="{{ asset('img/3d.png') }}" alt="Image">
-                                    <div class="category"><a href="#">3D Asset</a></div>
+                                    <div class="category"><a href="{{ route('exploreAsset', ['search' => '3d']) }}">Aset
+                                            3D</a></div>
                                 </div>
                             </div><!-- item-->
                         </div>
@@ -69,7 +71,8 @@
                             <div class="slider-item">
                                 <div class="tf-product-category">
                                     <img src="{{ asset('img/2d.png') }}" alt="Image">
-                                    <div class="category"><a href="#">2D Asset</a></div>
+                                    <div class="category"><a href="{{ route('exploreAsset', ['search' => '2d']) }}">Aset
+                                            2D</a></div>
                                 </div>
                             </div><!-- item-->
                         </div>
@@ -91,8 +94,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="tf-heading mb40 wow fadeInUp">
-                    <h4 class="heading">Monthly Tranding </h4>
-                    <a class="button" href="{{ route('exploreAsset') }}">Explore<i
+                    <h4 class="heading">Trending Bulan ini </h4>
+                    <a class="button" href="{{ route('exploreAsset') }}">Jelajahi<i
                             class="fal fa-long-arrow-right"></i></a>
                 </div>
             </div>
@@ -104,7 +107,8 @@
                                 <div class="slider-item">
                                     <div class="sc-product style1">
                                         <div class="top">
-                                            <a href="item-details.html" class="tag">{{ $assetTrending->name }}</a>
+                                            <a href="{{ route('detailAsset', $assetTrending->id) }}"
+                                                class="tag">{{ $assetTrending->name }}</a>
                                         </div>
                                         <div class="features">
                                             <div class="product-media">
@@ -127,8 +131,7 @@
                                                     </div>
                                                     <div class="content">
                                                         <div class="position">Creator</div>
-                                                        <div class="name"> <a
-                                                                href="#">{{ $assetTrending->user->name }}</a>
+                                                        <div class="name"> <a>{{ $assetTrending->user->name }}</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -167,7 +170,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="tf-heading mb40 ">
-                    <h4 class="heading">Top Creator</h4>
+                    <h4 class="heading">Creator Teratas</h4>
                 </div>
             </div>
             @foreach ($users as $user)
@@ -201,7 +204,6 @@
                         <div class="content">
                             <div class="title">
                                 <a>{{ htmlentities($user->username) }}</a>
-                                <span class="icon"><i class="far fa-plus"></i></span>
                             </div>
                             <div class="price">
                                 <span class="price-eth">{{ htmlentities($user->account_type) }}</span>
@@ -220,7 +222,7 @@
         <div class="row ">
             <div class="col-md-12">
                 <div class="tf-heading style-2 wow fadeInUp">
-                    <h4 class="heading">Explore</h4>
+                    <h4 class="heading">Jelajahi</h4>
                 </div>
             </div>
             <div class="col-md-12">
@@ -256,7 +258,7 @@
         </div>
         <div class="col-md-12">
             <div class="btn-loadmore mt8 wow fadeInUp">
-                <a href="{{ route('exploreAsset') }}" class="tf-button loadmore style-4">Load more</a>
+                <a href="{{ route('exploreAsset') }}" class="tf-button loadmore style-4">Selengkapnya</a>
             </div>
         </div>
     </div>

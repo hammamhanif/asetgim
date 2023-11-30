@@ -16,11 +16,11 @@
                         <nav id="main-nav" class="main-nav">
                             <ul id="menu-primary-menu" class="menu">
                                 <li class="menu-item">
-                                    <a href="#">Home</a>
+                                    <a href="{{ route('home') }}">Beranda</a>
 
                                 </li>
                                 <li class="menu-item menu-item-has-children">
-                                    <a href="#">Category</a>
+                                    <a href="#">Kategori</a>
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a
                                                 href="{{ route('exploreAsset', ['search' => '2d']) }}">2D</a></li>
@@ -58,10 +58,10 @@
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="{{ route('index_contact') }}">Contact</a>
+                                    <a href="{{ route('index_contact') }}">Kontak</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="{{ route('about') }}">About Us</a>
+                                    <a href="{{ route('about') }}">Tentang Kami</a>
                                 </li>
                                 </li>
                                 @if (auth()->check())

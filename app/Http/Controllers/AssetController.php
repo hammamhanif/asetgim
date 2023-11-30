@@ -71,11 +71,15 @@ class AssetController extends Controller
     {
         $request->validate([
             'file' => 'required|mimes:pdf,png,jpg|max:4096',
+            'file2' => 'required|mimes:zip,rar|max:5120',
             'asset_type' => 'required|string',
             'area' => 'required|string',
         ], [
             'asset_type.required' => 'Kolom Type harus diisi.',
             'area.required' => 'Kolom Area harus diisi.',
+            'file2.required' => 'File 2 harus diunggah.',
+            'file2.mimes' => 'File 2 harus berformat ZIP atau RAR.',
+            'file2.max' => 'File 2 tidak boleh lebih dari 5 MB.',
         ]);
 
         $user = auth()->user(); // Mengambil pengguna yang sedang masuk
@@ -85,10 +89,16 @@ class AssetController extends Controller
 
         $path = $file->storeAs('uploads', $fileName, 'public');
 
+        $file2 = $request->file('file2');
+        $fileName2 = $user->id . '_file2_' . time() . '.' . $file2->getClientOriginalExtension();
+        $path2 = $file2->storeAs('uploads', $fileName2, 'public');
+
+
         Asset::create([
             'user_id' => $user->id,
             'name' => $request->input('name'),
             'path' => $path,
+            'path2' => $path2,
             'asset_type' => $request->input('asset_type'),
             'area' => $request->input('area'),
             'description' => $request->input('description'),
@@ -105,7 +115,7 @@ class AssetController extends Controller
             return redirect()->back()->with('error', 'Asset tidak ditemukan.');
         }
 
-        $filePath = storage_path('app/public/' . $asset->path);
+        $filePath = storage_path('app/public/' . $asset->path2);
 
         if (!file_exists($filePath)) {
             return redirect()->back()->with('error', 'File tidak ditemukan.');
@@ -120,6 +130,8 @@ class AssetController extends Controller
             'jpg' => 'image/jpeg',
             'jpeg' => 'image/jpeg',
             'pdf' => 'application/pdf',
+            'zip' => 'application/zip',
+            'rar' => 'application/x-rar-compressed',
         ];
 
 
@@ -162,13 +174,18 @@ class AssetController extends Controller
             'name' => 'required',
             'area' => 'required',
             'description' => 'required',
+            'file' => 'nullable|mimes:pdf,png,jpg|max:4096',
+            'file2' => 'nullable|mimes:zip,rar|max:5120',
         ];
 
         $messages = [
-            'area.required' => 'The area field is required.',
-            'status.required' => 'The status field is required.',
-            'description.required' => 'The description field is required.',
-            'name.required' => 'The name field is required.',
+            'area.required' => 'Kolom area wajib diisi.',
+            'description.required' => 'Kolom deskripsi wajib diisi.',
+            'name.required' => 'Kolom nama wajib diisi.',
+            'file.mimes' => 'File harus berupa PDF, PNG, atau JPG.',
+            'file.max' => 'Ukuran file tidak boleh lebih dari 4 MB.',
+            'file2.mimes' => 'File 2 harus berupa ZIP atau RAR.',
+            'file2.max' => 'Ukuran File 2 tidak boleh lebih dari 5 MB.',
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -197,6 +214,7 @@ class AssetController extends Controller
             // Update the asset with the new file path
             $asset->path = $path;
         }
+
 
         // Update other asset attributes
         $asset->name = $request->input('name');
@@ -217,14 +235,18 @@ class AssetController extends Controller
             'status' => 'required|in:active,inactive,pending',
             'area' => 'required',
             'description' => 'required',
+            'file' => 'nullable|mimes:pdf,png,jpg|max:4096',
+            'file2' => 'nullable|mimes:zip,rar|max:5120',
         ];
 
         $messages = [
-            'area.required' => 'The area field is required.',
-            'status.required' => 'The status field is required.',
-            'status.in' => 'The status must be either active or inactive.',
-            'description.required' => 'The description field is required.',
-            'name.required' => 'The name field is required.',
+            'area.required' => 'Kolom area wajib diisi.',
+            'description.required' => 'Kolom deskripsi wajib diisi.',
+            'name.required' => 'Kolom nama wajib diisi.',
+            'file.mimes' => 'File harus berupa PDF, PNG, atau JPG.',
+            'file.max' => 'Ukuran file tidak boleh lebih dari 4 MB.',
+            'file2.mimes' => 'File 2 harus berupa ZIP atau RAR.',
+            'file2.max' => 'Ukuran File 2 tidak boleh lebih dari 5 MB.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -254,6 +276,24 @@ class AssetController extends Controller
             // Update the asset with the new file path
             $asset->path = $path;
         }
+        if ($request->hasFile('file2')) {
+            // Validate the new file
+            $request->validate([
+                'file2' => 'required|mimes:zip,rar|max:5120',
+            ]);
+
+            // Delete the old file
+            Storage::delete('public/' . $asset->path2);
+
+            // Store the new file
+            $file2 = $request->file('file2');
+            $fileName = $asset->user_id . '_' . time() . '.' . $file2->getClientOriginalExtension();
+            $path2 = $file2->storeAs('uploads', $fileName, 'public');
+
+            // Update the asset with the new file path
+            $asset->path2 = $path2;
+        }
+
 
         // Update other asset attributes
         $asset->name = $request->input('name');

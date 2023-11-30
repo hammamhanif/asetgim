@@ -46,7 +46,7 @@
                                     <div class="">
                                         <ion-icon name="person-outline"></ion-icon>
                                     </div>
-                                    <div class="ms-3"><span>Profile</span></div>
+                                    <div class="ms-3"><span>Profil Pengguna</span></div>
                                 </div>
                             </a>
                         </li>
@@ -56,7 +56,7 @@
                                     <div class="">
                                         <ion-icon name="settings-outline"></ion-icon>
                                     </div>
-                                    <div class="ms-3"><span>Change Password</span></div>
+                                    <div class="ms-3"><span>Ubah Password</span></div>
                                 </div>
                             </a>
                         </li>
@@ -66,7 +66,7 @@
                                     <div class="">
                                         <ion-icon name="speedometer-outline"></ion-icon>
                                     </div>
-                                    <div class="ms-3"><span>Explore Asset</span></div>
+                                    <div class="ms-3"><span>Jelajahi Aset</span></div>
                                 </div>
                             </a>
                         </li>
@@ -76,7 +76,7 @@
                                     <div class="">
                                         <ion-icon name="albums-outline"></ion-icon>
                                     </div>
-                                    <div class="ms-3"><span>Home</span></div>
+                                    <div class="ms-3"><span>Beranda</span></div>
                                 </div>
                             </a>
                         </li>

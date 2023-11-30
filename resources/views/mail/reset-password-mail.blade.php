@@ -43,9 +43,9 @@
                     <tr>
                         <td style="vertical-align: top; padding-bottom: 30px" align="center">
                             <a href="{{ url('/') }}" target="_blank"><img
-                                    src="{{ asset('dist/icon/preload.png') }}" alt="Logo LPUM"
+                                    src="{{ asset('dist/icon/preload.png') }}" alt="Logo Gana"
                                     style="border: none; max-width:60px" /><br />
-                                <img src="{{ asset('dist/icon/preload.png') }}" alt="Logo LPUM"
+                                <img src="{{ asset('dist/icon/preload.png') }}" alt="Logo Gana"
                                     style="border: none; max-height:40px" /></a>
                         </td>
                     </tr>

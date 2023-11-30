@@ -34,7 +34,7 @@ Route::controller(LandingController::class)->group(function () {
 
 
 Route::controller(AuthController::class)->group(function () {
-    Route::get('login', 'login')->middleware('guest')->name('login');
+    Route::get('login', 'login')->middleware('guest', 'throttle:5,3')->name('login');
     Route::post('login', 'loginPost')->name('login.post');
     Route::post('logout', 'logout')->name('logout');
     Route::get('register', 'register')->middleware('guest')->name('register');

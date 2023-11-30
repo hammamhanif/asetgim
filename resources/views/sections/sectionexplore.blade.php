@@ -9,8 +9,8 @@
                 <div class="col-md-12">
 
                     <ul class="breadcrumbs">
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li>Explore Asset</li>
+                        <li><a href="{{ route('home') }}">Beranda</a></li>
+                        <li>Jelajahi Aset</li>
                     </ul>
 
                     <h4 class="page-title-heading">Explore Asset</h4>

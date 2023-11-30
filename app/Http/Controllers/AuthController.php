@@ -75,7 +75,7 @@ class AuthController extends Controller
         }
 
         return redirect()->route('login')->withErrors([
-            'username' => 'Invalid username or password.',
+            'username' => 'Username atau kata sandi tidak valid.',
         ]);
     }
 
@@ -102,25 +102,26 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users|max:50',
             'password' => 'required|min:8|max:20|confirmed',
         ], [
-            'username.required' => 'Username is required.',
-            'username.unique' => 'Username is already taken.',
-            'username.min' => 'Username must be at least 5 characters.',
-            'username.max' => 'Username cannot exceed 20 characters.',
-            'username.alpha_dash' => 'Username can only contain letters, numbers, dashes, and underscores.',
-            'name.required' => 'Name is required.',
-            'name.min' => 'Name must be at least 5 characters.',
-            'name.max' => 'Name cannot exceed 50 characters.',
-            'name.regex' => 'Name can only contain letters and spaces.',
-            'email.required' => 'Email is required.',
-            'email.email' => 'Please enter a valid email address.',
-            'email.max' => 'Email cannot exceed 50 characters.',
-            'password.required' => 'Password is required.',
-            'password.min' => 'Password must be at least 8 characters.',
-            'password.max' => 'Password cannot exceed 20 characters.',
-            'password.confirmed' => 'The password confirmation does not match.',
-            'password.confirmed.required' => 'Password is required.',
-            'password.confirmed.min' => 'Password must be at least 8 characters.',
-            'password.confirmed.max' => 'Password cannot exceed 20 characters.',
+            'username.required' => 'Nama pengguna wajib diisi.',
+            'username.unique' => 'Nama pengguna sudah digunakan.',
+            'username.min' => 'Nama pengguna harus minimal 5 karakter.',
+            'username.max' => 'Nama pengguna tidak boleh melebihi 20 karakter.',
+            'username.alpha_dash' => 'Nama pengguna hanya boleh mengandung huruf, angka, tanda hubung, dan garis bawah.',
+            'name.required' => 'Nama lengkap wajib diisi.',
+            'name.min' => 'Nama lengkap harus minimal 5 karakter.',
+            'name.max' => 'Nama lengkap tidak boleh melebihi 50 karakter.',
+            'name.regex' => 'Nama lengkap hanya boleh mengandung huruf dan spasi.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Harap masukkan alamat email yang valid.',
+            'email.max' => 'Email tidak boleh melebihi 50 karakter.',
+            'password.required' => 'Kata sandi wajib diisi.',
+            'password.min' => 'Kata sandi harus minimal 8 karakter.',
+            'password.max' => 'Kata sandi tidak boleh melebihi 20 karakter.',
+            'password.confirmed' => 'Konfirmasi kata sandi tidak sesuai.',
+            'password.confirmed.required' => 'Kata sandi wajib diisi.',
+            'password.confirmed.min' => 'Kata sandi harus minimal 8 karakter.',
+            'password.confirmed.max' => 'Kata sandi tidak boleh melebihi 20 karakter.',
+
         ]);
 
         $user = User::create([

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->enum('status', ['active', 'inactive', 'pending'])->default('inactive');
             $table->string('path');
+            $table->string('path2');
             $table->unsignedInteger('count')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

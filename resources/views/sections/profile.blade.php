@@ -20,14 +20,14 @@
 
                 <!--start breadcrumb-->
                 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div class="breadcrumb-title pe-3">Pages</div>
+                    <div class="breadcrumb-title pe-3">Halaman</div>
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0 align-items-center">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><ion-icon
                                             name="home-outline"></ion-icon></a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit Profil</li>
                             </ol>
                         </nav>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="card radius-10">
                             <div class="card-body">
                                 <div>
-                                    <h5 class="mb-3">Edit Profile</h5>
+                                    <h5 class="mb-3">Edit Profil</h5>
                                     @if ($errors->any())
                                         <div class="alert alert-danger" role="alert">
                                             <ul class="list-disc pl-5">
@@ -55,7 +55,7 @@
                                         </div>
                                         <button type="button" class="btn btn-outline-primary btn-sm radius-30 px-4"
                                             data-bs-toggle="modal" data-bs-target="#user"><ion-icon
-                                                name="image-sharp"></ion-icon>Change Photo</button>
+                                                name="image-sharp"></ion-icon>Ubah Foto</button>
                                         <div class="modal fade" id="user" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
 
-                                    <h5 class="mb-0 mt-4">Contact Information</h5>
+                                    <h5 class="mb-0 mt-4">Informasi Pengguna</h5>
                                     @livewire('update-profile-component')
                                 </div>
                             </div>

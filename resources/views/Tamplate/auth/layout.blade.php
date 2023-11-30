@@ -24,11 +24,11 @@
                                 <nav id="main-nav" class="main-nav">
                                     <ul id="menu-primary-menu" class="menu">
                                         <li class="menu-item">
-                                            <a href="{{ route('home') }}">Home</a>
+                                            <a href="{{ route('home') }}">Beranda</a>
 
                                         </li>
                                         <li class="menu-item menu-item-has-children">
-                                            <a href="#">Category</a>
+                                            <a href="#">Kategori</a>
                                             <ul class="sub-menu">
                                                 <li class="menu-item"><a
                                                         href="{{ route('exploreAsset', ['search' => '2d']) }}">2D</a>
@@ -44,28 +44,42 @@
                                         <li class="menu-item menu-item-has-children ">
                                             <a href="#">Daerah</a>
                                             <ul class="sub-menu">
-                                                <li class="menu-item "><a href="blog.html">DKI Jakarta</a></li>
-                                                <li class="menu-item "><a href="blog2.html">Jawa Barat</a></li>
-                                                <li class="menu-item"><a href="blog-details.html">Jawa Tengah</a>
+                                                <li class="menu-item "><a
+                                                        href="{{ route('exploreAsset', ['search' => 'Jawa Tengah']) }}">Jawa
+                                                        Tengah</a></li>
+                                                <li class="menu-item "><a
+                                                        href="{{ route('exploreAsset', ['search' => 'Sumatera Utara']) }}">Sumatera
+                                                        Utara</a></li>
+                                                <li class="menu-item"><a
+                                                        href="{{ route('exploreAsset', ['search' => 'Sulawesi Utara']) }}">Sulawesi
+                                                        Utara</a>
                                                 </li>
-                                                <li class="menu-item"><a href="blog-details2.html">Jawa Timur</a>
+                                                <li class="menu-item"><a
+                                                        href="{{ route('exploreAsset', ['search' => 'NTB']) }}">NTB</a>
+                                                </li>
+                                                <li class="menu-item"><a
+                                                        href="{{ route('exploreAsset', ['search' => 'NTT']) }}">NTT</a>
+                                                </li>
+                                                <li class="menu-item"><a
+                                                        href="{{ route('exploreAsset', ['search' => 'Bali']) }}">Bali</a>
                                                 </li>
                                             </ul>
                                         </li>
 
                                         <li class="menu-item">
-                                            <a href="{{ route('index_contact') }}">Contact</a>
+                                            <a href="{{ route('index_contact') }}">Kontak</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('about') }}">About Us</a>
+                                            <a href="{{ route('about') }}">Tentang Kami</a>
                                         </li>
                                         </li>
-                                        @auth
+                                        @if (auth()->check())
                                             <li class="menu-item menu-item-has-children ">
                                                 <a href="#">{{ auth()->user()->name }}</a>
                                                 <ul class="sub-menu">
                                                     <li class="menu-item "><a href="{{ route('dashboard') }}">My
-                                                            Dashboard</a></li>
+                                                            Dashboard</a>
+                                                    </li>
                                                     <li class="menu-item ">
                                                         <form action="{{ route('logout') }}" method="post">
                                                             @csrf
@@ -77,9 +91,9 @@
 
                                                 </ul>
                                             </li>
-                                        @endauth
+                                        @endif
                                     </ul>
-                                </nav>
+                                </nav><!-- /#main-nav -->
                             </div>
 
                             <div class="header-right">

@@ -54,7 +54,7 @@
                                   </div>
                                   <div class="d-flex align-items-center mt-2 mb-3">
                                       <div>
-                                          <h4 class="mb-0">{{ auth()->user()->username }}</h4>
+                                          <h4 class="mb-0">{{ auth()->user()->name }}</h4>
                                       </div>
                                   </div>
                               </div>
@@ -76,7 +76,6 @@
                                           <div>
                                               <h4 class="mb-0">{{ $assetCount }}</h4>
                                           </div>
-                                          <div class="ms-auto">+6.32%</div>
                                       </div>
                                   </div>
                               </div>
@@ -97,7 +96,6 @@
                                           <div>
                                               <h4 class="mb-0">992</h4>
                                           </div>
-                                          <div class="ms-auto">+6.32%</div>
                                       </div>
                                   </div>
                               </div>
@@ -119,7 +117,6 @@
                                           <div>
                                               <h4 class="mb-0">{{ $users }}</h4>
                                           </div>
-                                          <div class="ms-auto">+12.45%</div>
                                       </div>
                                   </div>
                               </div>
@@ -130,7 +127,7 @@
                                   <div class="card-body">
                                       <div class="d-flex align-items-start gap-2">
                                           <div>
-                                              <p class="mb-0 fs-6">Asset 3D </p>
+                                              <p class="mb-0 fs-6">Aset 3D </p>
                                           </div>
                                           <div class="ms-auto widget-icon-small text-white bg-gradient-info">
                                               <ion-icon name="dice-outline"></ion-icon>
@@ -140,7 +137,6 @@
                                           <div>
                                               <h4 class="mb-0">{{ $assetCount3D }}</h4>
                                           </div>
-                                          <div class="ms-auto">+12.45%</div>
                                       </div>
                                   </div>
                               </div>
@@ -153,7 +149,7 @@
                                   <div class="card-body">
                                       <div class="d-flex align-items-start gap-2">
                                           <div>
-                                              <p class="mb-0 fs-6">Your Asset</p>
+                                              <p class="mb-0 fs-6">Aset Kamu</p>
                                           </div>
                                           <div class="ms-auto widget-icon-small text-white bg-gradient-success">
                                               <ion-icon name="layers-outline"></ion-icon>
@@ -163,7 +159,6 @@
                                           <div>
                                               <h4 class="mb-0">{{ $assetCountUser }}</h4>
                                           </div>
-                                          <div class="ms-auto">+8.52%</div>
                                       </div>
                                   </div>
                               </div>
@@ -174,7 +169,7 @@
                                   <div class="card-body">
                                       <div class="d-flex align-items-start gap-2">
                                           <div>
-                                              <p class="mb-0 fs-6">Asset 2D</p>
+                                              <p class="mb-0 fs-6">Aset 2D</p>
                                           </div>
                                           <div class="ms-auto widget-icon-small text-white bg-gradient-success">
                                               <ion-icon name="images-outline"></ion-icon>
@@ -184,7 +179,6 @@
                                           <div>
                                               <h4 class="mb-0">{{ $assetCount2D }}</h4>
                                           </div>
-                                          <div class="ms-auto">+8.52%</div>
                                       </div>
                                   </div>
                               </div>
@@ -198,19 +192,7 @@
                   <div class="card radius-10 w-100">
                       <div class="card-body">
                           <div class="d-flex align-items-center">
-                              <h6 class="mb-0">Detail Assets Post</h6>
-                              <div class="fs-5 ms-auto dropdown">
-                                  <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
-                                      data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></div>
-                                  <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="#">Action</a></li>
-                                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                                      <li>
-                                          <hr class="dropdown-divider">
-                                      </li>
-                                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                  </ul>
-                              </div>
+                              <h6 class="mb-0">Detail Unggahan Asset</h6>
                           </div>
                           <div class="table-responsive mt-2">
 
@@ -218,10 +200,10 @@
                                   <thead class="table-light">
                                       <tr>
                                           <th>No.</th>
-                                          <th>Asset Name</th>
+                                          <th>Nama Aset</th>
                                           <th>Status</th>
-                                          <th>Description</th>
-                                          <th>Actions</th>
+                                          <th>Deskripsi</th>
+                                          <th>Aksi</th>
                                       </tr>
                                   </thead>
                                   <tbody>
@@ -303,11 +285,21 @@
                                                                               </div>
                                                                               <div class="mb-3">
                                                                                   <label for="file"
-                                                                                      class="col-form-label">File
-                                                                                      Asset:</label>
+                                                                                      class="col-form-label">Poster
+                                                                                      Aset (Maksimal 4 mb)</label>
+                                                                                  <input class="form-control"
+                                                                                      type="file" name="file2"
+                                                                                      multiple="" id="file2">
+                                                                              </div>
+                                                                              <div class="mb-3">
+                                                                                  <label for="file2"
+                                                                                      class="col-form-label">Aset File
+                                                                                      (Format
+                                                                                      .zip atau .rar)
+                                                                                  </label>
                                                                                   <input type="file"
-                                                                                      class="form-control" id="file"
-                                                                                      name="file">
+                                                                                      class="form-control" id="file2"
+                                                                                      name="file2">
                                                                               </div>
                                                                               <div class="modal-footer">
                                                                                   <button type="button"
@@ -355,29 +347,17 @@
           <div class="card radius-10 w-100">
               <div class="card-body">
                   <div class="d-flex align-items-center">
-                      <h6 class="mb-0">Message From Admin</h6>
-                      <div class="fs-5 ms-auto dropdown">
-                          <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer" data-bs-toggle="dropdown"><i
-                                  class="bi bi-three-dots"></i></div>
-                          <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">Action</a></li>
-                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                              <li>
-                                  <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Something else here</a></li>
-                          </ul>
-                      </div>
+                      <h6 class="mb-0">Pesan dari Admin</h6>
                   </div>
 
                   <table class="table align-middle mb-0">
                       <thead class="table-light">
                           <tr>
                               <th>No.</th>
-                              <th>Subject</th>
-                              <th>Message</th>
+                              <th>Subjek</th>
+                              <th>Pesan</th>
                               <th>Waktu</th>
-                              <th>Actions</th>
+                              <th>Aksi</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -407,12 +387,12 @@
                                                   <div class="modal-content">
                                                       <div class="modal-header">
                                                           <h5 class="modal-title" id="deleteMessage">
-                                                              Delete Message</h5>
+                                                              Hapus Pesan</h5>
                                                           <button type="button" class="btn-close"
                                                               data-bs-dismiss="modal" aria-label="Close"></button>
                                                       </div>
                                                       <div class="modal-body">
-                                                          Are you sure you want to delete this message?
+                                                          Apakah Anda yakin menghapus pesan ini?
                                                       </div>
                                                       <div class="modal-footer">
                                                           <button type="button" class="btn btn-secondary"
@@ -421,8 +401,7 @@
                                                               action="/message/{{ $message->id }}/delete">
                                                               @csrf
                                                               @method('DELETE')
-                                                              <button type="submit"
-                                                                  class="btn btn-danger">Delete</button>
+                                                              <button type="submit" class="btn btn-danger">Hapus</button>
                                                           </form>
                                                       </div>
                                                   </div>
@@ -443,6 +422,7 @@
               {{ $messages->links() }}
           </div>
 
+
       </div>
       </div>
       <!-- end page content-->
@@ -453,7 +433,7 @@
       <!--start footer-->
       <footer class="footer">
           <div class="footer-text">
-              Copyright © 2023. All right reserved.
+              Copyright © 2022 BRIN. GANA (Game Asset Nusantara).
           </div>
       </footer>
       <!--end footer-->

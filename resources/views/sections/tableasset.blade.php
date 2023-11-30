@@ -182,15 +182,22 @@
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="file" class="col-form-label">File
-                                                                Asset:</label>
-                                                            <input type="file" class="form-control" id="file"
-                                                                name="file">
+                                                            <label for="file" class="col-form-label">Poster
+                                                                Aset (Maksimal 4 mb)</label>
+                                                            <input class="form-control" type="file" name="file"
+                                                                multiple="" id="file">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="file2" class="col-form-label">Aset File (Format
+                                                                .zip atau .rar )</label>
+                                                            <input type="file" class="form-control" id="file2"
+                                                                name="file2">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                                data-bs-dismiss="modal">Tutup</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Perbarui</button>
                                                     </form>
                                                 </form>
                                                 <a href="{{ route('reviewasset.delete', ['id' => $asset->id]) }}"
