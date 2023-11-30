@@ -63,6 +63,11 @@
                                 aria-required="true" type="password" placeholder="Password" required="">
                             <span class="btn-show-pass "><i class="far fa-eye-slash"></i></span>
                         </fieldset>
+                        <div class="form-group">
+                            {!! Captcha::img() !!}
+                            <input type="text" id="captcha" name="captcha" required>
+                        </div>
+
                         <div class="forgot-pass-wrap">
                             <label {{ __('Remember Me') }}>Remember me
                                 <input type="checkbox" name="remember" value="1" id="remember">

@@ -56,6 +56,9 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required',
             'password' => 'required',
+            'captcha' => 'required|captcha',
+        ], [
+            'captcha' => 'Captcha tidak sesuai, silahkan ulang kembali.',
         ]);
 
 
@@ -78,6 +81,7 @@ class AuthController extends Controller
             'username' => 'Username atau kata sandi tidak valid.',
         ]);
     }
+
 
     public function logout()
     {
