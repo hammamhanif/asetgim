@@ -78,7 +78,7 @@ Route::controller(ReportController::class)->group(function () {
     Route::delete('tablereport/{id}/delete',  'destroy')->middleware('isAdmin')->name('tablereport.delete');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'isActive'])->group(function () {
     Route::get('/uploadAsset', [AssetController::class, 'index'])->name('uploadAsset');
     Route::post('/upload', [AssetController::class, 'upload'])->name('file.upload');
     //Route::get('/download/{id}', [AssetController::class, 'download'])->name('file.download');

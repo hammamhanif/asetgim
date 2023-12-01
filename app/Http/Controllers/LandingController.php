@@ -7,6 +7,7 @@ use App\Models\Asset;
 use App\Models\Ratings;
 use App\Models\AssetReport;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LandingController extends Controller
 {

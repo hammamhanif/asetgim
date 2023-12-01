@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Asset;
+use App\Models\LogDB;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,7 @@ class AssetController extends Controller
 
     public function dashboard()
     {
+        LogDB::record(Auth::user(), 'accessing dashboard', 'this is extra log');
         $user = Auth::user();
         $users = User::where('account_type', 'creator')->count();
         $assets = Asset::where('user_id', $user->id)->paginate(5);

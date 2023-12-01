@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'Illuminate\Auth\Events\Lockout' => [
             'App\Listeners\LogLockout',
         ],
+        'Illuminate\Auth\Events\Failed' => [
+            'App\Listeners\LoginFailed',
+        ],
     ];
 
     /**
