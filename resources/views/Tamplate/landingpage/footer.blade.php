@@ -15,7 +15,7 @@
                     <li><a href="https://www.youtube.com/channel/UCr1ihEI566IJib9P-JjENSA"><i
                                 class="fab fa-youtube"></i></a></li>
                 </ul>
-                <p class="copy-right mt-3">Copyright © 2022 BRIN. GANA (Game Asset Nusantara).</p>
+                <p class="copy-right mt-3">Copyright © 2023 BRIN. GANA (Game Asset Nusantara).</p>
             </div>
             <div class="col-md-4"></div> <!-- Col kosong -->
         </div>

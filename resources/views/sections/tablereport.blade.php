@@ -272,7 +272,7 @@
     <!--end wrapper-->
     <footer class="footer">
         <div class="footer-text">
-            Copyright © 2022 BRIN. GANA (Game Asset Nusantara).
+            Copyright © 2023 BRIN. GANA (Game Asset Nusantara).
         </div>
     </footer>
     <!--end footer-->
