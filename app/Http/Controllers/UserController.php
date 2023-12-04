@@ -150,6 +150,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->status = $request->input('status');
+        $user->points = $request->input('points');
         $user->account_type = $request->input('account_type');
         $user->save();
 

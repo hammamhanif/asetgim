@@ -63,8 +63,16 @@
                                 aria-required="true" type="password" placeholder="Password" required="">
                             <span class="btn-show-pass "><i class="far fa-eye-slash"></i></span>
                         </fieldset>
+
                         <div class="form-group">
-                            {!! Captcha::img() !!}
+                            <div class="captcha">
+
+                                <span id="captcha-img">{!! captcha_img() !!}</span>
+                                <button type="button" class="btn btn-primary reload" id="reload">&#x21bb;</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <input type="text" id="captcha" name="captcha" required>
                         </div>
 
@@ -90,5 +98,22 @@
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get the reload button and captcha image
+                var reloadButton = document.getElementById('reload');
+                var captchaImage = document.getElementById('captcha-img');
+
+                // Attach a click event listener to the reload button
+                reloadButton.addEventListener('click', function() {
+                    // Generate a new captcha image URL by adding a timestamp parameter
+                    var captchaImageUrl = "{{ route('captcha') }}?" + Date.now();
+
+                    // Update the src attribute of the captcha image with the new URL
+                    captchaImage.innerHTML = '<img src="' + captchaImageUrl + '" alt="Captcha Image">';
+                });
+            });
+        </script>
+
     </section>
 @endsection

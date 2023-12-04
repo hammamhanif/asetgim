@@ -34,9 +34,18 @@
                 <!--end breadcrumb-->
 
                 @livewire('change-password-component')
+                <div class="card radius-10 w-100 mt-4">
+                    <div class="card-body">
+                        <div class="alert alert-warning">
+                            <strong>PERHATIAN!</strong> Apabila login dengan google password lama adalah "password123"
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <!-- end page content-->
         </div>
+
 
 
 

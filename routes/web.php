@@ -56,6 +56,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('send-forgot-request', 'forgotRequest')->name('forgot.request');
     Route::get('reset-password/{token}', 'resetPassword')->name('password.reset');
     Route::post('reset-password-request', 'resetPasswordRequest')->name('password.request');
+
+    Route::get('/captcha', 'getCaptcha')->name('captcha');
 });
 
 Route::get('changepass', function () {
@@ -119,6 +121,7 @@ Route::controller(ContactController::class)->group(function () {
 });
 
 Route::get('/downloadAsset/{id}', [AssetController::class, 'download_asset'])->name('downloadAsset');
+
 
 Route::post('/submit-review', [RatingController::class, 'store'])->name('submit-review');
 

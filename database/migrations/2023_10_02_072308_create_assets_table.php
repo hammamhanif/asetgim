@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('area', ['Jawa Tengah', 'Sumatera Utara', 'Sulawesi Utara', 'NTB', 'NTT', 'Bali']);
             $table->enum('asset_type', ['2d', '3d']);
             $table->text('description');
-            $table->enum('status', ['active', 'inactive', 'pending'])->default('inactive');
+            $table->enum('status', ['active', 'inactive', 'pending'])->default('pending');
             $table->string('path');
             $table->string('path2');
             $table->unsignedInteger('count')->default(0);

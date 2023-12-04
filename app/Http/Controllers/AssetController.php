@@ -26,7 +26,7 @@ class AssetController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function view(Request $request)
+    public function view(Request $request,)
     {
         $statuses = Asset::select('status')->distinct()->pluck('status');
         $search = $request->input('search'); // Ambil nilai pencarian dari request
@@ -44,8 +44,9 @@ class AssetController extends Controller
 
         $query->leftJoin('users', 'assets.user_id', '=', 'users.id');
         $assets = $query->paginate(5);
+        $asset = Asset::where('id');
 
-        return view('sections.tableasset', compact('assets', 'search', 'statuses'));
+        return view('sections.tableasset', compact('assets', 'search', 'statuses', 'asset'));
     }
 
     public function dashboard()
@@ -105,8 +106,10 @@ class AssetController extends Controller
             'area' => $request->input('area'),
             'description' => $request->input('description'),
         ]);
+        $user->points += 2;
+        $user->save();
 
-        return redirect()->back()->with('success', 'File berhasil diunggah');
+        return redirect()->back()->with('success', 'File berhasil diunggah, silahkan tunggu perbaruan status aset dari admin.');
     }
 
     public function download_asset($id)
@@ -359,10 +362,21 @@ class AssetController extends Controller
      */
     public function destroy($id)
     {
-        $assets = Asset::find($id);
-        if ($assets) {
-            Storage::disk('public')->delete($assets->path);
-            $assets->delete();
+        $asset = Asset::find($id);
+        if ($asset) {
+            $userId = $asset->user_id;
+
+            // Mengurangkan points pengguna
+            $user = User::find($userId);
+            if ($user) {
+                $user->points -= 2;
+                $user->save();
+            }
+
+            // Menghapus aset
+            Storage::disk('public')->delete($asset->path);
+            $asset->delete();
+
             return redirect()->route('reviewasset')->withSuccess('Aset berhasil dihapus.');
         } else {
             return redirect()->back()->with('error', 'File tidak ditemukan');
@@ -370,10 +384,19 @@ class AssetController extends Controller
     }
     public function destroy_dashboard($id)
     {
-        $assets = Asset::find($id);
-        if ($assets) {
-            Storage::disk('public')->delete($assets->path);
-            $assets->delete();
+        $asset = Asset::find($id);
+        if ($asset) {
+            $userId = $asset->user_id;
+
+            // Mengurangkan points pengguna
+            $user = User::find($userId);
+            if ($user) {
+                $user->points -= 2;
+                $user->save();
+            }
+
+            Storage::disk('public')->delete($asset->path);
+            $asset->delete();
             return redirect()->route('dashboard')->withSuccess('Aset berhasil dihapus.');
         } else {
             return redirect()->back()->with('error', 'File tidak ditemukan');

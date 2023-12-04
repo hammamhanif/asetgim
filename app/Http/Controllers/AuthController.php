@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use Laravel\Socialite\Facades\Socialite;
+use Mews\Captcha\Facades\Captcha;
 
 
 
@@ -211,5 +212,10 @@ class AuthController extends Controller
         DB::table('password_resets')->where(['email' => $request->email])->delete();
 
         return redirect('login')->with('status', 'Kata sandi sudah diubah');
+    }
+
+    public function getCaptcha()
+    {
+        return Captcha::create();
     }
 }

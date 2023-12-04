@@ -23,19 +23,19 @@
                         <hr>
                         <div class="row g-3">
                             <div class="col-12">
-                                <label for="currentPassword" class="form-label">Old Password</label>
+                                <label for="currentPassword" class="form-label">Password Lama</label>
                                 <input type="password"name="currentPassword" id="currentPassword"
                                     wire:model.defer='currentPassword'
                                     class="form-control @error('currentPassword') is-invalid @enderror">
                             </div>
                             <div class="col-12">
-                                <label class="form-label"currentPassword>New Password </label>
+                                <label class="form-label"currentPassword>Password Baru </label>
                                 <input type="password" name="newPassword" id="newPassword"
                                     wire:model.defer='newPassword'
                                     class="form-control @error('newPassword') is-invalid @enderror">
                             </div>
                             <div class="col-12">
-                                <label class="form-label" for="currentPassword">New Password Confirmation </label>
+                                <label class="form-label" for="currentPassword">Konfirmasi Password Baru</label>
                                 <input type="password" name="newPasswordConfirmation" id="newPasswordConfirmation"
                                     wire:model.defer='newPassword_confirmation'
                                     class="form-control @error('newPassword_confirmation') is-invalid @enderror">

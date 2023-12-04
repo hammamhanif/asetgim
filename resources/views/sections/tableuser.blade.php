@@ -153,6 +153,13 @@
                                                                             readonly>
                                                                     </div>
                                                                     <div class="mb-3">
+                                                                        <label for="points"
+                                                                            class="col-form-label">Points:</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="points" name="points"
+                                                                            value="{{ old('points', $user->points) }}">
+                                                                    </div>
+                                                                    <div class="mb-3">
                                                                         <label for="status"
                                                                             class="col-form-label">Status</label>
                                                                         <select class="form-select form-select-md"

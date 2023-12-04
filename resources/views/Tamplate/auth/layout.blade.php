@@ -129,6 +129,7 @@
 <a id="scroll-top"></a>
 
 <!-- Javascript -->
+
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.js"></script>
 <script src="{{ asset('dist/js/jquery.min.js') }}"></script>

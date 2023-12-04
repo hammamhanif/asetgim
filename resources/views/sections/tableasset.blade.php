@@ -198,6 +198,10 @@
                                                                 data-bs-dismiss="modal">Tutup</button>
                                                             <button type="submit"
                                                                 class="btn btn-primary">Perbarui</button>
+                                                            <a href="{{ route('file.download', $asset->id) }}"
+                                                                class="tf-button style-3"><button type="button"
+                                                                    class="btn btn-primary"
+                                                                    data-bs-dismiss="modal">Download</button></a>
                                                     </form>
                                                 </form>
                                                 <a href="{{ route('reviewasset.delete', ['id' => $asset->id]) }}"

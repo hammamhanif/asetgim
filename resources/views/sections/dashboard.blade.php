@@ -94,7 +94,7 @@
                                       </div>
                                       <div class="d-flex align-items-center mt-3">
                                           <div>
-                                              <h4 class="mb-0">992</h4>
+                                              <h4 class="mb-0">{{ auth()->user()->points }}</h4>
                                           </div>
                                       </div>
                                   </div>
@@ -342,6 +342,8 @@
                       {{ $assets->links() }}
                   </div>
 
+
+
               </div>
           </div>
           <div class="card radius-10 w-100">
@@ -423,6 +425,15 @@
           </div>
 
 
+      </div>
+      <div class="card radius-10 w-100 mt-4">
+          <div class="card-body">
+              <div class="alert alert-warning">
+                  <strong>PERHATIAN!</strong> Akses fitur-fitur lain menggunakan tombol menu di pojok kiri atas.
+                  Untuk mengakses halaman profil dan melakukan log out gunakan tombol di pojok kanan atas. Apabila login
+                  dengan google silahkan <strong>ubah password</strong> terlebih dahulu.
+              </div>
+          </div>
       </div>
       </div>
       <!-- end page content-->
