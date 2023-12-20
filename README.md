@@ -8,7 +8,7 @@ Gana is a web platform that serves as a repository for game assets with an Indon
 
 - **Framework:** Laravel 10
 - **Database:** MySQL
-- **Frontend:** Livewire
+- **Frontend:** Boostrap 5
 
 ## Getting Started
 
