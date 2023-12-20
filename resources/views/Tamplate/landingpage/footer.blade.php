@@ -16,6 +16,8 @@
                                 class="fab fa-youtube"></i></a></li>
                 </ul>
                 <p class="copy-right mt-3">Copyright © 2023 BRIN. GANA (Game Asset Nusantara).</p>
+                <p class="copy-right mt-3">Disclaimer: Aplikasi GANA merupakan prototype keluaran hasil kegiatan riset
+                    BRIN</p>
             </div>
             <div class="col-md-4"></div> <!-- Col kosong -->
         </div>

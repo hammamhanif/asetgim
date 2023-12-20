@@ -7,7 +7,7 @@
                 <div class="col-md-12">
 
                     <ul class="breadcrumbs">
-                        <li><a href="blog2.html">Home</a></li>
+                        <li><a href="{{ route('home') }}">Beranda</a></li>
                         <li>Login</li>
                     </ul>
 
@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <div class="tf-heading style-5">
                         <h4 class="heading">GANA | Game Asset Nusantara</h4>
-                        <p class="sub-heading">Make sure to enter your account correctly! </p>
+                        <p class="sub-heading">Pastikan untuk memasukkan akun Anda dengan benar! </p>
                         @if (session()->has('status'))
                             <div class="alert alert-success" role="alert">
                                 <strong class="font-bold">Success!</strong>
@@ -56,7 +56,7 @@
                     <form action="{{ route('login.post') }}" method="post" id="contactform">
                         @method('POST')
                         @csrf
-                        <div class="title-login">login with account</div>
+                        <div class="title-login">login dengan akun</div>
                         <fieldset><input id="username" name="username" tabindex="1" aria-required="true" required=""
                                 type="text" placeholder="Username"></fieldset>
                         <fieldset class="mb24"> <input id="showpassword" name="password" tabindex="2"
@@ -73,20 +73,19 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="captcha" name="captcha" required>
+                            <input type="text" id="captcha" name="captcha" required placeholder="Masukkan Captcha">
                         </div>
 
                         <div class="forgot-pass-wrap">
-                            <label {{ __('Remember Me') }}>Remember me
+                            <label {{ __('Remember Me') }}>Ingat saya
                                 <input type="checkbox" name="remember" value="1" id="remember">
                                 <span class="btn-checkbox"></span>
                             </label>
-                            <a class="forgot-pass" href="{{ route('forgot') }}">Fogot password?</a>
+                            <a class="forgot-pass" href="{{ route('forgot') }}">Lupa Password?</a>
                         </div>
-                        <div class="title-login">Or login with social</div>
+                        <div class="title-login">Login dengan media sosial?</div>
                         <div class="button-gg"><a href="{{ route('register') }}"><i
-                                    class="fab fa-odnoklassniki"></i></i>Create
-                                Account</a>
+                                    class="fab fa-odnoklassniki"></i></i>Buat akun</a>
                         </div>
                         <div class="button-gg mb31"><a href="{{ route('user.login.google') }}"><i
                                     class="fab fa-google"></i>Google</a>
